@@ -1,4 +1,4 @@
-\def\duedate{\today}
+\def\duedate{September 14, 2023}
 \def\HWnum{2}
 \input{../preamble.tex}
 
@@ -12,7 +12,8 @@ Using Gauss' theorem we found that, in cylindrical coordinates $(\rho, \phi,z)$,
 .\end{eqnarray}
 Obtain this result by a direct integration using the formula
 \begin{eqnarray}
-    \va*{E}(\va*{r}) = \frac{1}{3 \pi \epsilon_0} \int_{V} \rho(\va*{r}') \frac{\va*{r} - \va*{r}'}{|\va*{r} - \va*{r}'|^3} \dd{V'}
+    \label{eq:direct-E}
+    \va*{E}(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \int_{V} \rho(\va*{r}') \frac{\va*{r} - \va*{r}'}{|\va*{r} - \va*{r}'|^3} \dd{V'}
 .\end{eqnarray}
 Similarly, using 
 \begin{eqnarray}
@@ -23,7 +24,40 @@ Show that $\Phi(\va*{r}) \equiv \Phi(\rho,\phi,z)$ depends in this case on $\rho
 
 }
 
-\sol{}
+\sol{
+
+Consider an infinitely long and thin rod (with charge per unit length $\lambda$) lying along the $z$-axis.
+Notice then that the charge density for this rod is given as $\rho(\va*{r}) = \rho(\rho,\phi,z) = \lambda \delta(x)\delta(y)$.
+The electric field of this configuration is the found as
+\begin{eqnarray}
+    \begin{aligned}
+        \va*{E}(\va*{r}) &= \frac{1}{4 \pi \epsilon_0} \int_{V} \lambda \delta(x') \delta(y') \frac{\va*{r} - \va*{r}'}{| \va*{r} - \va*{r}' |^3} \dd{x'} \dd{y'} \dd{z'} \\
+                         &= \frac{\lambda}{4 \pi \epsilon_0} \int_{-\infty}^{\infty} \frac{x \vu*{e}_{x} + y \vu*{e}_{y} + (z - z') \vu*{e}_{z}}{[x^2 + y^2 + (z - z')^2]^{3/2}} \dd{z'}
+    \end{aligned}
+.\end{eqnarray}
+Observe that we can switch to cylindrical coordinates, giving
+\begin{eqnarray}
+    \va*{E}(\va*{r}) = \frac{\lambda}{4 \pi \epsilon_0} \Bigg[ \vu*{e}_{\rho} \int_{-\infty}^{\infty}  \frac{\rho}{[\rho^2 + (z - z')^2]^{3/2}} \dd{z'} + \vu*{e}_{z} \int_{-\infty}^{\infty} \frac{z - z'}{[\rho^2 + (z - z')^2]^{3/2}} \dd{z'} \Bigg]
+.\end{eqnarray}
+Observe that the second integral is zero by symmetry since the integrand is odd in $z - z'$.
+Thus, the electric field
+\begin{eqnarray}
+    \eqbox{
+    \va*{E}(\va*{r}) = \frac{\lambda}{4 \pi \epsilon_0 \rho^2} \vu*{e}_{\rho} \int_{\pi/2}^{-\pi/2} \frac{1}{\sec^3{\theta}} (-\rho \sec^2{\theta}) \dd{\theta} = \frac{\lambda}{2 \pi \epsilon_0 \rho} \vu*{e}_{\rho} \int_{0}^{\pi/2} \cos{\theta} \dd{\theta} = \frac{\lambda}{2 \pi \epsilon_0 \rho} \vu*{e}_{\rho}
+}
+,\end{eqnarray}
+where we have used the replacement $z - z' = \rho \tan{\theta}$.
+
+Similarly, we can find the electric potential\footnote{using $\Phi(\rho = \rho_0)$ as our reference point since the charge distribution extends to $\pm \infty$ on the $z$-axis.}:
+\begin{eqnarray}
+    \begin{aligned}
+        \Phi(\va*{r}) &= \frac{1}{4 \pi \epsilon_0} \int \frac{\lambda \delta(x') \delta(y')}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}} \dd{x'} \dd{y'} \dd{z'} = \frac{1}{4 \pi \epsilon_0} \\
+                      &= \frac{\lambda}{4 \pi \epsilon_0} \int_{-\infty}^{\infty} \frac{1}{\sqrt{\rho^2 + (z - z')^2}} \dd{z'} \\
+                      &= \frac{\lambda}{2 \pi \epsilon_0 \rho} \int_{0}^{\pi/2} \sec{\theta} \dd{\theta}
+    \end{aligned}
+.\end{eqnarray}
+
+}
 
 
 \prob{2}{
