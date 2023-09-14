@@ -28,14 +28,14 @@ Show that $\Phi(\va*{r}) \equiv \Phi(\rho,\phi,z)$ depends in this case on $\rho
 \sol{
 
 Consider an infinitely long and thin rod (with charge per unit length $\lambda$) lying along the $z$-axis.
-Notice then that the charge density for this rod is given as $\rho(\va*{r}) = \lambda \delta(x)\delta(y)$.
-The electric field of this configuration is then found to as
+Notice that the charge density for this rod is given as $\rho(\va*{r}) = \lambda \delta(x)\delta(y)$.
+The electric field of this configuration is then found as
 \begin{eqnarray}
     \begin{aligned}
         \va*{E}(\va*{r}) &= \frac{1}{4 \pi \epsilon_0} \int_{V} \lambda \delta(x') \delta(y') \frac{\va*{r} - \va*{r}'}{| \va*{r} - \va*{r}' |^3} \dd{x'} \dd{y'} \dd{z'} \\
                          &= \frac{\lambda}{4 \pi \epsilon_0} \int_{-\infty}^{\infty} \frac{x \vu*{e}_{x} + y \vu*{e}_{y} + (z - z') \vu*{e}_{z}}{[x^2 + y^2 + (z - z')^2]^{3/2}} \dd{z'}
-    \end{aligned}
-.\end{eqnarray}
+    .\end{aligned}
+\end{eqnarray}
 Observe that we can switch to cylindrical coordinates, giving
 \begin{eqnarray}
     \va*{E}(\va*{r}) = \frac{\lambda}{4 \pi \epsilon_0} \Bigg[ \vu*{e}_{\rho} \int_{-\infty}^{\infty}  \frac{\rho}{[\rho^2 + (z - z')^2]^{3/2}} \dd{z'} + \vu*{e}_{z} \int_{-\infty}^{\infty} \frac{z - z'}{[\rho^2 + (z - z')^2]^{3/2}} \dd{z'} \Bigg]
@@ -72,7 +72,7 @@ Doing so, we find
 The problem with our original integration is now manifestly obvious.
 In the limit $a \rightarrow \infty$ the potential is logarithmically divergent since the denominator of the argument goes to zero.
 As it stands, the potential is defined as $\Phi(\rho) - \Phi_{\infty}$, where $\Phi_{\infty} \rightarrow \infty$.
-We now shift the ground of our potential to $\rho = \rho_0$ such that $\Phi(\rho_0) = 0$\footnote{This is where the magic is: $\Phi \rightarrow [ \Phi(\rho) - \Phi_{\infty}] - [\Phi(\rho_{0}) - \Phi_{\infty}]$. It is clear then that the $\Phi_{\infty}$ contribution (which is infinite) cancels out.}
+We now shift the ground of our potential to $\rho = \rho_0$ such that $\Phi(\rho_0) = 0$\footnote{This is where the ``magic'' is: $\Phi \rightarrow [ \Phi(\rho) - \Phi_{\infty}] - [\Phi(\rho_{0}) - \Phi_{\infty}]$. It is clear then that the $\Phi_{\infty}$ contribution (which is infinite) cancels out.}
 \begin{eqnarray}
     \Phi(\rho) \rightarrow \Phi(\rho) - \Phi(\rho_0) = \frac{\lambda}{4 \pi \epsilon_0} \ln{ \Bigg[ \Bigg( \frac{1 + \sqrt{1 + (\rho/a)^2}}{-1 + \sqrt{1 + (\rho/a)^2}} \Bigg) \Bigg( \frac{-1 + \sqrt{1 + (\rho_0/a)^2}}{1 + \sqrt{1 + (\rho_0/a)^2}} \Bigg) \Bigg] }
 .\end{eqnarray}
@@ -120,14 +120,14 @@ inside the sphere.
 Finally, we consider the case where the sphere has charge density $\rho(\va*{r}) = \rho_0 r^{n}$, where $\rho_0 = (n+3)Q/(4 \pi a^{n+3})$ such that $\int \rho(\va*{r}) \dd[3]{\va*{r}} = Q$.
 Thus, we find
 \begin{eqnarray}
-    \eqbox{ E = \frac{1}{4 \pi \epsilon_0 r^2} \frac{4 \pi \rho_0 r^{n+3}}{n+3} = \frac{\rho_0}{(n+3) \epsilon_0} r^{n+1} }
+    \eqbox{ E_{r} = \frac{1}{4 \pi \epsilon_0 r^2} \frac{4 \pi \rho_0 r^{n+3}}{n+3} = \frac{\rho_0}{(n+3) \epsilon_0} r^{n+1} }
 .\end{eqnarray}
 
 A plot of the electric fields (normalized to some overall constants) for each setup is shown in Fig. (\ref{fig:prob2}):
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{prob2.pdf}
-    \caption{Electric fields for spheres of radius $a$ with \textbf{(Left)} uniform surface charge density, \textbf{(Center)} constant charge density, and \textbf{(Right)} radial power law charge density. Note that in the right-most plot, the dotted and dashed lines are overlapping outside the sphere (i.e. for $r > a$) as expected since the electric field only depends on the total charge enclosed $Q$, which is the same in both cases.}
+    \caption{Electric fields for spheres of radius $a$ with \textbf{(Left)} uniform surface charge density, \textbf{(Center)} constant charge density, and \textbf{(Right)} radial power law charge density. Note that in the right-most plot, the solid and dashed lines are overlapping outside the sphere (i.e. for $r > a$) as expected since the electric field only depends on the total charge enclosed $Q$, which is the same in both cases.}
     \label{fig:prob2}
 \end{figure}
 
@@ -238,7 +238,7 @@ and the capacitance of this setup is
 where $L$ is the length of the cylinders.
 Thus,
 \begin{eqnarray}
-    |V| = \frac{Q/L}{2 \pi \epsilon_0} \Big| \int_{a}^{b} \frac{1}{\rho} \dd{\rho} \Big| = \frac{Q/L}{2 \pi \epsilon_0} \ln{\frac{b}{a}}
+    |V| = \frac{Q/L}{2 \pi \epsilon_0} \Big| \int_{a}^{b} \frac{1}{\rho} \dd{\rho} \Big| = \frac{Q/L}{2 \pi \epsilon_0} \ln{ \Big( \frac{b}{a} \Big)}
 ,\end{eqnarray}
 and
 \begin{eqnarray}
@@ -309,7 +309,7 @@ Fig. (\ref{fig:prob5}) displays the behavior of the energy density between the p
 .\end{eqnarray}
 In this instance, we do not care too much about the sign since the plates are oppositely charged and therefore attract each other overall.
 
-The total energy stored in the plates when separated by a distance $x$ is
+The total energy stored in the plates when separated by a distance $x$, held at fixed charge $Q$, is
 \begin{eqnarray}
    U = \frac{Q^2 x}{2 A \epsilon_0}
 ,\end{eqnarray}
