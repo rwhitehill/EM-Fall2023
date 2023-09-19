@@ -55,7 +55,7 @@ Notice that the induced charge has an overall charge with sign opposite that of 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=\textwidth]{prob1a.pdf}
-   \caption{\textbf{Left} -- Plot of surface charge density with respect to spatial variable $\rho = \sqrt{x^2 + y^2}$ and \textbf{Right} -- Plot of surface charge density with respect to $(x,y)$ coordinate points. Note that the spatial variables are in units of $d$, and furthermore, in the colormap plot on the right, one can intuitively read this to say that more charge aggregates directly below the charge $q$ and the distribution falls off radially from this center.}
+   \caption{\textbf{Left} -- Plot of surface charge density with respect to spatial variable $\rho = \sqrt{x^2 + y^2}$ and \textbf{Right} -- Plot of surface charge density with respect to $(x,y)$ coordinates. Note that the spatial variables are in units of $d$, and furthermore, in the colormap plot on the right, one can intuitively read this to say that more charge aggregates directly below the charge $q$ and the distribution falls off radially from this center.}
    \label{fig:prob1a}
 \end{figure}
 
@@ -115,7 +115,43 @@ If the sphere has a total charge $Q$ on its inner and outer surfaces?
 
 }
 
-\sol{}
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.3\textwidth]{prob2.jpeg}
+   \caption{Sketch of problem setup with charge $q$ at the center of a hollow, conducting, grounded sphere of radius $a$.}
+   \label{fig:prob2}
+\end{figure}
+
+\sol{
+
+(a) We have addressed the problem of a charge outside the sphere and solved by placing an image charge inside the sphere.
+In this case, we just reverse the role of the charge and image charges.
+The potential inside the sphere is therefore
+\begin{eqnarray}
+    \eqbox{ \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \Bigg[ \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} \Bigg] }
+,\end{eqnarray}
+where $q' = -(b/a) q$ and $\va*{b}' = (a/b)^2 \va*{b}$.
+
+(b) We can find the induced surface-charge density from the electric field, which is 
+\begin{eqnarray}
+    \va*{E} = \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{\va*{r} - \va*{b}}{| \va*{r} - \va*{b} |^3} - \frac{b}{a} \frac{\va*{r} - \va*{b}'}{| \va*{r} - \va*{b}' |^3} \Bigg] = \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{\va*{r} - \va*{b}}{|\va*{r} - \va*{b}|^3} - \frac{b}{a} \frac{\va*{r} - (a/b)^2 \va*{b}}{|\va*{r} - (a/b)^2 \va*{b}|^3} \Bigg]
+.\end{eqnarray}
+
+
+
+is found from the potential as
+\begin{eqnarray}
+    \eqbox{
+    \begin{aligned} 
+        \sigma &= -\epsilon_0 \pdv{\Phi}{r} = \epsilon_0 = -\epsilon_0 \pdv{r} \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{1}{\sqrt{r^2 + b^2 - 2 r b \cos{\theta}}} - \frac{b}{a} \frac{1}{\sqrt{r^2 + b'^2 + 2 r b' \cos{\theta}}} \Bigg] \\
+               &= -\frac{q}{4 \pi} \Bigg[ \frac{2 (r - b\cos{\theta})}{[r^2 + b^2 - 2rb \cos{\theta}]^{3/2}} - \frac{b}{a} \frac{2 (r + b' \cos{\theta})}{[r^2 + b'^2 + 2rb' \cos{\theta}]^{3/2}} \Bigg] \\
+               &= -\frac{q}{2 \pi} \Bigg[ \frac{r - b\cos{\theta}}{[r^2 + b^2 - 2rb\cos{\theta}]^{3/2}} - \frac{b}{a} \frac{r + (a^2/b) \cos{\theta}}{[r^2 + a^{4}/b^2 - 2 r (a^2/b) \cos{\theta}]^{3/2}} \Bigg]
+    .\end{aligned}
+}
+\end{eqnarray}
+
+
+}
 
 
 \prob{3}{
