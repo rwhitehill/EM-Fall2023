@@ -153,10 +153,11 @@ The surface charge density is then given as
 \end{eqnarray}
 and points away from the center of the sphere (i.e. toward the surface of the sphere in the $\vu*{e}_{x}$ direction).
 
-(d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $(a/r) V$ at the surface of and outside the sphere.
+(d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $V(a/r)$ outside the sphere.
 That is, holding the sphere to potential $V$ is equivalent to placing charge $Q = 4 \pi \epsilon_0 (a V)$ on the sphere.
-Hence, the potential inside the sphere is left unchanged along with the induced surface charge density.
-The force on $q$ may change, though ({\color{red} ?})
+Hence, the potential inside the sphere is shifted by $V$, but the induced surface charge density is left unchanged as is the force on $q$ since the electric field from this surface charge is zero inside the sphere.
+
+Placing total charge $Q$ on the inner and outer surfaces of the sphere does not change results in a significant way by the same reasoning as in the previous paragraph.
 
 }
 
@@ -173,7 +174,23 @@ The force on $q$ may change, though ({\color{red} ?})
 
 }
 
-\sol{}
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.3\textwidth]{prob3.jpeg}
+   \caption{Sketch of problem setup with charge $q$ a distance $d$ from the center of a sphere of radius $R$ with surface charge $q$.}
+   \label{fig:prob3}
+\end{figure}
+
+\sol{
+
+We can solve this problem by placing image charges $q'$ a distance $x$ from the center of the sphere and a charge $\hat{q}$ at the center of the sphere, where $q' + \hat{q} = q$.
+The potential outside the sphere (i.e. $r > R$) for this setup is
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \Bigg[ \frac{q}{|\va*{r} - \va*{d}|} + \frac{q'}{|\va*{r} - \va*{x}|} + \frac{\hat{q}}{r} \Bigg]
+.\end{eqnarray}
+
+
+}
 
 
 \prob{4}{
