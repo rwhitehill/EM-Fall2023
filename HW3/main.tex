@@ -130,26 +130,33 @@ The potential inside the sphere is therefore
 \begin{eqnarray}
     \eqbox{ \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \Bigg[ \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} \Bigg] }
 ,\end{eqnarray}
-where $q' = -(b/a) q$ and $\va*{b}' = (a/b)^2 \va*{b}$.
+where $q' = -(a/b) q$ and $\va*{b}' = (a/b)^2 \va*{b}$.
 
-(b) We can find the induced surface-charge density from the electric field, which is 
+(b) We can find the induced surface-charge density from the electric field at the surface of the sphere, which is 
 \begin{eqnarray}
-    \va*{E} = \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{\va*{r} - \va*{b}}{| \va*{r} - \va*{b} |^3} - \frac{b}{a} \frac{\va*{r} - \va*{b}'}{| \va*{r} - \va*{b}' |^3} \Bigg] = \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{\va*{r} - \va*{b}}{|\va*{r} - \va*{b}|^3} - \frac{b}{a} \frac{\va*{r} - (a/b)^2 \va*{b}}{|\va*{r} - (a/b)^2 \va*{b}|^3} \Bigg]
+    \begin{aligned}
+        \va*{E} &= \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{a \vu*{e}_{r} - \va*{b}}{| a \vu*{e}_{r} - \va*{b} |^3} - \frac{a}{b} \frac{a \vu*{e}_{r} - \va*{b}'}{| a \vu*{e}_{r} - \va*{b}' |^3} \Bigg] = \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{a \vu*{e}_{r} - \va*{b}}{|a \vu*{e}_{r} - b \vu*{e}_{x}|^3} - \frac{a}{b} \frac{a \vu*{e}_{r} - (a/b)^2 \va*{b}}{|a \vu*{e}_{r} - (a^2/b) \vu*{e}_{x}|^3} \Bigg] \\
+                &= \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{a \vu*{e}_{r} - \va*{b}}{b^3|(a/b)\vu*{e}_{r} - \vu*{e}_{x}|^3} - \frac{a}{b} \frac{a \vu*{e}_{r} - (a/b)^2 \va*{b}}{a^3|\vu*{e}_{r} - (a/b) \vu*{e}_{x}|^3} \Bigg] \\
+                &= \frac{q}{4 \pi \epsilon_0 b^2} \frac{1}{[1 + (a/b)^2 - 2(a/b)\cos{\theta}]^{3/2}} \Bigg[ \Big( \frac{a}{b} \vu*{e}_{r} - \vu*{e}_{x} \Big) - \frac{1}{b} \Big( \frac{b^2}{a} \vu*{e}_{r} - \vu*{e}_{x} \Big) \Bigg] \\
+                &= \frac{q}{4 \pi \epsilon_0 b^2} \Big( \frac{a}{b} \Big) \frac{1 - (b/a)^2}{[1 + (a/b)^2 - 2(a/b) \cos{\theta}]^{3/2}} \vu*{e}_{r} \\
+                &= - \frac{q}{4 \pi \epsilon_0 a^2} \Big( \frac{a}{b} \Big) \frac{1 - (a/b)^2}{[1 + (a/b)^2 - 2(a/b)\cos{\theta}]^{3/2}} \vu*{e}_{r}
+    .\end{aligned}
+\end{eqnarray}
+The surface charge density is then given as
+\begin{eqnarray}
+    \eqbox{ \sigma = \epsilon_0 \va*{E} \cdot (- \vu*{e}_{r}) = \frac{q}{4 \pi \epsilon_0 a^2} \Big( \frac{a}{b} \Big) \frac{1 - (a/b)^2}{[1 + (a/b)^2 - 2(a/b) \cos{\theta}]^{3/2}} }
 .\end{eqnarray}
 
-
-
-is found from the potential as
+(c) The magnitude of the force on $q$ is just
 \begin{eqnarray}
-    \eqbox{
-    \begin{aligned} 
-        \sigma &= -\epsilon_0 \pdv{\Phi}{r} = \epsilon_0 = -\epsilon_0 \pdv{r} \frac{q}{4 \pi \epsilon_0} \Bigg[ \frac{1}{\sqrt{r^2 + b^2 - 2 r b \cos{\theta}}} - \frac{b}{a} \frac{1}{\sqrt{r^2 + b'^2 + 2 r b' \cos{\theta}}} \Bigg] \\
-               &= -\frac{q}{4 \pi} \Bigg[ \frac{2 (r - b\cos{\theta})}{[r^2 + b^2 - 2rb \cos{\theta}]^{3/2}} - \frac{b}{a} \frac{2 (r + b' \cos{\theta})}{[r^2 + b'^2 + 2rb' \cos{\theta}]^{3/2}} \Bigg] \\
-               &= -\frac{q}{2 \pi} \Bigg[ \frac{r - b\cos{\theta}}{[r^2 + b^2 - 2rb\cos{\theta}]^{3/2}} - \frac{b}{a} \frac{r + (a^2/b) \cos{\theta}}{[r^2 + a^{4}/b^2 - 2 r (a^2/b) \cos{\theta}]^{3/2}} \Bigg]
-    .\end{aligned}
-}
+    \eqbox{ F = \frac{|q q'|}{4 \pi \epsilon_0 (b' - b)^2} = \frac{q^2}{4 \pi \epsilon_0 b^2} \Big( \frac{a}{b} \Big) [1 - (a/b)^2]^{-2} = \frac{q^2}{4 \pi \epsilon_0 a^2} \Big( \frac{a}{b} \Big)^3 [1 - (a/b)^2]^{-2} }
 \end{eqnarray}
+and points away from the center of the sphere (i.e. toward the surface of the sphere in the $\vu*{e}_{x}$ direction).
 
+(d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $(a/r) V$ at the surface of and outside the sphere.
+That is, holding the sphere to potential $V$ is equivalent to placing charge $Q = 4 \pi \epsilon_0 (a V)$ on the sphere.
+Hence, the potential inside the sphere is left unchanged along with the induced surface charge density.
+The force on $q$ may change, though ({\color{red} ?})
 
 }
 
