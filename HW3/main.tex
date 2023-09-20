@@ -154,7 +154,7 @@ The surface charge density is then given as
 and points away from the center of the sphere (i.e. toward the surface of the sphere in the $\vu*{e}_{x}$ direction).
 
 (d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $V(a/r)$ outside the sphere.
-That is, holding the sphere to potential $V$ is equivalent to placing charge $Q = 4 \pi \epsilon_0 (a V)$ on the sphere.
+That is, holding the sphere to potential $V$ is equivalent to placing charge $4 \pi \epsilon_0 (a V)$ on the sphere.
 Hence, the potential inside the sphere is shifted by $V$, but the induced surface charge density is left unchanged as is the force on $q$ since the electric field from this surface charge is zero inside the sphere.
 
 Placing total charge $Q$ on the inner and outer surfaces of the sphere does not change results in a significant way by the same reasoning as in the previous paragraph.
@@ -183,11 +183,28 @@ Placing total charge $Q$ on the inner and outer surfaces of the sphere does not 
 
 \sol{
 
-We can solve this problem by placing image charges $q'$ a distance $x$ from the center of the sphere and a charge $\hat{q}$ at the center of the sphere, where $q' + \hat{q} = q$.
+(a) We can solve this problem by placing image charges $q'$ a distance $x$ from the center of the sphere and a charge $\hat{q}$ at the center of the sphere, where $q' + \hat{q} = q$.
 The potential outside the sphere (i.e. $r > R$) for this setup is
 \begin{eqnarray}
     \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \Bigg[ \frac{q}{|\va*{r} - \va*{d}|} + \frac{q'}{|\va*{r} - \va*{x}|} + \frac{\hat{q}}{r} \Bigg]
 .\end{eqnarray}
+Note that $q' = -(R/d) q$ and $x = R^2/d$.
+This implies that the force on the charge $q$ is
+\begin{eqnarray}
+    \begin{aligned}
+        F &= \frac{q}{4 \pi \epsilon_0} \Big[ \frac{q'}{(d - x)^2} + \frac{q - q'}{d^2} \Big] = \frac{q^2}{4 \pi \epsilon_0} \Bigg[ -\frac{R}{d} \frac{1}{(d - R^2/d)^2} + \frac{1 + R/d}{d^2} \Bigg] \\
+          &= \frac{q^2}{4 \pi \epsilon_0 d^2} \Bigg[ -\frac{R}{d} \frac{1}{(1 - (R/d)^2 )^2} + 1 + \frac{R}{d} \Bigg] = \frac{q^2}{4 \pi \epsilon_0 d^2} \Bigg[ \frac{R}{d} \Bigg( 1 - \frac{1}{(1 - (R/d)^2)^2} \Bigg) + 1 \Bigg] \\
+          &= \frac{q^2}{4 \pi \epsilon_0 d^2} \Bigg[ 1 - \frac{R^3(2 d^2 - R^2)}{d(d^2 - R^2)^2} \Bigg]
+    \end{aligned}
+\end{eqnarray}
+directed along the line from the center of the sphere to the charge $q$.
+Thus,
+\begin{gather}
+   F < 0 \Rightarrow \frac{R^3(2 d^2 - R^2)}{d(d^2 - R^2)^2} > 1 \\
+   2 d^2 R^3 - R^5 > d^{5} - 2 d^3 R^2 + d R^{4} \\
+   d^{5} - 2 d^3 R^2 - 2 d^2 R^3 + d R^{4} + R^{5} < 0
+.\end{gather}
+
 
 
 }
