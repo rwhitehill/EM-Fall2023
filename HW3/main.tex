@@ -43,9 +43,9 @@ The relation between the potential and surface charge density is
 \begin{eqnarray}
     \eqbox{
     \begin{aligned}
-        \sigma &= \epsilon_0 \pdv{\Phi}{z} = \frac{q}{4 \pi} \pdv{z} \Bigg( \frac{1}{\sqrt{x^2 + y^2 + (z - d)^2}} - \frac{1}{\sqrt{x^2 + y^2 + (z + d)^2}} \Bigg)_{z = 0} \\
-               &= \frac{q}{4 \pi} \Bigg( \frac{2 (z - d)}{[ x^2 + y^2 + (z - d)^2 ]^{3/2}} - \frac{2 (z + d)}{[ x^2 + y^2 + (z + d)^2 ]^{3/2}} \Bigg)_{z = 0} \\
-               &= - \frac{qd}{\pi (\rho^2 + d^2)^{3/2}}
+        \sigma &= -\epsilon_0 \pdv{\Phi}{z} = \frac{q}{4 \pi} \pdv{z} \Bigg( \frac{1}{\sqrt{x^2 + y^2 + (z - d)^2}} - \frac{1}{\sqrt{x^2 + y^2 + (z + d)^2}} \Bigg)_{z = 0} \\
+               &= -\frac{q}{4 \pi} \Bigg( \frac{-(z - d)}{[ x^2 + y^2 + (z - d)^2 ]^{3/2}} - \frac{- (z + d)}{[ x^2 + y^2 + (z + d)^2 ]^{3/2}} \Bigg)_{z = 0} \\
+               &= - \frac{qd}{2 \pi (\rho^2 + d^2)^{3/2}}
     ,\end{aligned}
 }
 \end{eqnarray}
@@ -61,38 +61,39 @@ Notice that the induced charge has an overall charge with sign opposite that of 
 
 (b) The force between the plane and point charge $q$ can be calcualted using Coulomb's law between $q$ and $-q$
 \begin{eqnarray}
-    \eqbox{ \va*{F} = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{2d^2} }
+    \eqbox{ \va*{F} = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2d)^2} }
 .\end{eqnarray}
 
 (c) We can also calculate the total force acting on the plane as follows:
 \begin{eqnarray}
     \eqbox{
    \begin{aligned}
-       F &= \int \frac{\sigma^2(x,y)}{2 \epsilon_0} \dd{x} \dd{y} = \frac{q^2 d^2}{2 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \int_{0}^{\infty} \frac{1}{(\rho^2 + d^2)^{3/2}} \rho \dd{\rho} \dd{\phi} \\
-         &= \Big( \frac{q d}{\pi} \Big)^2 \int_{0}^{\infty} \frac{\rho}{(\rho^2 + d^2)^{3/2}} \dd{\rho} = \frac{q^2 d}{\pi^2}
+       F &= \int \frac{\sigma^2(x,y)}{2 \epsilon_0} \dd{x} \dd{y} = \frac{q^2 d^2}{8 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \int_{0}^{\infty} \frac{1}{(\rho^2 + d^2)^3} \rho \dd{\rho} \dd{\phi} \\
+         &= \frac{q^2 d^2}{4 \pi \epsilon_0} \int_{0}^{\infty} \frac{\rho}{(\rho^2 + d^2)^3} \dd{\rho} = -\frac{q^2 d^2}{4 \pi \epsilon_0} \frac{1}{4 d^{4}} = -\frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2d)^2}
    .\end{aligned} 
 }
 \end{eqnarray}
 Also, it should be clear that the force is attractive.
 
-(d) From part(b), we can calculate the work needed to move the charge $q$ infinitely far from the plane as follows
+(d) From part (b), we can calculate the work needed to move the charge $q$ infinitely far from the plane as follows
 \begin{eqnarray}
-    W = \int_{d}^{\infty} \frac{q^2}{4 \pi \epsilon_0} \frac{1}{2 z^2} \dd{z} = \frac{q^2}{4 \pi \epsilon_0} \frac{1}{2 d}
+    \eqbox{ W = \int_{d}^{\infty} \frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2 z)^2} \dd{z} = \frac{q^2}{4 \pi \epsilon_0} \frac{1}{4 d} }
 .\end{eqnarray}
 Note that the sign is correct since we have to apply a force opposing the attractive force between the plane and charge.
 
-(e) The potential energy of the system can be computed as
+(e) The potential energy between the charge $q$ and its image charge $-q$ is 
 \begin{eqnarray}
-    U = q \Phi_{-}(d \vu*{e}_{z}) = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{2 d}
+    U = q \Phi_{-}(d \vu*{e}_{z}) = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{2 d} = -2 W
 ,\end{eqnarray}
 where $\Phi_{-}$ is the potential due to the image charge $-q$.
-Observe that this expression says $U = -W$.
-This is essentially just a statement of the conservation of mechanical energy.
-The potential energy of the configuration is the negative of the work required to bring the charge $q$ to its position $d \vu*{e}_{z}$.
+Note that this result is twice the work it takes to construct this system.
+One can imagine setting up the image charge distribution by moving both charges in from infinity symmetrically, but since the image charge is virtual, it does not contribute anything to the work done.
+Hence, the actual work done to place the charge $q$ at distance $d$ from the plane is only half that to set up the dipole image distribution.
+Alternatively, one can see that there is not work done on the plane when the charge $q$ is brought in since it is held at $\Phi \equiv 0$, and the image charge assumes the role of the plane in the image.
 
-(f) For an electron ($q \approx 1.602 \times 10^{-19}~{\rm C}$) a distance $d = \SI{1}{\angstrom}$ away from the plane initially, the work done to move it to $\infty$ is
+(f) For an electron ($q \approx 1.602 \times 10^{-19}~{\rm C}$) a distance $d = 1~{\textrm{\r{A}}}$ away from the plane initially, the work done to move it to $\infty$ is
 \begin{eqnarray}
-    \eqbox{ W \approx 7.2~{\rm eV} }
+    \eqbox{ W \approx 3.6~{\rm eV} }
 .\end{eqnarray}
 
 
@@ -279,23 +280,34 @@ Relate the work to the electrostatic potential, Eq. (2.8) in \textit{Jackson} te
     \end{aligned} 
     }
 .\end{eqnarray}
-Observe that the work $W = -q \Phi(\va*{r})$.
+Observe that the work $W = -q \Phi'(\va*{r})/2 \sqrt{r^2 - a^2}$, which is similar to the result of problem 1 by the same rational (i.e. only work is being done on $q$ to assemble the configuration).
 
-(b) The work needed to move a charge $q$ from $r > a$ to infinity in the presence of an isolated, conducting sphere with charge $Q$ on it is
+(b) The work needed to move a charge $q$ from $r > a$ to infinity in the presence of an isolated, conducting sphere with charge $Q$ on it is given by the following
 \begin{eqnarray}
     \begin{aligned}
-        W &= -\frac{q}{4 \pi \epsilon_0} \int_{r}^{\infty} \Bigg[ \frac{Q}{x^2} - \frac{q a^3 (2 x^2 - a^2)}{x^3 (x^2 - a^2)^2} \Bigg] \dd{x}
+        W &= -\frac{q}{4 \pi \epsilon_0} \int_{r}^{\infty} \Bigg[ \frac{Q}{x^2} - \frac{q a^3 (2 x^2 - a^2)}{x^3 (x^2 - a^2)^2} \Bigg] \dd{x} \\
+        &= -\frac{q Q}{4 \pi \epsilon_0 r} + \frac{q^2}{4 \pi \epsilon_0 a} \int_{r/a}^{\infty} \frac{2y^2 - 1}{y^3(y^2 - 1)^2} \dd{y}
     \end{aligned}
-.\end{eqnarray}
-
-
-Again, the work is just 
+,\end{eqnarray}
+where in the second integration we have substituted $x = ay$.
+Note that we can substitute $u = x^2$ such that 
 \begin{eqnarray}
-   \begin{aligned}
-       W &= -q \Phi(\va*{r}) = \frac{q^2 a}{8 \pi \epsilon_0 (r^2 - a^2)} - \frac{q}{4 \pi \epsilon_0} \frac{Q - q'(r)}{r} \dd{r} \\
-       &= \frac{1}{4 \pi \epsilon_0} \Big[ \frac{q^2 a}{2(r^2 - a^2)} - \frac{q Q}{r} + \frac{q^2 a}{2 r^2} \Big]
-   \end{aligned} 
+    I = \int_{r/a}^{\infty} \frac{2x^2 - 1}{x^3(x^2 - 1)^2} \dd{x} = \frac{1}{2} \int_{(r/a)^2}^{\infty} \frac{2u - 1}{u^2(u-1)^2} \dd{u}
 .\end{eqnarray}
+Next, we can substitute $v = u(u-1) = u^2 - u$ such that 
+\begin{eqnarray}
+    \label{eq:label}
+    I = \frac{1}{2} \int_{(r/a)^2((r/a)^2 - 1)}^{\infty} \frac{\dd{v}}{v^2} = \frac{1}{2(r/a)^2[(r/a)^2 - 1]} = -\frac{a^2}{2r^2} + \frac{a^2}{2(r^2 - a^2)}
+,\end{eqnarray}
+where for the last inequality we have used partial fraction expansion to rewrite the result.
+Putting this back
+\begin{eqnarray}
+    \eqbox{ W = \frac{1}{4 \pi \epsilon_0} \Big[ \frac{q^2 a}{2(r^2 - a^2)} - \frac{q^2 a}{2 r^2} - \frac{qQ}{r} \Big] }
+.\end{eqnarray}
+
+This scenario is similarly analyzed as in the previous case.
+The first term is exactly that found in part (a), and the third term is the potential energy between charge $Q$ and $q$.
+However, the second term comes from the potential of the induced charge density on the sphere and the charge $q$, which is precisely half the energy of the configuration between $q$ and $q'$ if $q'$ were a real charge.
 
 }
 
