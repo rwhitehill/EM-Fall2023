@@ -32,7 +32,7 @@ Verify that the results of parts (c) and (d) are consistent with each other in t
     \laplacian G(\va*{x},\va*{x}') = -4 \pi \delta(\va*{x} - \va*{x}')
 \end{eqnarray}
 is $G(\va*{x},\va*{x}') = |\va*{x} - \va*{x}'|^{-1}$.
-Now, we must find a Green's function satisfying Dirichlet boundary conditions.
+Now, we must find a Green's function satisfying Dirichlet boundary conditions on the $xy$-plane.
 That is, we take $G \rightarrow G + F$, where $F$ solves Laplace's equation (in the half-space where $z \geq 0$) and $G + F$ satisfies the boundary condition $\Phi = 0$ when $z = 0$.
 Such a choice is
 \begin{eqnarray}
@@ -55,13 +55,16 @@ we can write the potential for $z \geq 0$ as
 Observe that the first term is zero since there is no charge.
 The second integral is over the circular surface of radius $a$ in the $xy$ plane such that
 \begin{eqnarray}
+    \eqbox{
     \begin{aligned}
         \Phi &= -\frac{V}{4 \pi} \int_{0}^{a} \int_{0}^{2\pi} \dd{\rho'} \dd{\phi'} \rho' \Big( - \pdv{G}{z'} \Big) \\
         &= \frac{V}{4 \pi} \int_{0}^{a} \int_{0}^{2 \pi} \dd{\rho'} \dd{\phi'} \rho' \frac{2z}{[ (x' - x)^2 + (y' - y)^2 + z^2 ]^{3/2}} \\
-        &= \eqbox{ \frac{V z}{2 \pi} \int_{0}^{a} \int_{0}^{2 \pi} \dd{\rho'} \dd{\phi'} \frac{\rho'}{[(\rho'\cos{\phi'} - \rho \cos{\phi})^2 + (\rho' \sin{\phi'} - \rho \sin{\phi})^2 + z^2]^{3/2}} }
+        &= \frac{V z}{2 \pi} \int_{0}^{a} \int_{0}^{2 \pi} \dd{\rho'} \dd{\phi'} \frac{\rho'}{[(\rho'\cos{\phi'} - \rho \cos{\phi})^2 + (\rho' \sin{\phi'} - \rho \sin{\phi})^2 + z^2]^{3/2}} \\
+        &= \frac{Vz}{2 \pi} \int_{0}^{a} \int_{0}^{2\pi} \dd{\rho'} \dd{\phi'} \frac{\rho'}{[ \rho'^2 + \rho^2 - 2 \rho' \rho \cos{(\phi' - \phi)} + z^2 ]^{3/2}}
     .\end{aligned}
+}
 \end{eqnarray}
-At this point, this is all we can do in full generality.
+At this point, this is all we can do in full analytic generality.
 
 (c) We consider a special case along the $z$ axis such that $\rho = 0$, which causes the previous expression to simply as
 \begin{eqnarray}
@@ -136,8 +139,8 @@ Check the result for concentric cylinders ($d = 0$).
 
 \begin{figure}[h!]
     \centering
-    %\includegraphics[width=]{}
-    \caption{}
+    \includegraphics[width=0.5\textwidth]{prob2a.jpeg}
+    \caption{Sketch of the problem setup [part (a)] transverse to two thin, long wires separated by distance $R$.}
     \label{fig:prob2a}
 \end{figure}
 
@@ -157,7 +160,8 @@ Notice that the dependence on $\rho_0$ cancels.
 If we set up our coordinate system as in \fref{prob2a}, then we can express
 \begin{eqnarray}
     \rho_{\pm} = \sqrt{ \Big( \frac{R}{2} \Big)^2 + r^2 \pm 2 \Big( \frac{R}{2} \Big) r \cos{\phi}}
-.\end{eqnarray}
+\end{eqnarray}
+via the law of cosines.
 Hence, the potential in our coordinate system is
 \begin{eqnarray}
     \Phi = \frac{\lambda}{4 \pi \epsilon_0} \ln{ \Big( \frac{R^2 + 4 r^2 - 4 R r \cos{\phi}}{R^2 + 4 r^2 + 4 R r \cos{\phi} } \Big) }
@@ -178,18 +182,19 @@ It is difficult to see a resemblance to any familiar surface in this form, so le
     \Big[ x + \coth{\Big( \frac{2 \pi \epsilon_0 V}{\lambda} \Big)} \frac{R}{2} \Big]^2 + y^2 = \frac{(R/2)^2}{\sinh^2{( 2 \pi \epsilon_0 V / \lambda ) }}
 .\end{gather}
 This is just the equation of a circle with center $(-\coth{(2 \pi \epsilon_0 V / \lambda)} [R / 2], 0)$ and radius $(R/2)/|\sinh{(2 \pi \epsilon_0 V / \lambda)}|$.
-Notice that if $V > 0$ that the center of this circle is always 
+Notice that if $V > 0$ the center of this circle is always on the left of the line charge with linear density $+ \lambda$, while it is on the right of the line charge with linear density $-\lambda$ if $V < 0$.
 Of course, the equipotential surface is a cylinder since the problem is translation invariant parallel to the lines.
 
 (b) The capacitance of a setup with two conductors, one with charge $Q$ and the other with charge $-Q$, is just $C = Q/V$, where $V$ is the potential difference between the conductors.
 The capacitance per unit length is then $C/L = \lambda/V$.
 In this problem, we have two cylinderical conductors, with radii $a$ and $b$, respectively.
-Without loss of generality, suppose that the conductor with radius $a$ has charge $+Q$ and therefore is at a positive potential $V_{+}$, while the conductor with radius $b$ has charge $-Q$ and therefore is a negative potential $V_{-}$.
+Without loss of generality, suppose that the conductor with radius $a$ has charge $+Q$ and therefore is at potential $V_{+}$, while the conductor with radius $b$ has charge $-Q$ and therefore is at potential $V_{-}$.
 The potential difference $V = V_{+} - V_{-}$.
 
 We can treat the potential on these surfaces as being set up by two line charges separated by some distance $R$.
 We can then write
 \begin{eqnarray}
+    \label{eq:d}
     d = -\coth{\Big( \frac{2 \pi \epsilon_0 V_{-}}{\lambda} \Big)} + \coth{ \Big( \frac{2 \pi \epsilon_0 V_{+}}{\lambda} \Big) }
 .\end{eqnarray}
 Furthermore,
@@ -198,9 +203,9 @@ Furthermore,
 .\end{eqnarray}
 We need to figure out $V_{+}$ and $V_{-}$ from these three equations (or at least their difference).
 
-At the moment of this writing, divine inspiration has not struck in order to derive \eref{cap-per} \textit{a priori}.
+At the moment of this writing, divine inspiration has not struck in order to derive \eref{cap-per} \textit{a priori}, with only the equations above.
 We proceed, taking direct guidance from the form of $C/L$.
-However, observe (letting $x_{\pm} = 2 \pi \epsilon_0 V_{\pm} / \lambda$)
+Observe (letting $x_{\pm} = 2 \pi \epsilon_0 V_{\pm} / \lambda$)
 \begin{align}
     d^2 - a^2 - b^2 &= \frac{R^2 (e^{2x_{+}} + e^{2 x_{-}})}{e^{2x_{+}} + e^{2x_{-}} - e^{2(x_{+}+x_{-})} - 1} \\
     2ab &= -\frac{2 R^2 e^{x_{+} + x_{-}}}{e^{2(x_{+} + x_{-})} - e^{2x_{+}} - e^{2x_{-}} - 1}
@@ -231,7 +236,7 @@ Note that we can write
 \begin{eqnarray}
     \begin{aligned}
         \cosh^{-1}{\Big( \frac{d^2}{2ab} \Big[ 1 - \frac{a^2 + b^2}{d^2} \Big] \Big)} &\approx \ln{\Big( \frac{d^2}{ab} \Big)} + \ln{\Big( 1 - \frac{a^2 + b^2}{d^2} \Big)} \\
-                                                                                      &\approx \ln(\frac{d^2}{ab}) - (a^2 + b^2)/d^2
+                                                                                      &\approx \ln(\frac{d^2}{ab}) - \frac{a^2 + b^2}{d^2}
     \end{aligned}
 ,\end{eqnarray}
 and therefore
@@ -249,7 +254,7 @@ at next-to-leading order in $a/d$ and $b/d$.
 \begin{eqnarray}
     \frac{C}{L} = \frac{2 \pi \epsilon_0}{\cosh^{-1}(\frac{a^2 + b^2 - d^2}{2 a b})}
 .\end{eqnarray}
-This can be seen quite easily by taking $b \rightarrow -b$, which is done since $V_{-}$ is positive, and carrying out a similar set of manipulations as in part (b).
+This can be seen quite easily by taking $b \rightarrow -b$, which is done since $V_{-}$ is positive\footnote{We can say this since $V_{+}$ and $V_{-}$ are of the same sign and we can always shift the potential in such a way to make this true.}, and carrying out a similar set of manipulations as in part (b).
 
 We can perform the sanity check for $d = 0$, which gives
 \begin{eqnarray}
@@ -274,6 +279,13 @@ If the sphere is cut into two hemispheres by a plane perpendicular to the field,
 
 }
 
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.4\textwidth]{prob3.jpeg}
+   \caption{Insulated sphere immersed in constant electric magnetic field $\va*{E} = E_0 \vu*{z}$. Note that the electric field drawn is only the ambient field from before the insertion of the insulating sphere, not the electric field of the entire setup, which certainly is different because of the electric field set up by the induced surface charge density in parts (a)--(b) and also the charge $Q$ on the sphere in part (b).}
+   \label{fig:prob3}
+\end{figure}
+
 \sol{
 
 (a) The surface charge density induced by the uniform electric field is given as
@@ -281,7 +293,7 @@ If the sphere is cut into two hemispheres by a plane perpendicular to the field,
     \sigma = 3 \epsilon_0 E_0 \cos{\theta} 
 ,\end{eqnarray}
 where $\theta$ is the angle relative to the direction of the direction of the electric field.
-The force between the hemispheres is then
+The force between on the right hemisphere is then
 \begin{eqnarray}
 \begin{aligned}
     \va*{F} &= \int_{S} \sigma \va*{E} \dd{S} = \int_{S} \frac{\sigma^2}{2 \epsilon_0} \vu*{r} \dd{S} \\
@@ -289,7 +301,7 @@ The force between the hemispheres is then
             &= 9 \pi \epsilon_0 E_0^2 a^2 \vu*{z} \int_{0}^{1} \cos^3{\theta} \dd{(\cos{\theta})} = \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} \vu*{z}
 .\end{aligned}
 \end{eqnarray}
-Hence, to keep the hemispheres together, one must apply a force of the same magnitude in the opposite direction:
+Hence, to oppose the force on the right hemisphere from the left, one must apply a force of the same magnitude in the opposite direction:
 \begin{eqnarray}
     \eqbox{ \va*{F} = - \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} \vu*{z} }
 .\end{eqnarray}
@@ -307,8 +319,8 @@ and therefore
     .\end{aligned}
 \end{eqnarray}
 Notice that this is not quite the force separating the two hemispheres, though.
-The middle term is just the force from the constant electric field on the charge $Q/2$ in one hemisphere.
-This force is also present on the other hemisphere, meaning that the force one would have to apply to keep the hemispheres together is
+The middle term is just the force from the constant electric field on the charge $Q/2$ in the right hemisphere.
+This force is also present on the other hemisphere, meaning that the force one would have to apply to keep the right hemisphere attached to the left is
 \begin{eqnarray}
     \eqbox{ \va*{F} = - \Big[ \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} + \frac{Q^2}{32 \pi a^2} \Big] \vu*{z} }
 .\end{eqnarray}
