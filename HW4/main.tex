@@ -123,6 +123,7 @@ One can see that \eref{prob1-d1} and \eref{prob1-d2} match as needed.
 
 (b) Use the results of part (a) to show that the capacitance per unit length $C$ of two right-circular cylindrical conductors, with radii $a$ and $b$ separated by a distance $d > a + b$, is
 \begin{eqnarray}
+    \label{eq:cap-per}
     C = \frac{2 \pi \epsilon_0}{\cosh^{-1}\big(\frac{d^2 - a^2 - b^2}{2 a b}\big)} 
 .\end{eqnarray}
 
@@ -181,9 +182,83 @@ Notice that if $V > 0$ that the center of this circle is always
 Of course, the equipotential surface is a cylinder since the problem is translation invariant parallel to the lines.
 
 (b) The capacitance of a setup with two conductors, one with charge $Q$ and the other with charge $-Q$, is just $C = Q/V$, where $V$ is the potential difference between the conductors.
+The capacitance per unit length is then $C/L = \lambda/V$.
 In this problem, we have two cylinderical conductors, with radii $a$ and $b$, respectively.
-We know that conductors are equipotential surfaces.
-Hence, we can treat the potential on these surfaces as being set up by two line charges separated by some distance.
+Without loss of generality, suppose that the conductor with radius $a$ has charge $+Q$ and therefore is at a positive potential $V_{+}$, while the conductor with radius $b$ has charge $-Q$ and therefore is a negative potential $V_{-}$.
+The potential difference $V = V_{+} - V_{-}$.
+
+We can treat the potential on these surfaces as being set up by two line charges separated by some distance $R$.
+We can then write
+\begin{eqnarray}
+    d = -\coth{\Big( \frac{2 \pi \epsilon_0 V_{-}}{\lambda} \Big)} + \coth{ \Big( \frac{2 \pi \epsilon_0 V_{+}}{\lambda} \Big) }
+.\end{eqnarray}
+Furthermore,
+\begin{eqnarray}
+    a = \frac{R}{2 \sinh{(2 \pi \epsilon_0 V_{+}} / \lambda)} ~{\rm and}~ b = -\frac{R}{2 \sinh{(2 \pi \epsilon_0 V_{-} / \lambda)}}
+.\end{eqnarray}
+We need to figure out $V_{+}$ and $V_{-}$ from these three equations (or at least their difference).
+
+At the moment of this writing, divine inspiration has not struck in order to derive \eref{cap-per} \textit{a priori}.
+We proceed, taking direct guidance from the form of $C/L$.
+However, observe (letting $x_{\pm} = 2 \pi \epsilon_0 V_{\pm} / \lambda$)
+\begin{align}
+    d^2 - a^2 - b^2 &= \frac{R^2 (e^{2x_{+}} + e^{2 x_{-}})}{e^{2x_{+}} + e^{2x_{-}} - e^{2(x_{+}+x_{-})} - 1} \\
+    2ab &= -\frac{2 R^2 e^{x_{+} + x_{-}}}{e^{2(x_{+} + x_{-})} - e^{2x_{+}} - e^{2x_{-}} - 1}
+.\end{align}
+Taking the ratio, we find
+\begin{eqnarray}
+    \begin{aligned}
+        \frac{d^2 - a^2 - b^2}{2ab} &= \frac{e^{x_{+} - x_{-}} + e^{-(x_{+} - x_{-})}}{2} = \cosh{(x_{+} - x_{-})} \\
+                                    &\Rightarrow V_{+} - V_{-} = \frac{\lambda}{2 \pi \epsilon_0} \cosh^{-1}{\Big( \frac{d^2 - a^2 - b^2}{2ab} \Big)} \\
+                                    &\Rightarrow \eqbox{ \frac{C}{L} = \frac{2 \pi \epsilon_0}{\cosh^{-1}{(\frac{d^2 - a^2 - b^2}{2 a b})}} }
+    .\end{aligned}
+\end{eqnarray}
+
+(c) The result of problem 1.7 is
+\begin{eqnarray}
+    \frac{C}{L} \approx \frac{2\pi \epsilon_0}{\ln(d^2/ab)}
+.\end{eqnarray}
+This is derived assuming $d \gg a,b$.
+First, notice that $\cosh^{-1}{x} = \ln{(x + \sqrt{x^2 - 1})}$.
+If $x$ is large, then $\cosh^{-1}{x} = \ln{(2x)}$
+\begin{eqnarray}
+    \cosh^{-1}{\Big( \frac{d^2 - a^2 - b^2}{2ab} \Big)} \approx \cosh^{-1}{\Big( \frac{d^2}{2ab} \Big)} \approx \ln{\Big( \frac{d^2}{ab} \Big)}
+\end{eqnarray}
+as desired.
+
+We can determine the next non-vanishing power correction in $a/d$ and $b/d$ as follows.
+Note that we can write
+\begin{eqnarray}
+    \begin{aligned}
+        \cosh^{-1}{\Big( \frac{d^2}{2ab} \Big[ 1 - \frac{a^2 + b^2}{d^2} \Big] \Big)} &\approx \ln{\Big( \frac{d^2}{ab} \Big)} + \ln{\Big( 1 - \frac{a^2 + b^2}{d^2} \Big)} \\
+                                                                                      &\approx \ln(\frac{d^2}{ab}) - (a^2 + b^2)/d^2
+    \end{aligned}
+,\end{eqnarray}
+and therefore
+\begin{eqnarray}
+    \eqbox{
+    \begin{aligned}
+        \frac{C}{L} &\approx \frac{2 \pi \epsilon_0}{\ln(d^2/ab)} \Big[ 1 - \frac{a^2 + b^2}{ \ln(d^2/ab) d^2} \Big]^{-1} \\
+                    &\approx \frac{2 \pi \epsilon_0}{\ln(d^2/ab)} \Big[ 1 + \frac{a^2 + b^2}{\ln(d^2/ab) d^2} \Big]
+    \end{aligned}
+}
+\end{eqnarray}
+at next-to-leading order in $a/d$ and $b/d$.
+
+(d) Finally, if we have one cylinder inside the other such that $d < |a - b|$, then the capacitance per unit length is just
+\begin{eqnarray}
+    \frac{C}{L} = \frac{2 \pi \epsilon_0}{\cosh^{-1}(\frac{a^2 + b^2 - d^2}{2 a b})}
+.\end{eqnarray}
+This can be seen quite easily by taking $b \rightarrow -b$, which is done since $V_{-}$ is positive, and carrying out a similar set of manipulations as in part (b).
+
+We can perform the sanity check for $d = 0$, which gives
+\begin{eqnarray}
+    \begin{aligned}
+        \frac{C}{L} &= \frac{2 \pi \epsilon_0}{\cosh^{-1}(\frac{a^2 + b^2}{2ab})} = \frac{2 \pi \epsilon_0}{\ln(\frac{a^2 + b^2}{2ab} + \sqrt{\frac{a^{4} + 2 a^2 b^2 + b^{4}}{4 a^2 b^2} - 1})} \\
+                    &= \frac{2 \pi \epsilon_0}{\ln(\frac{a^2 + b^2}{2ab} + \frac{a^2 - b^2}{2ab})} = \eqbox{ \frac{2 \pi \epsilon_0}{\ln(a/b)} }
+    \end{aligned}
+\end{eqnarray}
+as derived in a previous homework.
 
 }
 
@@ -198,6 +273,50 @@ If the sphere is cut into two hemispheres by a plane perpendicular to the field,
 (b) if the total charge on the shell is $Q$.
 
 }
+
+\sol{
+
+(a) The surface charge density induced by the uniform electric field is given as
+\begin{eqnarray}
+    \sigma = 3 \epsilon_0 E_0 \cos{\theta} 
+,\end{eqnarray}
+where $\theta$ is the angle relative to the direction of the direction of the electric field.
+The force between the hemispheres is then
+\begin{eqnarray}
+\begin{aligned}
+    \va*{F} &= \int_{S} \sigma \va*{E} \dd{S} = \int_{S} \frac{\sigma^2}{2 \epsilon_0} \vu*{r} \dd{S} \\
+            &= \frac{9 \epsilon_0 E_0^2 a^2}{2} \int_{0}^{2 \pi} \int_{0}^{\pi/2} \cos^2{\theta} (\sin{\theta} \cos{\phi} \vu*{x} + \sin{\phi}\sin{\theta} \vu*{y} + \cos{\theta} \vu*{z}) \sin{\theta} \dd{\theta} \dd{\phi} \\
+            &= 9 \pi \epsilon_0 E_0^2 a^2 \vu*{z} \int_{0}^{1} \cos^3{\theta} \dd{(\cos{\theta})} = \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} \vu*{z}
+.\end{aligned}
+\end{eqnarray}
+Hence, to keep the hemispheres together, one must apply a force of the same magnitude in the opposite direction:
+\begin{eqnarray}
+    \eqbox{ \va*{F} = - \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} \vu*{z} }
+.\end{eqnarray}
+
+
+(b) If the total charge on the shell is $Q$, then the total surface charge density is
+\begin{eqnarray}
+    \sigma = 3 \epsilon_0 E_0 \cos{\theta} + \frac{Q}{4 \pi a^2}
+,\end{eqnarray}
+and therefore
+\begin{eqnarray}
+    \begin{aligned}
+        F &= \frac{\pi a^2}{2 \epsilon_0} \int_{0}^{1} \Big( 3 \epsilon_0 E_0 \cos{\theta} + \frac{Q}{4 \pi a^2} \Big)^2 \cos{\theta} \dd{(\cos{\theta})} \\
+          &= \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} + E_0 \frac{Q}{2} + \frac{Q^2}{32 \pi a^2}
+    .\end{aligned}
+\end{eqnarray}
+Notice that this is not quite the force separating the two hemispheres, though.
+The middle term is just the force from the constant electric field on the charge $Q/2$ in one hemisphere.
+This force is also present on the other hemisphere, meaning that the force one would have to apply to keep the hemispheres together is
+\begin{eqnarray}
+    \eqbox{ \va*{F} = - \Big[ \frac{9 \pi \epsilon_0 E_0^2 a^2}{4} + \frac{Q^2}{32 \pi a^2} \Big] \vu*{z} }
+.\end{eqnarray}
+
+
+}
+
+
 
 
 \end{document}
