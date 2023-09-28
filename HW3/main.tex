@@ -1,4 +1,4 @@
-\def\duedate{\today}
+\def\duedate{September 21, 2023}
 \def\HWnum{3}
 \input{../preamble.tex}
 
@@ -61,7 +61,7 @@ Notice that the induced charge has an overall charge with sign opposite that of 
 
 (b) The force between the plane and point charge $q$ can be calcualted using Coulomb's law between $q$ and $-q$
 \begin{eqnarray}
-    \eqbox{ \va*{F} = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2d)^2} }
+    \eqbox{ \va*{F} = - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2d)^2} \vu*{e}_{z} }
 .\end{eqnarray}
 
 (c) We can also calculate the total force acting on the plane as follows:
@@ -70,12 +70,13 @@ Notice that the induced charge has an overall charge with sign opposite that of 
    \begin{aligned}
        F &= \int \frac{\sigma^2(x,y)}{2 \epsilon_0} \dd{x} \dd{y} = \frac{q^2 d^2}{8 \pi^2 \epsilon_0} \int_{0}^{2 \pi} \int_{0}^{\infty} \frac{1}{(\rho^2 + d^2)^3} \rho \dd{\rho} \dd{\phi} \\
          &= \frac{q^2 d^2}{4 \pi \epsilon_0} \int_{0}^{\infty} \frac{\rho}{(\rho^2 + d^2)^3} \dd{\rho} = -\frac{q^2 d^2}{4 \pi \epsilon_0} \frac{1}{4 d^{4}} = -\frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2d)^2}
-   .\end{aligned} 
+   \end{aligned} 
 }
 \end{eqnarray}
-Also, it should be clear that the force is attractive.
+from which it should be clear that the force is attractive.
+Also note that we have not violated Newton's $3^{\rm rd}$ law.
 
-(d) From part (b), we can calculate the work needed to move the charge $q$ infinitely far from the plane as follows
+(d) From part (b), we can calculate the work needed to move the charge $q$ infinitely far from the plane (starting from $z = d$) as follows
 \begin{eqnarray}
     \eqbox{ W = \int_{d}^{\infty} \frac{q^2}{4 \pi \epsilon_0} \frac{1}{(2 z)^2} \dd{z} = \frac{q^2}{4 \pi \epsilon_0} \frac{1}{4 d} }
 .\end{eqnarray}
@@ -89,7 +90,7 @@ where $\Phi_{-}$ is the potential due to the image charge $-q$.
 Note that this result is twice the work it takes to construct this system.
 One can imagine setting up the image charge distribution by moving both charges in from infinity symmetrically, but since the image charge is virtual, it does not contribute anything to the work done.
 Hence, the actual work done to place the charge $q$ at distance $d$ from the plane is only half that to set up the dipole image distribution.
-Alternatively, one can see that there is not work done on the plane when the charge $q$ is brought in since it is held at $\Phi \equiv 0$, and the image charge assumes the role of the plane in the image.
+Alternatively, one can see that there is not work done on the plane when the charge $q$ is brought in since it is held at $\Phi \equiv 0$.
 
 (f) For an electron ($q \approx 1.602 \times 10^{-19}~{\rm C}$) a distance $d = 1~{\textrm{\r{A}}}$ away from the plane initially, the work done to move it to $\infty$ is
 \begin{eqnarray}
@@ -141,8 +142,9 @@ where $q' = -(a/b) q$ and $\va*{b}' = (a/b)^2 \va*{b}$.
                 &= \frac{q}{4 \pi \epsilon_0 b^2} \frac{1}{[1 + (a/b)^2 - 2(a/b)\cos{\theta}]^{3/2}} \Bigg[ \Big( \frac{a}{b} \vu*{e}_{r} - \vu*{e}_{x} \Big) - \frac{1}{b} \Big( \frac{b^2}{a} \vu*{e}_{r} - \vu*{e}_{x} \Big) \Bigg] \\
                 &= \frac{q}{4 \pi \epsilon_0 b^2} \Big( \frac{a}{b} \Big) \frac{1 - (b/a)^2}{[1 + (a/b)^2 - 2(a/b) \cos{\theta}]^{3/2}} \vu*{e}_{r} \\
                 &= - \frac{q}{4 \pi \epsilon_0 a^2} \Big( \frac{a}{b} \Big) \frac{1 - (a/b)^2}{[1 + (a/b)^2 - 2(a/b)\cos{\theta}]^{3/2}} \vu*{e}_{r}
-    .\end{aligned}
+    ,\end{aligned}
 \end{eqnarray}
+where $\vu*{e}_{r} \cdot \vu*{e}_{x} = \cos{\theta}$.
 The surface charge density is then given as
 \begin{eqnarray}
     \eqbox{ \sigma = \epsilon_0 \va*{E} \cdot (- \vu*{e}_{r}) = \frac{q}{4 \pi \epsilon_0 a^2} \Big( \frac{a}{b} \Big) \frac{1 - (a/b)^2}{[1 + (a/b)^2 - 2(a/b) \cos{\theta}]^{3/2}} }
@@ -154,11 +156,12 @@ The surface charge density is then given as
 \end{eqnarray}
 and points away from the center of the sphere (i.e. toward the surface of the sphere in the $\vu*{e}_{x}$ direction).
 
-(d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $V(a/r)$ outside the sphere.
+(d) If we hold the sphere at potential $V$, this is equivalent to shifting our ground to infinity such that our potential is changed by $V \, (a/r)$ outside the sphere.
 That is, holding the sphere to potential $V$ is equivalent to placing charge $4 \pi \epsilon_0 (a V)$ on the sphere.
 Hence, the potential inside the sphere is shifted by $V$, but the induced surface charge density is left unchanged as is the force on $q$ since the electric field from this surface charge is zero inside the sphere.
 
 Placing total charge $Q$ on the inner and outer surfaces of the sphere does not change the results in a significant way by the same reasoning as in the previous paragraph.
+Actually, placing total charge $Q$ is essentially the same as holding the surface of the sphere to a fixed potential, so the conclusions are not qualitatively different, just quantitatively stated in terms of either $V$ or $Q$.
 
 }
 
@@ -217,8 +220,7 @@ Next, we will write $a = d - R = (x - 1) R$ and define $\xi = x - 1$ such that \
 in terms of $\xi$.
 
 Observe that this gives $P_{5}(\xi) > 0$, where $P_{5}$ is a $5^{\rm th}$ order polynomial.
-Since this does not simplify any further analytically (at least in a way that is obvious in its current form), we will solve the problem numerically\footnote{As a practical note, we will solve \eref{F-neg-cond-x} first and subtract one from the result since this is more compact.}.
-Here, we are concerned with $z = 1$, which gives $\eqbox{ \xi = d/R - 1 \lesssim 0.618 }$.
+Since this does not simplify any further analytically (at least in a way that is obvious in its current form), we will solve the problem numerically using a typical root-finding method, which gives $\eqbox{ \xi = d/R - 1 \lesssim 0.618 }$.
 
 (b) We want the limiting behavior of the force on the point charge when $a \ll R$.
 In other words, we will exand $F$ in powers of $\xi = a/R$ and keep only the leading non-vanishing term:
@@ -247,7 +249,7 @@ and therefore
 Notice, however, that the force on $q$ very near the surface of the sphere is left unchanged.
 The first term is constant in $a/R$ while the second is of order $(R/a)^2$, so the second term dominates in this region independent of the value of $Q/q$.
 Intuitively, this can be rationalized as follows: the force on $q$ near the surface of the sphere is identical to that of the situation where $q$ is a distance $a$ from an infinite, grounded plane.
-That is, there is a significant induced charge on the plane near $q$ when $a \ll R$, which dominates over any other contributions to the force on $q$ overall.
+That is, there is a significant induced charge on the sphere near $q$ when $a \ll R$, which dominates over any other contributions to the force on $q$ overall.
 
 }
 
@@ -280,29 +282,30 @@ Relate the work to the electrostatic potential, Eq. (2.8) in \textit{Jackson} te
     \end{aligned} 
     }
 .\end{eqnarray}
-Observe that the work $W = -q \Phi'(\va*{r})/2 \sqrt{r^2 - a^2}$, which is similar to the result of problem 1 by the same rational (i.e. only work is being done on $q$ to assemble the configuration).
+Observe that the work $W = -q \Phi'(\va*{r})/2 \sqrt{r^2 - a^2}$, which is similar to the result of problem 1 (i.e. only work is being done on $q$ to assemble the configuration). Note that $\Phi'$ is the potential due to the image charge $q'$ and not a derivative.
 
 (b) The work needed to move a charge $q$ from $r > a$ to infinity in the presence of an isolated, conducting sphere with charge $Q$ on it is given by the following
 \begin{eqnarray}
     \begin{aligned}
+        \label{eq:work}
         W &= -\frac{q}{4 \pi \epsilon_0} \int_{r}^{\infty} \Bigg[ \frac{Q}{x^2} - \frac{q a^3 (2 x^2 - a^2)}{x^3 (x^2 - a^2)^2} \Bigg] \dd{x} \\
         &= -\frac{q Q}{4 \pi \epsilon_0 r} + \frac{q^2}{4 \pi \epsilon_0 a} \int_{r/a}^{\infty} \frac{2y^2 - 1}{y^3(y^2 - 1)^2} \dd{y}
-    \end{aligned}
-,\end{eqnarray}
+    ,\end{aligned}
+\end{eqnarray}
 where in the second integration we have substituted $x = ay$.
-Note that we can substitute $u = x^2$ such that 
+Observe that we can substitute $u = x^2$ such that 
 \begin{eqnarray}
     I = \int_{r/a}^{\infty} \frac{2x^2 - 1}{x^3(x^2 - 1)^2} \dd{x} = \frac{1}{2} \int_{(r/a)^2}^{\infty} \frac{2u - 1}{u^2(u-1)^2} \dd{u}
 .\end{eqnarray}
 Next, we can substitute $v = u(u-1) = u^2 - u$ such that 
 \begin{eqnarray}
     \label{eq:label}
-    I = \frac{1}{2} \int_{(r/a)^2((r/a)^2 - 1)}^{\infty} \frac{\dd{v}}{v^2} = \frac{1}{2(r/a)^2[(r/a)^2 - 1]} = -\frac{a^2}{2r^2} + \frac{a^2}{2(r^2 - a^2)}
+    I = \frac{1}{2} \int_{(r/a)^2[(r/a)^2 - 1]}^{\infty} \frac{\dd{v}}{v^2} = \frac{1}{2(r/a)^2[(r/a)^2 - 1]} = -\frac{a^2}{2r^2} + \frac{a^2}{2(r^2 - a^2)}
 ,\end{eqnarray}
-where for the last inequality we have used partial fraction expansion to rewrite the result.
-Putting this back
+where for the last equality we have used partial fraction expansion to rewrite the result.
+Putting this back into \eref{work}
 \begin{eqnarray}
-    \eqbox{ W = \frac{1}{4 \pi \epsilon_0} \Big[ \frac{q^2 a}{2(r^2 - a^2)} - \frac{q^2 a}{2 r^2} - \frac{qQ}{r} \Big] }
+    \eqbox{ W = \frac{1}{4 \pi \epsilon_0} \Bigg[ \frac{q^2 a}{2(r^2 - a^2)} - \frac{q^2 a}{2 r^2} - \frac{qQ}{r} \Bigg] }
 .\end{eqnarray}
 
 This scenario is similarly analyzed as in the previous case.
