@@ -54,7 +54,14 @@ We can solve for the $A_{n}$ and $B_{n}$ using the orthogonality relations (for 
     \int_{-\pi}^{\pi} \cos(mx)\cos(nx) \dd{x} &= \pi \delta_{nm}
 ,\end{align}
 where $\delta_{nm}$ is the kronecker-delta symbol.
-Hence,
+Hence, letting (note that I first solved the problem with the angle measured from the wrong plane, so I will correct that mistake by taking $\phi \rightarrow \phi + 2\pi$ in the final results).
+\begin{eqnarray}
+   \Phi(b,\phi) = \begin{cases}
+       V_2 & -\pi < \phi < 0 \\
+       V_1 & 0 < \phi < \pi
+   .\end{cases}
+\end{eqnarray}
+
 \begin{align}
     A_0 &= \frac{1}{2\pi} \int_{-\pi}^{\pi} \Phi(b,\phi) \dd{\phi} = \frac{V_1 + V_2}{2} \\
     A_{n>0} &= \frac{1}{\pi b^{n}} \int_{-\pi}^{\pi} \Phi(b,\phi) \cos(n\phi) \dd{\phi} = 0 \\
@@ -81,21 +88,26 @@ and therefore, we can write\footnote{Notice that $(b+s e^{i\phi})(b - s e^{-i\ph
     S = \Im{ \ln( \frac{1 + (s/b)e^{i\phi}}{1 - (s/b)e^{i\phi}} ) } = \arctan\Bigg[ \frac{2 s b \sin{\phi}}{b^2 - s^2} \Bigg]
 .\end{eqnarray}
 
-We then arrive at the final result
+We then arrive at the result
 \begin{eqnarray}
-    \eqbox{ \Phi(s,\phi) = \frac{V_1 + V_2}{2} + \frac{V_1 - V_2}{\pi} \arctan( \frac{2bs \sin{\phi}}{b^2 - s^2} ) }
-.\end{eqnarray}
+    \Phi(s,\phi) = \frac{V_1 + V_2}{2} + \frac{V_1 - V_2}{\pi} \arctan( \frac{2bs \sin{\phi}}{b^2 - s^2} )
+,\end{eqnarray}
+and carrying out the transformation $\phi \rightarrow \phi + \pi/2$ as promised, the final result is
+\begin{eqnarray}
+    \eqbox{ \Phi(s,\phi) = \frac{V_1 + V_2}{2} + \frac{V_1 - V_2}{\pi} \arctan(\frac{2bs \cos{\phi}}{b^2 - s^2}) }
+\end{eqnarray}
+since $\sin(\phi + \pi/2) = \sin{\phi} \cos{\pi/2} + \sin{\pi/2}\cos{\phi} = \cos{\phi}$. 
 
 (b) The surface charge density on each half of the sphere is given by
 \begin{eqnarray}
 \eqbox{
 \begin{aligned}
-    \sigma &= \epsilon_0 \pdv{\Phi}{s} \Big|_{s = b} = \epsilon_0 \frac{V_1 - V_2}{\pi} \frac{(b^2 - s^2)^2}{(b^2 - s^2)^2 + 4 b^2 s^2 \sin^2{\phi}} \frac{2b(b^2 + s^2)}{(b^2 - s^2)^2} \sin{\phi} \Big|_{s = b} \\
-    &= \frac{\epsilon_0 (V_1 - V_2)}{\pi b \sin{\phi}}
+    \sigma &= \epsilon_0 \pdv{\Phi}{s} \Big|_{s = b} = \epsilon_0 \frac{V_1 - V_2}{\pi} \frac{(b^2 - s^2)^2}{(b^2 - s^2)^2 + 4 b^2 s^2 \cos^2{\phi}} \frac{2b(b^2 + s^2)}{(b^2 - s^2)^2} \cos{\phi} \Big|_{s = b} \\
+    &= \frac{\epsilon_0 (V_1 - V_2)}{\pi b \cos{\phi}}
 .\end{aligned}
     }
 \end{eqnarray}
-Observe that if $\phi \in [-\pi,0]$ that $\sigma \sim V_2 - V_1$, while on $[0,\pi]$ $\sigma \sim V_1 - V_2$, meaning that points on the cylinder reflected about the plane splitting the cylinder have surface charge densities of opposite sign but the same magnitude.
+Observe that if $\phi \in [-\pi/2,\pi/2]$ that $\sigma \sim V_1 - V_2$, while on $[0,\pi]$ $\sigma \sim V_2 - V_1$, meaning that points on the cylinder reflected about the plane splitting the cylinder have surface charge densities of opposite sign but the same magnitude.
 }
 
 
@@ -200,7 +212,87 @@ Compare your numerical result with the average value of the potential on the wal
 
 }
 
-\sol{}
+\sol{
+
+We proceed by a separable solution ansatz
+\begin{eqnarray}
+   \Phi(x,y,z) = X(x) Y(y) Z(Z)
+,\end{eqnarray}
+which gives
+\begin{eqnarray}
+    \frac{1}{X} \dv[2]{X}{x} + \frac{1}{Y}\dv[2]{Y}{y} + \frac{1}{Z}\dv[2]{Z}{z} = 0
+.\end{eqnarray}
+Each term must be constant given that they are each functions of separate independent variables.
+Imposing boundary conditions for $x$ and $y$, we have
+\begin{align}
+    X_{n}(x) &= \sin(\frac{n \pi x}{a}) \\
+    Y_{m}(y) &= \sin(\frac{m \pi x}{a})
+.\end{align}
+Immediately, we have
+\begin{eqnarray}
+    \dv[2]{Z}{z} = \frac{\pi^2 (n^2 + m^2)}{a^2} Z = \gamma_{nm}^2 Z
+.\end{eqnarray}
+Observe that we can solve the boundary value problem by writing $\Phi = \Phi_1 + \Phi_2$, where $\Phi_1(0) = 0$, $\Phi_1(a) = V$, $\Phi_2(0) = V$, and $\Phi_2(a) = 0$.
+For the first solution we have
+\begin{eqnarray}
+   \Phi_1 = \sum_{n,m=1}^{\infty} A_{nm} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \sinh(\gamma_{nm} z)
+,\end{eqnarray}
+while for the second solution we have
+\begin{eqnarray}
+    \Phi_2 = \sum_{n,m=1}^{\infty} B_{nm} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \sinh[\gamma_{nm} (z - a)]
+.\end{eqnarray}
+We can use the orthogonality conditions to find
+\begin{eqnarray}
+    \begin{aligned}
+        A_{nm} &= \Big( \frac{2}{a} \Big)^2 \frac{V}{\sinh(\gamma_{nm} a)} \int_{0}^{a} \dd{x} \sin(\frac{n \pi x}{a}) \int_{0}^{a} \dd{y} \sin(\frac{m \pi y}{a}) \\
+               &= \frac{4}{a^2} \frac{V}{\sinh(\gamma_{nm}a)} \frac{a^2}{\pi^2 n m} [1 - (-1)^{n}][1 - (-1)^{m}] \\
+               &= \begin{cases}
+                   0 & n~{\rm or}~m \equiv 0 ~({\rm mod}~2) \\
+                   \frac{16 V}{\pi^2 nm\sinh(\gamma_{nm} a)} & n,m \equiv 1 ~({\rm mod}~2)
+               \end{cases}
+    \end{aligned}
+\end{eqnarray}
+and
+\begin{eqnarray}
+    B_{nm} = -A_{nm}
+.\end{eqnarray}
+Hence,
+\begin{eqnarray}
+    \Phi(x,y,z) = \frac{16 V}{\pi^2} \sum_{n,m=0}^{\infty} \frac{1}{(2n+1)(2m+1)}\sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \frac{\sinh(\gamma_{nm} z) - \sinh[\gamma_{nm} (z - a)]}{\sinh(\gamma_{nm} a)}
+,\end{eqnarray}
+where we redefine $\gamma_{nm}^2 = \pi^2[(2n+1)^2 + (2m+1)^2]/a^2$.
+Note that we can use the properties $\sinh{x} - \sinh{y} = 2\cosh[(x + y)/2]\sinh[(x - y)/2]$ and $\sinh{2x} = 2\sinh{x} \cosh{x}$ to write
+\begin{eqnarray}
+    \eqbox{ \Phi(x,y,z) = \frac{16 V}{\pi^2} \sum_{n,m=0}^{\infty} \frac{1}{(2n+1)(2m+1)}\sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \frac{\cosh[\gamma_{nm} (z - a/2)]}{\cosh(\gamma_{nm} a/2)} }
+.\end{eqnarray}
+
+(b) We can make the following table for the value of the sum after the first $N^2$ terms are computed:
+\begin{table}[h!]
+   \centering
+   \begin{tabular}{c|c}
+       \# of terms & $\Phi/V$ \\
+       \hline
+       1 & 0.347546 \\
+       4 & 0.332958 \\
+       9 & 0.333345 \\
+       16 & 0.333333
+   \end{tabular}
+   \caption{Partial sums for $\Phi/V$ after the inclusion of $N^2$ terms.}
+   \label{tab:prob3}
+\end{table}
+One can see that roughly after 9 terms (certainly after 16 terms), the partial sums are stable up to the third significant figure.
+It appears actually that this result converges to about $1/3$, which interestingly is the average of the potential on the walls: $2V/6 = V/3$.
+
+(c) The surface charge density on the plane $z = a$ is 
+\begin{eqnarray}
+    \begin{aligned}
+        \sigma(x,y,a) &= \epsilon_0 \pdv{\Phi}{z}\Big|_{z=a} \\
+                      &= \frac{16 \epsilon_0 V}{\pi^2} \sum_{n,m=1} \frac{\gamma_{nm}}{(2n+1)(2m+1)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \tanh(\gamma_{nm} a / 2) 
+    .\end{aligned}
+\end{eqnarray}
+
+
+}
 
 
 \prob{4}{
@@ -220,7 +312,104 @@ Show that the extra portion is drawn from regions on the plane nearby, so that t
 
 }
 
-\sol{}
+\sol{
+
+(a) The generic series solution in this case is
+\begin{eqnarray}
+    \Phi(s,\phi) = (a_0 + b_0 \ln{s})(A_0 + B_0 \phi) + \sum_{\nu > 0} (a_{\nu}s^{\nu} + b_{\nu} s^{-\nu})(A_{\nu} \cos{\nu \phi} + B_{\nu} \sin{\nu \phi})
+.\end{eqnarray}
+We use the boundary condition at $\phi = 0$ first, which gives
+\begin{eqnarray}
+    (a_0 + b_0 \ln{s})A_0 + \sum_{\nu > 0} (a_{\nu} s^{\nu} + b_{\nu}s^{-\nu}) A_{\nu} = 0
+.\end{eqnarray}
+We can then immediately say $a_0A_0 = b_0A_0 = a_{\nu} A_{\nu} = b_{\nu} A_{\nu} = 0$, which leaves us with
+\begin{eqnarray}
+    \Phi = a_0 \phi + b_0 \phi \ln{s} + \sum_{\nu > 0} [a_{\nu} s^{\nu} +  b_{\nu} s^{-\nu}] \sin{\nu \phi}
+,\end{eqnarray}
+where we have absorbed $B_{\nu}$ into our definitions of $a_{\nu}$ and $b_{\nu}$.
+Next, we have the condition at $\phi = \beta$, which gives
+\begin{eqnarray}
+    a_0 \beta + b_0 \beta \ln{s} + \sum_{\nu > 0} [ a_{\nu} s^{\nu} + b_{\nu} s^{-\nu} ] \sin{\nu \beta} = 0
+,\end{eqnarray}
+implying $a_0 = b_0 = 0$ and $\sin{\nu \beta} = 0$, which is equivalent to $\nu = n \pi/\beta$ for $n \in \naturals$.
+The potential is then
+\begin{eqnarray}
+    \eqbox{ \Phi = \sum_{n=1}^{\infty} [a_{n} s^{n \pi / \beta} + b_{n} s^{-n \pi /\beta}] \sin(\frac{n \pi \phi}{\beta}) }
+,\end{eqnarray}
+and finally we use our condition at $s = a$, which gives
+\begin{eqnarray}
+    \sum_{n=1}^{\infty} [a_{n} a^{n \pi/\beta} + b_{n} a^{-n \pi/\beta}] \sin(\frac{n \pi \phi}{\beta}) = 0
+.\end{eqnarray}
+Thus, $b_{n} = -a^{2n\pi/\beta} a_{n}$.
+Let us also redefine $a_{n} \rightarrow a_{n} a^{-n\pi/\beta}$, which gives
+\begin{eqnarray}
+    \Phi(s,\phi) = \sum_{n=1}^{\infty} a_{n} \Big[ \Big( \frac{s}{a} \Big)^{n\pi/\beta} - \Big( \frac{a}{s} \Big)^{n\pi/\beta} \Big] \sin(\frac{n \pi \phi}{\beta})
+.\end{eqnarray}
+
+(b) With an expression for the potential, we can determine the electric field as
+\begin{eqnarray}
+    \va*{E} = -\pdv{\Phi}{s} \vu*{e}_{s} - \frac{1}{s}\pdv{\Phi}{\phi} \vu*{e}_{\phi}
+,\end{eqnarray}
+so
+\begin{align}
+    E_{s} &= - \pdv{\Phi}{s} = -\sum_{n=1}^{\infty} a_{n} \frac{n \pi}{a \beta} \Big[ \Big( \frac{s}{a} \Big)^{n\pi/\beta - 1} + \Big( \frac{a}{s} \Big)^{n\pi/\beta + 1} \Big] \sin(\frac{n \pi \phi}{\beta}) \nonumber \\
+          &= \eqbox{ -a_1 \frac{\pi}{a \beta} \Big[ \Big( \frac{s}{a} \Big)^{\pi/\beta - 1} + \Big( \frac{a}{s} \Big)^{\pi/\beta + 1} \Big] \sin(\frac{\pi \phi}{\beta}) + \ldots } \\
+    E_{\phi} &= -\frac{1}{s} \pdv{\Phi}{s} = -\sum_{n=1}^{\infty} a_{n} \frac{n\pi}{a\beta} \Big[ \Big( \frac{s}{a} \Big)^{n \pi/\beta - 1} - \Big( \frac{a}{s} \Big)^{n\pi/\beta + 1} \Big] \cos(\frac{n \pi \phi}{\beta}) \nonumber \\
+             &= \eqbox{ -a_{1} \frac{\pi}{a \beta} \Big[ \Big( \frac{s}{a} \Big)^{\pi/\beta-1} - \Big( \frac{a}{s} \Big)^{\pi/\beta+1} \Big] \cos(\frac{\pi \phi}{\beta}) + \ldots }
+.\end{align}
+The surface charge densities along the conducting surfaces are
+\begin{eqnarray}
+\eqbox{
+\begin{aligned}
+    \sigma(s,\phi=0) &= \epsilon_0 \va*{E} \cdot \vu*{e}_{\phi} = -a_{1} \frac{\pi \epsilon_0}{a \beta} \Big[ \Big( \frac{s}{a} \Big)^{\pi/\beta-1} - \Big( \frac{a}{s} \Big)^{\pi/\beta+1} \Big] + \ldots \\
+    \sigma(s,\phi = \beta) &= \epsilon_0 \va*{E} \cdot (-\vu*{e}_{\phi}) = -a_1 \frac{\pi \epsilon_0}{a \beta} \Big[ \Big( \frac{s}{a} \Big)^{\pi/\beta - 1} - \Big( \frac{a}{s} \Big)^{\pi/\beta + 1} \Big] + \ldots \\
+    \sigma(a,\phi) &= \epsilon_0 \va*{E} \cdot \vu*{e}_{s} = -a_1 \frac{2 \pi \epsilon_0}{a \beta} \sin(\frac{\pi \phi}{\beta}) + \ldots
+\end{aligned}
+}
+.\end{eqnarray}
+
+(c) If $\beta = \pi$, then for $s \gg a$, we have
+\begin{eqnarray}
+    \eqbox{
+    \begin{aligned}
+        \va*{E} &\approx \sum_{n=1}^{\infty} -a_n \frac{n}{a} \Big( \frac{s}{a} \Big)^{n-1} [ \sin(n \phi) \vu*{e}_{s} + \cos(n \phi) \vu*{e}_{\phi} ] \\
+                &= -a_{1} \frac{1}{a} [ \sin{\phi} \vu*{e}_{s} + \cos{\phi} \vu*{e}_{\phi} ] + \ldots = -\frac{a_1}{a} \vu*{e}_{y} + \ldots
+    ,\end{aligned}
+}
+\end{eqnarray}
+where $\vu*{e}_{y}$ is the unit vector pointing away from the planes\footnote{Note that $\hat{e}_{s} = \cos{\phi} \vu*{e}_{x} + \sin{\phi} \vu*{e}_{y}$ and $\vu*{e}_{\phi} = -\sin{\phi} \vu*{e}_{x} + \cos{\phi} \vu*{e}_{y}$.}.
+
+The charge density on the half cyliner in this situation is
+\begin{eqnarray}
+    \sigma(a,\phi) = -a_1 \frac{2 \epsilon_0}{a} \sin{\phi}
+,\end{eqnarray}
+and near the cylinder on the conducting planes
+\begin{eqnarray}
+    \sigma(s,\phi=0,\pi) = -a_1 \frac{\epsilon_0}{a} \Big[ 1 - \Big( \frac{a}{s} \Big)^2 \Big]
+.\end{eqnarray}
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.7\textwidth]{prob4c.pdf}
+   \caption{\textbf{Left}: Plot of surface charge density on the half-cylinder. \textbf{Right}: Plot of surface charge density on the planes. Note that $\sigma(s,0) = \sigma(s,\pi)$, so we could reflect about the $y$-axis and obtain the surface charge density to the left of the half-cylinder as well.}
+   \label{}
+\end{figure}
+
+The charge on the half-cylinder is
+\begin{eqnarray}
+    Q = \int_{0}^{\pi} \sigma(a,\phi) a \dd{\phi} = -4 \epsilon_0 a_1
+.\end{eqnarray}
+Notice that if the cylinder were replaced with a strip of length $2a$, then the total charge would be $2a\epsilon_0(-a_1/a) = -2 \epsilon_0 a_1 = Q/2$.
+
+Clearly this extra charge has to come from the planes surrounding the half-cylinder.
+Let us compute the total charge on a strip $2L$, where $L \gg a$:
+\begin{eqnarray}
+    Q_{L} = 2\int_{a}^{L} -a_1 \frac{\epsilon_0}{a} [1 - (a/s)^2] \dd{s} + Q = \frac{-2\epsilon_0 a_1}{a}\frac{(a - L)^2}{L} - 4 \epsilon_0 a_1 \approx -2 \epsilon_0 a_1 \frac{L}{a}
+,\end{eqnarray}
+which is just the total charge on a strip of length $2L$ without the cylinder: $2L\epsilon_0 (-a_1/a)$.
+Therefore, we have shown that the extra charge $Q/2$ is drawn from the surrounding regions nearby.
+
+}
 
 
 
