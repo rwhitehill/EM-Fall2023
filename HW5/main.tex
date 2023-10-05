@@ -54,7 +54,7 @@ We can solve for the $A_{n}$ and $B_{n}$ using the orthogonality relations (for 
     \int_{-\pi}^{\pi} \cos(mx)\cos(nx) \dd{x} &= \pi \delta_{nm}
 ,\end{align}
 where $\delta_{nm}$ is the kronecker-delta symbol.
-Hence, letting (note that I first solved the problem with the angle measured from the wrong plane, so I will correct that mistake by taking $\phi \rightarrow \phi + 2\pi$ in the final results).
+Hence, letting (note that I first solved the problem with the angle measured from the plane splitting the half-cylinders, so I will correct that mistake by taking $\phi \rightarrow \phi + 2\pi$ in the final results).
 \begin{eqnarray}
    \Phi(b,\phi) = \begin{cases}
        V_2 & -\pi < \phi < 0 \\
@@ -107,7 +107,7 @@ since $\sin(\phi + \pi/2) = \sin{\phi} \cos{\pi/2} + \sin{\pi/2}\cos{\phi} = \co
 .\end{aligned}
     }
 \end{eqnarray}
-Observe that if $\phi \in [-\pi/2,\pi/2]$ that $\sigma \sim V_1 - V_2$, while on $[0,\pi]$ $\sigma \sim V_2 - V_1$, meaning that points on the cylinder reflected about the plane splitting the cylinder have surface charge densities of opposite sign but the same magnitude.
+Observe that if $\phi \in [-\pi/2,\pi/2]$ that $\sigma \sim V_1 - V_2$, while on $[\pi/2,3\pi/2]$ $\sigma \sim V_2 - V_1$, meaning that points on the cylinder reflected about the plane splitting the cylinder have surface charge densities of opposite sign but the same magnitude.
 }
 
 
@@ -232,7 +232,7 @@ Immediately, we have
 \begin{eqnarray}
     \dv[2]{Z}{z} = \frac{\pi^2 (n^2 + m^2)}{a^2} Z = \gamma_{nm}^2 Z
 .\end{eqnarray}
-Observe that we can solve the boundary value problem by writing $\Phi = \Phi_1 + \Phi_2$, where $\Phi_1(0) = 0$, $\Phi_1(a) = V$, $\Phi_2(0) = V$, and $\Phi_2(a) = 0$.
+Observe that we can solve the boundary value problem by writing $\Phi = \Phi_1 + \Phi_2$, where $\Phi_1(x,y,0) = 0$, $\Phi_1(x,y,a) = V$, $\Phi_2(x,y,0) = V$, and $\Phi_2(x,y,a) = 0$.
 For the first solution we have
 \begin{eqnarray}
    \Phi_1 = \sum_{n,m=1}^{\infty} A_{nm} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \sinh(\gamma_{nm} z)
@@ -258,7 +258,10 @@ and
 .\end{eqnarray}
 Hence,
 \begin{eqnarray}
-    \Phi(x,y,z) = \frac{16 V}{\pi^2} \sum_{n,m=0}^{\infty} \frac{1}{(2n+1)(2m+1)}\sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \frac{\sinh(\gamma_{nm} z) - \sinh[\gamma_{nm} (z - a)]}{\sinh(\gamma_{nm} a)}
+    \begin{aligned}
+        \Phi(x,y,z) = \frac{16 V}{\pi^2} \sum_{n,m=0}^{\infty} \frac{1}{(2n+1)(2m+1)} &\sin(\frac{n \pi x}{a}) \sin(\frac{m \pi y}{a}) \\
+                                                                                                             &\times \frac{\sinh(\gamma_{nm} z) - \sinh[\gamma_{nm} (z - a)]}{\sinh(\gamma_{nm} a)}
+    \end{aligned}
 ,\end{eqnarray}
 where we redefine $\gamma_{nm}^2 = \pi^2[(2n+1)^2 + (2m+1)^2]/a^2$.
 Note that we can use the properties $\sinh{x} - \sinh{y} = 2\cosh[(x + y)/2]\sinh[(x - y)/2]$ and $\sinh{2x} = 2\sinh{x} \cosh{x}$ to write
@@ -266,7 +269,7 @@ Note that we can use the properties $\sinh{x} - \sinh{y} = 2\cosh[(x + y)/2]\sin
     \eqbox{ \Phi(x,y,z) = \frac{16 V}{\pi^2} \sum_{n,m=0}^{\infty} \frac{1}{(2n+1)(2m+1)}\sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \frac{\cosh[\gamma_{nm} (z - a/2)]}{\cosh(\gamma_{nm} a/2)} }
 .\end{eqnarray}
 
-(b) We can make the following table for the value of the sum after the first $N^2$ terms are computed:
+(b) We can make \tref{prob3} for the value of the sum after the first $N^2$ terms are computed.
 \begin{table}[h!]
    \centering
    \begin{tabular}{c|c}
@@ -285,10 +288,12 @@ It appears actually that this result converges to about $1/3$, which interesting
 
 (c) The surface charge density on the plane $z = a$ is 
 \begin{eqnarray}
+    \eqbox{
     \begin{aligned}
         \sigma(x,y,a) &= \epsilon_0 \pdv{\Phi}{z}\Big|_{z=a} \\
-                      &= \frac{16 \epsilon_0 V}{\pi^2} \sum_{n,m=1} \frac{\gamma_{nm}}{(2n+1)(2m+1)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \tanh(\gamma_{nm} a / 2) 
+                      &= \frac{16 \epsilon_0 V}{\pi^2} \sum_{n,m=1}^{\infty} \frac{\gamma_{nm}}{(2n+1)(2m+1)} \sin(\frac{n \pi x}{a}) \sin(\frac{m \pi x}{a}) \tanh(\gamma_{nm} a / 2) 
     .\end{aligned}
+}
 \end{eqnarray}
 
 
@@ -343,7 +348,7 @@ and finally we use our condition at $s = a$, which gives
 Thus, $b_{n} = -a^{2n\pi/\beta} a_{n}$.
 Let us also redefine $a_{n} \rightarrow a_{n} a^{-n\pi/\beta}$, which gives
 \begin{eqnarray}
-    \Phi(s,\phi) = \sum_{n=1}^{\infty} a_{n} \Big[ \Big( \frac{s}{a} \Big)^{n\pi/\beta} - \Big( \frac{a}{s} \Big)^{n\pi/\beta} \Big] \sin(\frac{n \pi \phi}{\beta})
+    \eqbox{ \Phi(s,\phi) = \sum_{n=1}^{\infty} a_{n} \Big[ \Big( \frac{s}{a} \Big)^{n\pi/\beta} - \Big( \frac{a}{s} \Big)^{n\pi/\beta} \Big] \sin(\frac{n \pi \phi}{\beta}) }
 .\end{eqnarray}
 
 (b) With an expression for the potential, we can determine the electric field as
