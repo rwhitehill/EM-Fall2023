@@ -52,10 +52,77 @@ Plugging this into one of the BCs
 \begin{eqnarray}
     q' = -\frac{(a - a^2/b)}{b-a} q = -\frac{a}{b} q
 .\end{eqnarray}
+Thus, the potential of this setup is
+\begin{align}
+    \Phi = \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{|\va*{r} - \va*{b}|} - \frac{a/b}{|\va*{r} - (a^2/b^2)\va*{b}|} \Bigg)
+.\end{align}
+
+We can clearly see that this potential satisfies the Poisson equation since we only inserted mirror charges in the region $r < a$.
+Checking the BC (on any arbitrary point on the conductor), notice that 
+\begin{align}
+    |\va*{a} - \va*{b}'|^2 = a^2 - 2a \frac{a^2}{b} \cos{\theta} = \frac{a^{4}}{b^2} = \frac{a^2}{b^2} \Big( b^2 - 2ab \cos{\theta} + a^2 \Big) = \Big( \frac{a}{b} \Big)^2 |\va*{a} - \va*{b}|
+.\end{align}
+Thus,
+\begin{align}
+    \Phi|_{r = a} &= \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{|\va*{a} - \va*{b}|} - \frac{a/b}{|\va*{a} - \va*{b}'|} \Bigg) = \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{|\va*{a} - \va*{b}|} - \frac{a/b}{(a/b)|\va*{a} - \va*{b}|} \Bigg) = 0
+.\end{align}
+
+Next, we can determine the induced charge density as
+\begin{align}
+    \sigma &= \epsilon_0 (\va*{E} \cdot \va*{r})_{r = a} = \frac{q}{4 \pi} \Bigg( \frac{\va*{a} - \va*{b}}{|\va*{a} - \va*{b}|^3} - \frac{(a/b)(\va*{a} - \va*{b}')}{|\va*{a} - \va*{b}'|^3} \Bigg) \cdot \vu*{r} \\
+    &= \frac{q}{4 \pi} \Bigg( \frac{\va*{a} - \va*{b}}{|\va*{a} - \va*{b}|^3} - \frac{\va*{a} - (a/b)^2\va*{b}}{(a/b)^2|\va*{a} - \va*{b}|^3} \Bigg) \cdot \vu*{r} \\
+    &= \frac{q}{4 \pi} \Bigg( \frac{\va*{a} - \va*{b}}{|\va*{a} - \va*{b}|^3} - \frac{(b/a)^2\va*{a} - \va*{b}}{|\va*{a} - \va*{b}|^3} \Bigg) \cdot \vu*{r} = - \frac{q}{4 \pi} \frac{ (b/a)^2 - 1 }{|\va*{a} - \va*{b}|^3} \va*{a} \cdot \vu*{r} \\
+    &= - \frac{q}{4 \pi a} \frac{b^2 - a^2}{[a^2 + b^2 - 2ab\cos{\theta}]^{3/2}}
+.\end{align}
+One sanity check to be performed is that the total charge induced on the sphere is just $q'$:
+\begin{align}
+    Q = \int \sigma a^2 \dd{\Omega} = -\frac{q a}{2} (b^2 - a^2) \int_{0}^{\pi} \frac{\sin{\theta} \dd{\theta}}{[(a^2 + b^2) - 2ab \cos{\theta}]^{3/2}}
+.\end{align}
+Using the substitution $u = (a^2 + b^2) - 2ab \cos{\theta}$ ($\dd{u} = 2ab\sin{\theta} \dd{\theta}$), we have
+\begin{align}
+    Q &= -\frac{qa}{2} (b^2 - a^2) \frac{1}{2ab} \int_{(a-b)^2}^{(a+b)^2} u^{-3/2} \dd{u} \nonumber \\
+    &= -\frac{q(b^2-a^2)}{4b} (-2) \Big[ \frac{1}{a + b} - \frac{1}{|a - b|} \Big] \nonumber \\
+    &= \frac{q}{2b} [ (b-a) - (a + b) ] \nonumber \\
+    &= -\frac{a}{b}q = q'
+.\end{align}
 
 
+\section{Point Charge Near an Isolated, Conducting Sphere at Potential $V$}
+
+In this section, we change the problem of the last section slightly such that the potential is held to potential $V$ instead of being grounded.
+This amounts to placing some charge on the sphere.
+We can find the potential by placing an extra mirror charge $q''$ at the origin such that its potential on the sphere is $V$:
+\begin{eqnarray}
+    \Phi = \frac{1}{4 \pi \epsilon_0} \Bigg( \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} + \frac{q''}{r} \Bigg)
+.\end{eqnarray}
+We know that the first two terms satisfy the BCs for a grounded sphere, so we must have $q'' = 4 \pi \epsilon_0 Va$.
+\begin{eqnarray}
+    \Phi = \frac{1}{4 \pi \epsilon_0} \Bigg( \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} \Bigg) + \frac{a}{r} V
+.\end{eqnarray}
+From this, it is simple to identify the total charge on the sphere as
+\begin{eqnarray}
+    Q = q' + q''
+,\end{eqnarray}
+and if instead we were given the total charge $Q$ placed on the sphere, we would have
+\begin{eqnarray}
+    V = \frac{Q - q'}{4 \pi \epsilon_0 a}
+.\end{eqnarray}
+In this case then, the potential could be expressed as
+\begin{eqnarray}
+    \Phi = \frac{1}{4 \pi \epsilon_0} \Bigg( \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} + \frac{Q - q'}{r} \Bigg)
+.\end{eqnarray}
 
 
+\section{Force on charge $q$}
+
+Finally, we can determine the force exerted on charge $q$ by the sphere as just that exerted by the mirror charges
+\begin{align}
+    \va*{F} &= q \va*{E}_{\rm mirror}(\va*{b}) = \frac{q}{4 \pi \epsilon_0} \Bigg( q'\frac{\va*{b} - \va*{b}'}{|\va*{b} - \va*{b}'|^3} + (Q - q') \frac{\va*{b}}{b^3} \Bigg) \nonumber \\
+    &= \frac{q}{4 \pi \epsilon_0} \Bigg\{ \frac{q'}{[1 - (a/b)^2]^3 b^3}[1 - (a/b)^2]\va*{b} + (Q - q') \frac{\va*{b}}{b^3} \Bigg\} \nonumber \\
+    &= \frac{q}{4 \pi \epsilon_0 b^3} \Bigg\{ Q - q' \Bigg( 1 - \frac{1}{[1 - (a/b)^2]^2} \Bigg) \Bigg\} \va*{b} \nonumber \\
+    &= \frac{q}{4 \pi \epsilon_0} \frac{\va*{b}}{b^3} \Bigg\{ Q + q \Big( \frac{a}{b} \Big)^3 \frac{(a/b)^2 - 2}{[1 - (a/b)^2]^2} \Bigg\} \nonumber \\
+    &= \frac{q}{4 \pi \epsilon_0} \frac{\va*{b}}{b^3} \Bigg\{ Q - \frac{q a^3(2b^2 - a^2)}{b(b^2 - a^2)^2} \Bigg\}
+.\end{align}
 
 
 

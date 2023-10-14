@@ -24,4 +24,6 @@
 \contentsline {chapter}{\numberline {9}Method of Images}{21}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Charge Above an Infinite Grounded Plane}{21}{section.9.1}%
 \contentsline {section}{\numberline {9.2}Point Charge Near a Grounded Sphere}{21}{section.9.2}%
-\contentsline {chapter}{Appendices}{23}{section*.2}%
+\contentsline {section}{\numberline {9.3}Point Charge Near an Isolated, Conducting Sphere at Potential $V$}{23}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Force on charge $q$}{24}{section.9.4}%
+\contentsline {chapter}{Appendices}{25}{section*.2}%
