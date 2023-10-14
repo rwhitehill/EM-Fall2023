@@ -1,0 +1,64 @@
+\chapter{Method of Images}
+
+\section{Charge Above an Infinite Grounded Plane}
+
+The method of images is one of the more conventional methods that can be used to solve for the potential with certain setups.
+Consider a charge a distance $a$ above a conductor spanning the $xy$-plane.
+We are interested in the potential in the region $z > 0$, where Poisson's equation reads
+\begin{eqnarray}
+    \laplacian \Phi = -4 \pi q \delta^{(3)}(\va*{r} - \va*{a})
+,\end{eqnarray}
+where $\va*{a} = a\vu*{z}$.
+The potential of the point charge is simple to write down, but on first glance, it does not seem a trivial matter how to write down the potential of the plane is at any arbitary point above the plane.
+
+We can however be clever and place a so-called ``mirror charge'' $-q$ a distance $a$ below the surface of the plane.
+The potential of this mirror setup is
+\begin{align}
+    \label{eq:generic-plane-pot}
+    \Phi &= \frac{q}{4 \pi \epsilon_0} \Big( \frac{1}{|\va*{r} - \va*{a}|} - \frac{1}{|\va*{r} + \va*{a}|}\Big) \\
+    \label{eq:specific-plane-pot}
+         &- \frac{q}{4 \pi \epsilon_0} \Big( \frac{1}{\sqrt{s^2 + (z - a)^2}} - \frac{1}{\sqrt{s^2 + (z + a)^2}} \Big)
+,\end{align}
+where $s^2 = x^2 + y^2$.
+From the form of \eref{specific-plane-pot}, it is clear that $\Phi(x,y,0) = 0$, meaning that the potential satisfies the BCs, and hence, this is the potential of the system since it satisfies Poisson's equation for $z > 0$:
+\begin{eqnarray}
+    \laplacian \Phi = -4 \pi q [ \delta(\va*{r} - \va*{a}) - \delta(\va*{r} + \va*{a}) ]
+.\end{eqnarray}
+
+\section{Point Charge Near a Grounded Sphere}
+
+Consider a conducting, grounded sphere of radius $a$ with a charge $q$ placed a distance $b > a$ from the center of the sphere.
+We are interested in the potential in the region $r > a$.
+Again, it is not immediately clear how to write down the contribution to the potential from the conducting sphere, so we introduce an image charge $q'$ inside the sphere a distance $b'$ from the center along the axis defined by the line between the center and the source charge (which we call the $x$-axis).
+The potential of the mirror setup is just
+\begin{eqnarray}
+    \Phi = \frac{1}{4 \pi \epsilon_0} \Bigg( \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} \Bigg)
+,\end{eqnarray}
+where $\va*{b} = b \vu*{x}$ and $\va*{b}' = b' \vu*{x}$
+
+We can solve for $q'$ and $b'$ by imposing the BCs:
+\begin{align}
+    \Phi|_{x = a} &= \frac{1}{4 \pi \epsilon_0} \Big( \frac{q}{b - a} + \frac{q'}{a - b'} \Big) = 0 \\
+    \Phi|_{x = -a} &= \frac{1}{4 \pi \epsilon_0} \Big( \frac{q}{a + b} + \frac{q'}{a + b'} \Big) = 0
+.\end{align}
+If we make some rearrangements, we have the following for $b'$:
+\begin{gather}
+    \frac{a + b'}{a - b'} = \frac{a + b}{b - a} \nonumber \\
+    \Big( 1 + \frac{a + b}{b - a} \Big) b' = a \Big( \frac{a + b}{b - a} - 1 \Big) \nonumber \\
+    \frac{2b}{b - a} b' = \frac{2a}{b - a} a \nonumber \\
+    b' = \frac{a^2}{b}
+.\end{gather}
+Plugging this into one of the BCs
+\begin{eqnarray}
+    q' = -\frac{(a - a^2/b)}{b-a} q = -\frac{a}{b} q
+.\end{eqnarray}
+
+
+
+
+
+
+
+
+
+

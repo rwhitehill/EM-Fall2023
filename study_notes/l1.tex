@@ -1,0 +1,35 @@
+\chapter{Coulomb's Law}
+
+In this section we deal with electrostatics, which is the idealization where the charge configurations are stationary in time, or rather, we only deal with their instantaneous properties.
+For electrostatics, the governing equation is Coulomb's law (we use traditional SI units):
+\begin{eqnarray}
+    \va*{F}_{12} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\va*{r}_{1} - \va*{r}_{2}}{|\va*{r}_{1} - \va*{r}_{2}|^3}
+,\end{eqnarray}
+where $\epsilon_0 = 8.854 \times 10^{-12}~{\rm C^2 N^{-1} m^{-2}}$ is the permittivity of free space.
+This is the force on charge $1$ by charge $2$.
+Notice that from Newton's 3rd law, the force $\va*{F}_{21} = -\va*{F}_{12}$ (equal and opposite).
+
+Coulomb's law is an empirical observation.
+That is, the inverse square law is written down to match experimental observations, and indeed, it does a fantastic job explaining electrostatic phenomena.
+We will see that it is incomplete for a dynamic picture of electromagnetism, but for now (the next several lectures), it will be all we need.
+
+Another empirical observation is that the force on a charge $q$ by a configuration of charges $q_{i}$ at positions $\va*{r}_{i}$, respectively, is just a linear superposition of the individual forces on $q$ by $q_{i}$:
+\begin{eqnarray}
+    \va*{F} = q \Bigg[ \frac{1}{4 \pi \epsilon_0} \sum_{i} q_{i} \frac{\va*{r} - \va*{r}_{i}}{|\va*{r} - \va*{r}_{i}|^3} \Bigg] = q \va*{E}(\va*{r})
+.\end{eqnarray}
+The quantity $\va*{E}$ is defined as the electrostatic field due to the charge configuration.
+It's rigorous definition requires a bit more care, actually, since the electric field due to $q$ would distort the electric field due to the configuration, so
+\begin{eqnarray}
+    \va*{E}(\va*{r}) = \lim_{q \rightarrow 0} \frac{\va*{F}(\va*{r})}{q}
+.\end{eqnarray}
+
+In the above definitions we dealt with discrete point charges, but in general, we may deal with continuous charge distributions.
+Charge distributions are idealizations of course. 
+Realistically speaking, charge is quantized in units of $e = 1.602 \times 10^{-19}~{\rm C}$, but if we have a large number of charges then the total charge of a distribution is $Q = (N_{+} - N_{-})e = \int \dd{q} = \int \dd[3]{\va*{r}} \rho(\va*{r})$ in the limit $e/Q \rightarrow 0$, where $N_{\pm}$ is the number of units of positive/negative charge in the solid body.
+The function $\rho(\va*{r})$ is the volume charge density.
+From this, we can then write the electrostatic field of a continuous charge distribution with charge density $\rho(\va*{r})$ as
+\begin{eqnarray}
+    \va*{E}(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \rho(\va*{r}') \frac{\va*{r} - \va*{r}'}{|\va*{r} - \va*{r}'|^3}
+.\end{eqnarray}
+
+

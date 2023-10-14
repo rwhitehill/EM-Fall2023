@@ -1,0 +1,135 @@
+\chapter{Gauss' Law}
+
+\section{Derivation}
+
+Suppose that the charge distribution $\rho(\va*{r})$ is the only source of the electric field $\va*{E}(\va*{r})$.
+We can define the ``flux'' of an electric field through some surface $S$ as
+\begin{eqnarray}
+    {\rm flux} = \int_{S} \va*{E} \cdot \dd{\va*{S}}
+,\end{eqnarray}
+where $\dd{\va*{S}} = \dd{S} \vu*{n}$ and $\vu*{n}$ is the unit normal vector to the surface $S$, pointing outside the volume bounded by $S$.
+
+We can derive Gauss' law as follows for the case of a point charge located at the origin by using a sphere of radius $R$.
+\begin{eqnarray}
+    \int \va*{E} \cdot \dd{\va*{S}} = \int \frac{q}{4 \pi \epsilon_0} \frac{\vu*{r}}{R^2} R^2 \dd{\Omega} = \frac{q}{4 \pi \epsilon_0} \int \dd{\Omega} = \frac{q}{\epsilon_0}
+.\end{eqnarray}
+This result is more general though, so let us explore this.
+
+Notice that the divergence of the electric field produced by a point charge at the origin is given as
+\begin{eqnarray}
+    \div{\va*{E}} = \frac{q}{4 \pi \epsilon_0} \div{\frac{\vu*{r}}{r^2}} = \frac{q}{4 \pi \epsilon_0} \frac{1}{r^2} \pdv{r} \Big( r^2 \frac{1}{r^2} \Big) = 0
+,\end{eqnarray}
+when $r \ne 0$.
+If we take the volume integral over the volume bounded between a sphere of radius $\epsilon$ (which is small) and a generic surface $S$, we find
+\begin{eqnarray}
+    \int_{V} \dd[3]{\va*{r}} \div{\va*{E}} = \int_{S} \va*{E} \cdot \dd{\va*{S}} - \int_{S_{\epsilon}} \va*{E} \cdot \vu*{r} (\epsilon^2 \dd{\Omega}) = 0
+.\end{eqnarray}
+This then gives that
+\begin{eqnarray}
+    \int_{S} \va*{E} \cdot \dd{\va*{S}} = \frac{q}{\epsilon_0}
+.\end{eqnarray}
+Notice that this result holds even if the point charge is not located at the origin since we can always place the sphere of radius $\epsilon$ such that the charge is centered on it.
+
+Let us derive this result in another way, returning to the divergence of $\va*{E}$ at $r = 0$.
+Consider the vector field $\vu*{r}/r^2$, and observe that
+\begin{eqnarray}
+    \int_{S} \frac{\vu*{r}}{r^2} \cdot \dd{\va*{S}} = \int_{V} \div{\frac{\vu*{r}}{r^2}} \dd[3]{\va*{r}} = 4 \pi
+.\end{eqnarray}
+We can thus define
+\begin{eqnarray}
+    \div{\frac{\vu*{r}}{r^2}} = 4\pi \delta^{(3)}(\va*{r})
+,\end{eqnarray}
+where $\delta^{(3)}(\va*{r})$ is the three dimensional Dirac-delta function.
+
+In one dimension, the Dirac-delta function is defined such that $\delta(x - a) = 0$ if $x \ne a$ and
+\begin{eqnarray}
+    \int_{\mathcal{R}} f(x) \delta(x - a) \dd{x} = \begin{cases}
+        f(a) & {\rm if}~a \in \mathcal{R} \\
+        0 & {\rm otherwise}
+    .\end{cases}
+\end{eqnarray}
+The three-dimensional generalization is just
+\begin{eqnarray}
+    \delta^{(3)}(\va*{r} - \va*{a}) = \delta(x - a_{x}) \delta(y - a_{y}) \delta(z - a_{z})
+.\end{eqnarray}
+
+Using these results, we have
+\begin{eqnarray}
+    \div{\va*{E}} = \frac{q}{4 \pi \epsilon_0} \div{\frac{\vu*{r}}{r^2}} = \frac{q}{\epsilon_0} \delta^{(3)}(\va*{r})
+.\end{eqnarray}
+If shift our origin such that the charge $q$ is now located at $\va*{r}_0$, then we have
+\begin{eqnarray}
+    \label{eq:div-E}
+    \div{\va*{E}} = \frac{q}{\epsilon_0} \delta^{(3)}(\va*{r} - \va*{r}_{0})
+.\end{eqnarray}
+Hence, Gauss' law for a point charge is recovered by taking the volume integral of \eref{div-E} and using the divergence theorem to find the flux of $\va*{E}$.
+Furthermore, for a charge discrete charge distribution, we replace $q$ with the total charge enclosed by the surface $S$.
+
+Now, let us consider the more general case of a charge distribution $\rho(\va*{r})$.
+The divergence of the electric field is
+\begin{align}
+    \div{\va*{E}} &= \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \rho(\va*{r}') \div{ \frac{\va*{r} - \va*{r}'}{| \va*{r} - \va*{r}' |^3} } = \frac{1}{\epsilon_0} \int \dd[3]{\va*{r}} \rho(\va*{r}') \delta^{(3)}(\va*{r} - \va*{r}') \nonumber \\
+                  &= \frac{\rho(\va*{r})}{\epsilon_0}
+.\end{align}
+As an useful note, we can write the charge density for a point charge at location $\va*{r}$ as
+\begin{eqnarray}
+    \rho(\va*{r}) = q \delta(\va*{r})
+.\end{eqnarray}
+Alternatively, we can take the volume integral, which gives
+\begin{eqnarray}
+    \int \va*{E} \cdot \dd{\va*{S}} = \frac{Q}{\epsilon_0}
+,\end{eqnarray}
+where $Q$ is the charge enclosed by $S$.
+
+
+\section{Applications}
+
+Gauss' law is only useful in some circumstancess, where there is a nice symmetry.
+Otherwise, the integration becomes too complicated for a direct, analytic determination of the electric field.
+Let us consider a few cases.
+
+\subsection{Spherical Symmetry}
+
+Suppose we have a distribution satisfying $\rho(\va*{r}) = \rho(r)$, meaning that the charge distribution is rotationally invariant about some point.
+In this case then, we take a Gaussian surface that is a sphere of radius $a$:
+\begin{eqnarray}
+    \int \va*{E} \cdot \vu*{r} (a^2 \dd{\Omega}) = E_{r}(a) [4 \pi a^2] = \frac{Q}{\epsilon_0} \Rightarrow E_{r}(a) = \frac{1}{4 \pi a^2} \frac{Q}{\epsilon_0}
+,\end{eqnarray}
+where $Q = \int_{V} \rho(\va*{r}) \dd[3]{\va*{r}} = 4 \pi \int_{0}^{a} r^2 \rho(r) \dd{r}$.
+Thus,
+\begin{eqnarray}
+    E_{r}(a) = \frac{1}{a^2 \epsilon_0} \int_{0}^{a} r^2 \rho(r) \dd{r}
+.\end{eqnarray}
+Notice that this integral only picks out the radial component of the field, but in fact, the angular components are easily seen to be zero since if they weren't then our problem would not be rotationally invariant.
+Hence, $\va*{E}(\va*{r}) = E_{r}(r) \vu*{r}$
+
+One nice result is to consider a sphere of total charge $Q$.
+We remain agnostic about the exact distribution of charge, but we can state the electric field outside the sphere is just
+\begin{eqnarray}
+    \va*{E}(\va*{r}) = \frac{Q}{4 \pi \epsilon_0} \frac{1}{r^2} \vu*{r}
+.\end{eqnarray}
+That is, outside the sphere, the field is only determined by the total charge and follows the same law as if it were a point charge at the origin.
+
+If we specifiy a uniform charge density $\rho(\va*{r}) = \rho_0$ inside the sphere (of radius $a$), we have the electric field for $r < a$ as
+\begin{eqnarray}
+    \va*{E} = \frac{\rho_0}{\epsilon_0} \frac{1}{r^2} \big( \frac{1}{3}r^3 \big) \vu*{r} = \frac{\rho_0}{3 \epsilon_0} \va*{r}
+.\end{eqnarray}
+
+\subsection{Cylindrical Symmetry}
+
+Suppose we have a charge distribution satisfying $\rho(\va*{r}) = \rho(s)$, where $s$ is the distance from the $z-axis$.
+Then we choose a Gaussian surface that is a cylinder with radius $a$ and length $\ell$, giving
+\begin{eqnarray}
+    \int \va*{E} \cdot \vu*{s} s \dd{\phi} \dd{z} = (2 \pi L) s E_{s} = \frac{Q}{\epsilon_0} \Rightarrow \va*{E} = \frac{Q/L}{2 \pi \epsilon_0 s} \vu*{s}
+.\end{eqnarray}
+Again, the non-radial components of the field must be zero because of the symmetry of the problem.
+Typically, we denote $Q/L = \lambda$, where $\lambda$ is a characteristic charge per unit length of the problem.
+Note that we implicitly include the integration over the caps of the cylinder, but even if $E_{z}$ were nonzero, the normal vectors point in opposite directions and the problem is translationally invariant along $z$, meaning that there contribution cancels.
+
+
+
+
+
+
+
+

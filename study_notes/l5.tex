@@ -1,0 +1,65 @@
+\chapter{Methods for Finding Scalar Potentials}
+
+\section{An Example}
+
+Now that we have proved the existence of a scalar potential in a simply connected region for the electrostatic field, we move onto a discussion of its uniqueness.
+We can define the electrostatic potential
+\begin{eqnarray}
+    \Phi(\va*{r}) = -\int_{\va*{r}_{0}}^{\va*{r}} \va*{E}(\va*{r}') \cdot \dd{\va*{r}'}
+.\end{eqnarray}
+We can obtain the scalar potential at any location $\va*{r}$ via any choice of path.
+Typically, we choose linear paths between $\va*{r}_{0}$ and $\va*{r}$ such that we can parameterize the path in terms of a single parameter $\lambda$ between some bounds.
+As an examplme, consider $\va*{A} = (\va*{a} \cdot \va*{r}) \va*{a}$, where $\va*{a}$ is a constant vector.
+Observe that this is an irrotational field
+\begin{align}
+    [\curl{\va*{A}}]_{i} &= \epsilon_{ijk} \nabla_{j} (\va*{a} \cdot \va*{r}) a_{k} = \epsilon_{ijk} \nabla_{j} a_{\ell} r_{\ell} a_{k} = \epsilon_{ijk} a_{\ell} a_{k} \nabla_{j} r_{\ell} \nonumber \\
+                         &= \epsilon_{ijk} a_{\ell} a_{k} \delta_{j \ell} = \epsilon_{ijk} a_{j} a_{k} = [\va*{a} \cross \va*{a}]_{i} = 0
+.\end{align}
+The scalar potential is then (choosing the origin as our reference point)
+\begin{eqnarray}
+    \Phi(\va*{r}) = - \int_{0}^{\va*{r}} \va*{A}(\va*{r}') \cdot \dd{\va*{r}'} = - \int_{0}^{\va*{r}} (\va*{a} \cdot \va*{r}') \va*{a} \cdot \dd{\va*{r}'} 
+.\end{eqnarray}
+If we parameterize the path as $\va*{r}' = \lambda \va*{r}$, then
+\begin{eqnarray}
+    \Phi(\va*{r}) = - \int_{0}^{1} (\va*{a} \cdot \lambda \va*{r})\va*{a} \cdot \va*{r} \dd{\lambda} = -\frac{1}{2} (\va*{a} \cdot \va*{r})^2
+.\end{eqnarray}
+This is a rather contrived example, although demonstrative.
+In general, we want to determine $\Phi$ and $\va*{E}$ from first principles.
+
+\section{Singular Fields}
+
+Let us consider a point charge at the origin.
+Observe that the electric field is singular at $\va*{r} = 0$, so we cannot determine the potential at the origin.
+We can however, place our reference at $\infty$ and determine the scalar potential from the electric field of the point charge as
+\begin{align}
+    \Phi(\va*{r}) &= - \int_{\infty}^{\va*{r}} \frac{q}{4 \pi \epsilon_0} \frac{\va*{r}'}{r'^3} \cdot \dd{\va*{r}'} = - \frac{q}{4 \pi \epsilon_0} \int_{\infty}^{1} \frac{\va*{r}}{\lambda^2 r^3} \cdot \va*{r} \dd{\lambda} \nonumber \\
+                  &= -\frac{q}{4 \pi \epsilon_0} \frac{1}{r} \Big[ -\frac{1}{\lambda} \Big]_{\infty}^{1} = \frac{q}{4 \pi \epsilon_0} \frac{1}{r}
+.\end{align}
+
+We could have shifted our origin such that the charge is located at $\va*{r}_{0}$.
+This just gives the scalar potential as
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{q}{4 \pi \epsilon_0} \frac{1}{|\va*{r} - \va*{r}_{0}|}
+.\end{eqnarray}
+If we extend this to a continuous (finite) charge distribution, we have
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \int_{V} \frac{\rho(\va*{r}')}{|\va*{r} - \va*{r}'|} \dd[3]{\va*{r}'}
+.\end{eqnarray}
+
+\section{Doubly Connected Regions}
+
+Everything we have done so far requires simply connected regions.
+Consider the three-dimensional region without the $z$-axis.
+This is clearly not simply connected since we cannot shrink any closed curve containing the $z$-axis to $s = 0$.
+Consider as an example the vector field $\va*{A} = (a/s) \vu*{\phi}$.
+This is an irrotational field, but if we integrate around a circle of radius $\epsilon$, we have
+\begin{eqnarray}
+    \int_{0}^{2\pi} \frac{a}{\epsilon} \vu*{\phi} \cdot \vu*{\phi} \epsilon \dd{\phi} = 2 \pi a \ne 0
+.\end{eqnarray}
+In this case, the potential is not well-defined.
+It would depend on how many times our contour wraps around the $z$-axis.
+
+
+
+
+

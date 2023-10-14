@@ -1,0 +1,67 @@
+\chapter{Conservative Forces}
+
+\section{Conservative Forces}
+
+I called the electrostatic field in a previous section ``conservative''.
+We will see why this is the case now.
+Recall the definition of the work done on a particle under the influence of a force $\va*{F}$ over its motion along a curve $C$:
+\begin{eqnarray}
+    W = \int_{C} \va*{F}(\va*{r}) \cdot \dd{\va*{r}}
+.\end{eqnarray}
+The work done by an electric field $\va*{E}$ on a test charge is then
+\begin{eqnarray}
+    W = q \int_{C} \va*{E}(\va*{r}) \cdot \dd{\va*{r}}
+,\end{eqnarray}
+and since $\curl{\va*{E}} = 0$, we know from the equivalence theorem from above that if $C$ is a closed curve, then $W = 0$.
+Furthermore, since $\va*{F} = q \va*{E}$, then $\curl{\va*{F}} = 0$, and we can therefore define a scalar potential (which we will see is just the electrostatic potential energy) $U(\va*{r})$ for the electric force such that $\va*{F} = - \grad U$, which is related to the electric potential by
+\begin{eqnarray}
+    U(\va*{r}) = q \Phi(\va*{r})
+.\end{eqnarray}
+
+Now, let us remind ourselves that the work done on a particle is given by the change in its kinetic energy.
+Starting with Newton's 2nd law $m \ddot{\va*{r}} = \va*{F}(\va*{r}) = - \grad U(\va*{r})$, we can integrate this along a path, which gives
+\begin{gather}
+    \int_{\va*{a}}^{\va*{b}} m \ddot{\va*{r}} \cdot \dd{\va*{r}} = \int_{\va*{a}}^{\va*{b}} \va*{F} \cdot \dd{\va*{r}} = \int_{\va*{a}}^{\va*{b}} -\grad U(\va*{r}) \cdot \dd{\va*{r}} \nonumber \\
+    W = \int_{\va*{a}}^{\va*{b}} \frac{1}{2} m \dv{\dot{\va*{r}}^2}{t} \dd{t} = \frac{1}{2} m \Delta \dot{\va*{r}}^2 = - \Delta U(\va*{r})
+    \Rightarrow \Delta E = \Delta \Big( \frac{1}{2} m \dot{\va*{r}}^2 + U \Big) = 0
+.\end{gather}
+We define $E$ as the mechanical energy of a system and $U$ as the potential energy, and clearly under a conservative force $\va*{F}$, this is a conserved quantity.
+
+\section{Potential Energy of a Charge Distribution}
+
+If we consider two charges $q_1$ and $q_2$ at corresponding locations $\va*{r}_{1}$ and $\va*{r}_{2}$, then the potential energy of this system is given by
+\begin{eqnarray}
+    U_{12} = q_{1} E_{2}(\va*{r}_{1}) = \frac{1}{4 \pi \epsilon_0} \frac{q_1 q_2}{|\va*{r}_{1} - \va*{r}_{2}|}
+.\end{eqnarray}
+Notice that $U_{12} = U_{21}$, which should be the case.
+
+If we generalize to a charge distribution with $N$ point charges, we then have the potential energy of the setup as 
+\begin{align}
+    U &= 0 + (U_{12}) + (U_{13} + U_{23}) + \ldots (U_{1N} + \ldots + U_{N-1,N}) \nonumber \\
+               &= \sum_{i=2}^{N} \sum_{j = 1}^{i} U_{ij} 
+.\end{align}
+We can extend the second sum, noting that we are double counting
+\begin{eqnarray}
+    U = \frac{1}{2} \sum_{i} \sum_{j \ne i} U_{ij} = \frac{1}{2} \sum_{i} \sum_{j \ne i} q_{i} \Phi(\va*{r}_{j}) = \frac{1}{8 \pi \epsilon_0} \sum_{i} \sum_{j \ne i} \frac{q_{i} q_{j}}{|\va*{r}_{i} - \va*{r}_{j}|}
+.\end{eqnarray}
+
+If we further generalize to a continuous charge distribution, we have
+\begin{align}
+    U &= \frac{1}{2} \int \dd[3]{\va*{r}} \rho(\va*{r}) \Phi(\va*{r}) = \frac{\epsilon_0}{2} \int \dd[3]{\va*{r}} [\div{\va*{E}(\va*{r})}] \Phi(\va*{r}) \\
+      &= - \frac{\epsilon_0}{2} \int \dd[3]{\va*{r}} \va*{E}(\va*{r}) \grad \Phi(\va*{r}) = \frac{\epsilon_0}{2} \int |\va*{E}(\va*{r})|^2 \dd[3]{\va*{r}}
+.\end{align}
+From this, we can define the electric energy density as $u_{E} = \epsilon_0 |\va*{E}|^2/2$.
+
+If we imagine pulling off a very small surface element $\dd{S}$ a distance $\dd{x}$ away from teh surface, the potential energy of the surface changes by 
+\begin{eqnarray}
+    \delta{U} = -u_{E} \dd{S} \dd{x} \Rightarrow \delta\va*{F} = -\dv{U}{x} = u_{E} \dd{S}
+.\end{eqnarray}
+The total force on the surface is then found by integrating the energy density over the surface, which is given by
+\begin{eqnarray}
+    u_{E} = \frac{\sigma^2}{2 \epsilon_0}
+,\end{eqnarray}
+where $\sigma$ is the surface charge density on $S$.
+
+
+
+

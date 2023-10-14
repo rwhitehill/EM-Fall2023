@@ -1,0 +1,56 @@
+\chapter{Scalar Potential}
+
+Presumably, one can recognize that \eref{curl-E}, implies that the electrostatic field is irrotational and conservative, and therefore, there exists some scalar potential $\Phi$ such that
+\begin{eqnarray}
+    \label{eq:scalar-potential}
+    \va*{E}(\va*{r}) = - \grad \Phi(\va*{r})
+,\end{eqnarray}
+where the minus sign is a conventional factor (for a nice interpretation).
+
+Now, we prove this fact slightly more rigorously.
+Generally, $\curl{\grad f} = 0$ by Fubini, so if we are lucky enough to find a $\Phi$ that produces $\va*{E}$ via \eref{scalar-potential}, then $\va*{E}$ satisfies all the necessary properties.
+But, how do we know there is such a $\Phi$ for any electrostatic field, which is curlless\footnote{Is this a word?}?
+
+We state a theorem that gives necessary and sufficient conditions for the existence of a scalar potential.
+First, define a simply connected region $\mathcal{R}$ such that for every closed curve $C$ in $\cal R$, then $C$ can be shrunk continuously to a single point entirely in $\cal R$.
+With this, the following statements are equivalent (let $\va*{A}$ be a continuously differentiable vector field and $\mathcal{R}$ be a simply connected region):
+\begin{enumerate}
+    \item $\curl{\va*{A}(\va*{r})} = 0$ for all $\va*{r} \in \mathcal{R}$
+    \item $\displaystyle \oint_{C} \va*{A}(\va*{r}) \cdot \dd{\va*{r}} = 0$ for any closed curve $C$ in $\mathcal{R}$
+    \item There exists $\Phi(\va*{r})$ such that $\va*{A}(\va*{r}) = -\grad \Phi(\va*{r})$
+\end{enumerate}
+
+The proofs are as follows:
+
+\textbf{(1) $\rightarrow$ (2)}: Let $\curl{\va*{A}} = 0$ for all $\va*{r} \in \mathcal{R}$.
+Consider any two curves curves $C_1$ and $C_2$ with the same starting and end points $\va*{a}$ and $\va*{b}$.
+If we define the closed curve $C = C_1 - C_2$ and the surface $S$ such that $S = \partial C$, we have
+\begin{eqnarray}
+    \oint_{C} \va*{A} \cdot \dd{\va*{r}} = \int_{S} \curl{\va*{A}} \cdot \dd{\va*{S}} = 0
+.\end{eqnarray}
+Furthermore, this implies that
+\begin{eqnarray}
+    \int_{C_1} \va*{A} \dd{\va*{r}} = \int_{C_2} \va*{A} \cdot \dd{\va*{r}}
+,\end{eqnarray}
+meaning that the path integral of vector which has no curl is independent of the path, and we can also define a function
+\begin{eqnarray}
+    \label{eq:scalar-potential-def}
+    \Phi(\va*{r}) = \int_{\va*{r}_{0}}^{\va*{r}} \va*{A}(\va*{r}') \cdot \dd{\va*{r}'}
+,\end{eqnarray}
+which is independent of the path chosen between $\va*{r}_0$ and $\va*{r}$.
+
+\textbf{(2) $\rightarrow$ (3)}: Now suppose that $\oint_{C} \va*{A} \cdot \dd{\va*{r}} = 0$ for any closed curve $C$ in $\mathcal{R}$.
+Because of this, we can define the function as in \eref{scalar-potential-def}.
+Let us take the difference of $\Phi$ over a very small path increment $\dd{\va*{r}}$:
+\begin{align}
+    \dd{\Phi} &= \Phi(\va*{r} + \dd{\va*{r}}) - \Phi(\va*{r}) = -\int_{\va*{r}_{0}}^{\va*{r} + \dd{\va*{r}}} \va*{A}(\va*{r}') \cdot \dd{\va*{r}'} + \int_{\va*{r}_{0}}^{\va*{r}} \va*{A}(\va*{r}') \cdot \dd{\va*{r}'} \\
+              &= -\int_{\va*{r}}^{\va*{r} + \dd{\va*{r}}} \va*{A}(\va*{r}') \cdot \dd{\va*{r}'} = - \va*{A}(\va*{r}) \cdot \dd{\va*{r}}
+.\end{align}
+Recall the definition of the gradient: $\dd{\Phi} = \grad \Phi \cdot \dd{\va*{r}}$.
+This is what we have, where
+\begin{eqnarray}
+    \va*{A}(\va*{r}) = - \grad \Phi(\va*{r})
+.\end{eqnarray}
+
+\textbf{(3) $\rightarrow$ (1)}: Suppose $\va*{A} = - \grad \Phi$ for some $\Phi$.
+It is a general fact that $\curl{\grad \Phi} = 0$ for any $\Phi$, and hence that $\curl{\va*{A}} = 0$.

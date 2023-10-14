@@ -1,0 +1,164 @@
+\chapter{Green's Theorem}
+
+Let $\psi_1$ and $\psi_2$ be continuously differentiable functions in a volume $V$ bounded by $S$.
+If we define the vector field $\va*{A} = \psi_1 \grad \psi_2$, then from the divergence theorem we have
+\begin{gather}
+    \int_{S} \va*{A} \cdot \dd{\va*{S}} = \int_{V} \div{\va*{A}} \dd[3]{\va*{r}} \nonumber \\
+    \Rightarrow \int_{S} \psi_1 \pdv{\psi_2}{n} \dd{S} = \int_{V} (\psi_1 \laplacian \psi_2 + \grad \psi_1 \cdot \grad \psi_2) \dd[3]{\va*{r}}
+.\end{gather}
+This is Green's 1st identity.
+
+If we now reverse the roles of $\psi_1$ and $\psi_2$ and subtract the equations, we find Green's theorem:
+\begin{align}
+    \int_{V} ( \psi_1 \laplacian \psi_2 - \psi_2 \laplacian \psi_1 ) \dd[3]{\va*{r}} &= \int_{S} \Big( \psi_1 \pdv{\psi_2}{n} - \psi_2 \pdv{\psi_1}{n} \Big) \dd{S}
+.\end{align}
+
+
+\section{Uniqueness of Solutions to Laplace's and Poisson's Equations}
+
+Suppose that $\Phi_1$ and $\Phi_2$ satisfy the equation $\laplacian \Phi = - \rho/\epsilon_0$.
+Let us define $\psi(\va*{r}) = \Phi_1(\va*{r}) - \Phi_2(\va*{r})$.
+It should be clear that $\psi$ solves Laplace's equation
+\begin{eqnarray}
+    \laplacian \psi = 0
+\end{eqnarray}
+in the volume $V$.
+Using Green's 1st identity with $\psi_1 = \psi_2 = \psi$, we have
+\begin{eqnarray}
+    \label{eq:apply-G1}
+    \int_{S} \psi \pdv{\psi}{n} \dd{S} = \int_{V} (\psi \laplacian \psi + [\grad \psi]^2) \dd[3]{\va*{r}} = \int_{V} (\grad \psi)^2 \dd[3]{\va*{r}}
+.\end{eqnarray}
+
+
+
+\textbf{Dirichlet BC}: Let $\Phi(\va*{r}) = f(\va*{r})$ on $S$.
+
+\textbf{Neumann BC}: Let $\partial \Phi(\va*{r}) / \partial n = g(\va*{r})$ on $S$.
+
+In either case, \eref{apply-G1} gives
+\begin{eqnarray}
+    \int_{V} (\grad \psi)^2 = 0
+.\end{eqnarray}
+Since this is independent of the volume $V$ considered and the integrand is non-negative, it must be that 
+\begin{eqnarray}
+    \grad \psi = 0 \Rightarrow \psi(\va*{r}) = C ~{\rm in}~V
+,\end{eqnarray}
+where $C$ is a constant.
+For Dirichlet boundary conditions, the solution is unique since $C = 0$ by the BCs.
+We cannot, however, make a similar statement about Neumann BCs: the potential is unique up to an additive constant.
+Since only potential differences are physically meaningful, all of our observables are uniquely determined.
+
+\section{Some Comments on the Proof}
+
+For a unique solution (in the sense of the previous section), we must specify either Dirichlet or Neumann BCs.
+We cannot however specify both over $S$ because in general, they are inconsistent and the problem becomes overdetermined.
+It is possible, however, to partition $S$ and specify different conditions on these subsets.
+
+Another note concerns the general difficulty of solving Poisson's or Laplace's equation for a given setup.
+There are several methods/tricks that can be used, which may seem like magic, but because of the uniqueness of the scalar potential, \textit{a solution is the solution} (up to some additive constant for Neumann conditions).
+
+\section{Uniqueness Theorem in an Infinite Region}
+
+Note that our derivation only considered finite volumes, so some more care is needed if we consider an infinite volume and hence a surface at infinity.
+Suppose we have two solutions $\Phi_1$ and $\Phi_2$ again such that $\lim_{r \rightarrow \infty} \Phi(\va*{r}) = \Phi_{\infty}$.
+In general, $\Phi_{1,2} \sim 1/r$ or faster as $r \rightarrow \infty$.
+The linear combination $\psi = \Phi_1 - \Phi_2 \sim 1/r$ as $r \rightarrow \infty$ then and has a gradient $\grad \psi \sim 1/r^2$ as $r \rightarrow \infty$.
+Hence,
+\begin{eqnarray}
+    \int_{V} (\grad \psi)^2 \dd[3]{\va*{r}} = \lim_{R \rightarrow \infty} \int_{S} \psi \pdv{\psi}{n} R^2 \dd{\Omega} = 0
+.\end{eqnarray}
+We then have the same conclusions as before about the uniqueness of $\Phi$.
+
+Sometimes a uniform electric field is specified at infinity.
+If we have $\va*{E} \sim E_0 \vu*{z}$, then $\Phi(z) = K - E_0 z$ with constant $K$.
+Uniqueness holds here because $\Phi(\va*{r}) + E_0 z \rightarrow K + \mathcal{O}(1/r)$ as $r \rightarrow \infty$.
+
+\section{Boundary Conditions at a Conductor}
+
+An ideal conductor is one such that electrons are able to move freely in order to set up a charge distribution.
+For an isolated conductor without an external electric field, it turns out that the most stable configuration for excess charge is the one where they are distributed over the surface (not necessarily uniformly if the surface is not a sphere as we will see).
+By Gauss' law then, the electric field is zero inside the conductor.
+On the other hand, if the conductor is immersed in an external electric field, the charges rearrange themselves, creating an induced electric field which cancels the external one in the volume of the conductor (since otherwise the charges would experience a net force and the conductor would not be in equilibrium).
+Since there is no net electric field inside , it is clear that the conductor is an equipotential surface, which is a defining property of a conductor.
+By convention, we take $\Phi \equiv 0$ for a grounded conductor\footnote{Grounding a conductor connects it to a reservoir of charge so that excess charge can either drain to ``ground'' or be pulled from ground.}.
+
+Another interesting behavior is that since the conductor is in equilibrium the electric field at the surface of the conductor is normal to the surface.
+Otherwise, there would be a net force on the electrons, and the conductor would not be in equilibrium.
+
+Let us now look at BCs with conductors.
+We can place a Gaussian pillbox straddling the surface of the conductor, which we make small enough such that the electric field is constant in the pillbox.
+Gauss' law then reads
+\begin{eqnarray}
+    A \va*{E} \cdot \vu*{n} = \frac{\sigma A}{\epsilon_0} \Rightarrow \va*{E} \cdot \vu*{n} = \frac{\sigma}{\epsilon_0}
+.\end{eqnarray}
+This can also be written in terms of the scalar potential:
+\begin{eqnarray}
+    \sigma = -\epsilon_0 \pdv{\Phi}{n}
+.\end{eqnarray}
+
+
+\section{Capacitance and Potential Energy of Conductors}
+
+If we have a system of $N$ conductors with total charge $q_{i}$ at potential $\Phi_{i}$, the total potential energy of the configuration
+\begin{eqnarray}
+    U = \frac{1}{2} \int_{V} \rho(\va*{r}) \Phi(\va*{r}) \dd[3]{\va*{r}} = \frac{1}{2} \sum_{i=1}^{N} q_{i} \Phi_{i}
+.\end{eqnarray}
+For a given set of charges $\{ q_{i} \} $, the potentials are determined by the field equations, which are linear, implying that 
+\begin{eqnarray}
+    \Phi_{i} = \sum_{j=1}^{N} P_{ij} q_{j}
+,\end{eqnarray}
+or written in matrix form $\va*{\Phi}= \textbf{P} \va*{q}$.
+Alternatively, since the matrix $\textbf{P}$ should be nonsingular, we can invert this relationship to read
+\begin{eqnarray}
+    \va*{q} = \textbf{C} \va*{\Phi}
+.\end{eqnarray}
+The diagonal elements of $\textbf{C}$ give the capacitances of the conductors and the off diagonal elements give the coefficients of induction.
+
+\section{Charged Sphere Inside a Grounded, Conducting Shell}
+
+Consider a grounded, conducting shell of radius $b$, and a sphere with total charge $Q$ of radius $a$ place inside this shell.
+We want to find the potential in the region $a \leq r \leq b$.
+This can be done by noticing that the electric field in this region is just
+\begin{eqnarray}
+    \va*{E} = \frac{Q}{4 \pi \epsilon_0} \frac{1}{r^2}
+,\end{eqnarray}
+implying that the potential
+\begin{eqnarray}
+    \Phi(r) = \frac{Q}{4 \pi \epsilon_0} \frac{1}{r} + \Phi_{0}
+.\end{eqnarray}
+Using the fact that the shell is grounded, we find
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{Q}{4 \pi \epsilon_0} \Big( \frac{1}{r} - \frac{1}{b} \Big)
+.\end{eqnarray}
+We can check that this satisfies Laplace's equation (in the region between the charged sphere and conducting shell):
+\begin{eqnarray}
+    \laplacian \Phi = \frac{1}{r^2} \pdv{r} \Big( r^2 \pdv{\Phi}{r} \Big) = 0
+.\end{eqnarray}
+
+From this, we can also find the induced surface charge density on the conducting shell:
+\begin{eqnarray}
+    \sigma = - \epsilon_0 \pdv{\Phi}{n} = \epsilon_0 \pdv{\Phi}{r}\Big|_{r = b} = -\frac{Q}{4 \pi b^2}
+.\end{eqnarray}
+This result makes intuitive sense since the total induced charge on the conducting shell should be $-Q$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

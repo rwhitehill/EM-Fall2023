@@ -1,0 +1,41 @@
+\chapter{Laplace's and Poisson's Equations}
+
+As a general wisdom, it is easier to deal with the electric potential than the field directly since it is just one function as opposed to three different components.
+To that end, we derive a differential equation for $\Phi$ as follows:
+\begin{eqnarray}
+    \div{\va*{E}(\va*{r})} = \div{-\grad \Phi(\va*{r})} = -\laplacian \Phi(\va*{r}) = \frac{\rho(\va*{r})}{\epsilon_0}
+.\end{eqnarray}
+This is Poisson's equation.
+If there are no sources, it reduces to Laplace's equation
+\begin{eqnarray}
+    \laplacian \Phi(\va*{r}) = 0
+.\end{eqnarray}
+
+As general features, these are both linear, second order partial differential equations for the scalar potential.
+As such, we require some boundary conditions to specify the value of $\Phi$ (or its derivative) on some surface in order to uniquely determine its form.
+
+If we reduce the problem to one-dimension, Poisson's equation is written as
+\begin{eqnarray}
+    \pdv[2]{\Phi}{x} = \lambda
+,\end{eqnarray}
+and has solution $\Phi(x) = \lambda x^2 / 2 + Ax + B$, where $A$ and $B$ are determined by boundary conditions at some points $x_1$ and $x_2$.
+
+\textbf{(1)}: Dirichlet BCs simply specify the potential's value on the surface $S$:
+\begin{eqnarray}
+    \Phi(\va*{r})|_{\va*{r} \in S} = f(\va*{r})
+.\end{eqnarray}
+For example, we may hold a conductor to ground, which specifies $\Phi \equiv 0$ on the surface of the conductor.
+
+\textbf{(2)}: Neumann BCs specify the normal derivative of the potential on the surface $S$ as 
+\begin{eqnarray}
+    \vu*{n} \cdot \grad \Phi = \pdv{\Phi}{n}\Big|_{\va*{r} \in S} = g(\va*{r})
+.\end{eqnarray}
+For example, we may have a situtation where there is a charge on the surface $S$, which defines the electric field and therefore the gradient of the potential on $S$.
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+\chapter{Maxwell Equations}
+
+We have already derived the first of Maxwell's equations, which is just Gauss' law:
+\begin{eqnarray}
+    \div{\va*{E}} = \frac{\rho(\va*{r})}{\epsilon_0}
+,\end{eqnarray}
+derived from the integral form using the divergence theorem since the integral form is independent of the volume considered.
+Actually, it will not need any alteration when we consider non-static electric fields: the flux generally only depends on the total charge enclosed by the surface bounding the volume.
+
+The second of Maxwell's equations concerns the flux of the electric field.
+Note that we can uniquely reconstruct a vector by simply knowing its curl and divergence.
+Observe that 
+\begin{align}
+    \curl{\frac{\va*{r} - \va*{r}_{0}}{|\va*{r} - \va*{r}_{0}|^3}} &=  \grad{ \frac{1}{|\va*{r} - \va*{r}_{0}|^3} } \cross (\va*{r} - \va*{r}_{0}) + \frac{1}{|\va*{r} - \va*{r}_{0}|^3} \curl{(\va*{r} - \va*{r}_{0})} \\
+                                                                   &= -\frac{3(\va*{r} - \va*{r}_{0})}{|\va*{r} - \va*{r}_{0}|^{5}} \cross (\va*{r} - \va*{r}_{0}) + 0 = 0
+,\end{align}
+and therefore
+\begin{eqnarray}
+    \label{eq:curl-E}
+    \curl{\va*{E}} = \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \rho(\va*{r}') \curl{\frac{\va*{r} - \va*{r}'}{|\va*{r} - \va*{r}'|^3}} = 0
+.\end{eqnarray}
+One needs to take some caution though.
+Unlike the first of Maxwell's equations, this second one will certainly change when we move past electrostatics and is a source of rich electrodynamic phenomena.
+
+
+
+
+
+
