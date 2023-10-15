@@ -26,4 +26,9 @@
 \contentsline {section}{\numberline {9.2}Point Charge Near a Grounded Sphere}{21}{section.9.2}%
 \contentsline {section}{\numberline {9.3}Point Charge Near an Isolated, Conducting Sphere at Potential $V$}{23}{section.9.3}%
 \contentsline {section}{\numberline {9.4}Force on charge $q$}{24}{section.9.4}%
-\contentsline {chapter}{Appendices}{25}{section*.2}%
+\contentsline {chapter}{\numberline {10}Formal Solution of Boundary-Value Problems Using Green's Functions}{25}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Diriclet Problem}{26}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Neumann Problem}{26}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Methods of Finding Green's Functions'}{27}{section.10.3}%
+\contentsline {chapter}{Appendices}{29}{section*.2}%
+\contentsline {chapter}{Dirac $\delta $-Function}{31}{appendix*.3}%

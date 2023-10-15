@@ -117,6 +117,7 @@ In this case then, the potential could be expressed as
 
 Finally, we can determine the force exerted on charge $q$ by the sphere as just that exerted by the mirror charges
 \begin{align}
+    \label{eq:force-mirror}
     \va*{F} &= q \va*{E}_{\rm mirror}(\va*{b}) = \frac{q}{4 \pi \epsilon_0} \Bigg( q'\frac{\va*{b} - \va*{b}'}{|\va*{b} - \va*{b}'|^3} + (Q - q') \frac{\va*{b}}{b^3} \Bigg) \nonumber \\
     &= \frac{q}{4 \pi \epsilon_0} \Bigg\{ \frac{q'}{[1 - (a/b)^2]^3 b^3}[1 - (a/b)^2]\va*{b} + (Q - q') \frac{\va*{b}}{b^3} \Bigg\} \nonumber \\
     &= \frac{q}{4 \pi \epsilon_0 b^3} \Bigg\{ Q - q' \Bigg( 1 - \frac{1}{[1 - (a/b)^2]^2} \Bigg) \Bigg\} \va*{b} \nonumber \\
@@ -124,8 +125,11 @@ Finally, we can determine the force exerted on charge $q$ by the sphere as just 
     &= \frac{q}{4 \pi \epsilon_0} \frac{\va*{b}}{b^3} \Bigg\{ Q - \frac{q a^3(2b^2 - a^2)}{b(b^2 - a^2)^2} \Bigg\}
 .\end{align}
 
-
-
-
+It is somewhat difficult to extract physics from \eref{force-mirror} analytically.
+Let us see what happens when we take $b \rightarrow a$:
+\begin{eqnarray}
+    \va*{F} \approx \frac{q}{4 \pi \epsilon_0} \frac{\vu*{b}}{a^2} \Bigg[ Q - \frac{q a^5}{a (2a)^2 (b-a)^2} \Bigg] \sim - \frac{q^2}{4 \pi \epsilon_0} \frac{1}{[2(b-a)]^2} \vu*{b}
+.\end{eqnarray}
+This mimics the form of the force between the source and mirror charges in the plane problem, which is interpreted to mean that when the source charge gets very close to the sphere, the surface becomes almost an infinite plane with a significant amount of induced charge that dominates the force on the source.
 
 

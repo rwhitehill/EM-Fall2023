@@ -1,0 +1,89 @@
+\chapter{Formal Solution of Boundary-Value Problems Using Green's Functions}
+
+In this section we outline a more formally and rigorous way of writing down solutions to Poisson's and Laplace's equations.
+Observe the following general fact:
+\begin{align}
+    \laplacian \frac{1}{|\va*{x} - \va*{x}_{0}|} = -4 \pi \delta(\va*{x} - \va*{x}_{0})
+.\end{align}
+
+We begin with Green's theorem
+\begin{align}
+    \int_{V} &\dd[3]{\va*{x}'} [ \psi_1(\va*{x}') \nabla'^2 \psi_2(\va*{x}') - \psi_2(\va*{x}') \nabla'^2 \psi_1(\va*{x}') ] \nonumber \\
+             &= \int_{S} \dd{S'} \Big[ \psi_1(\va*{x}') \pdv{\psi_2(\va*{x}')}{n'} - \psi_2(\va*{x}') \pdv{\psi_1(\va*{x}')}{n'} \Big]
+.\end{align}
+
+If we let $\psi_1(\va*{x}') = |\va*{x} - \va*{x}'|^{-1}$ and take $\psi_2(\va*{x}') = \Phi(\va*{x}')$, then Green's theorem reduces to 
+\begin{align}
+    \int_{V} &\dd[3]{\va*{x}'} \Bigg[ \frac{1}{|\va*{x} - \va*{x}'|} \nabla'^2 \Phi(\va*{x}') - \Phi(\va*{x}') \nabla'^2 \frac{1}{|\va*{x} - \va*{x}'|} \Bigg] \nonumber \\
+             &= \int_{S} \dd{S'} \Bigg[ \frac{1}{|\va*{x} - \va*{x}'|} \pdv{\Phi(\va*{x}')}{n'} - \Phi(\va*{x}') \pdv{n'} \frac{1}{|\va*{x} - \va*{x}'|} \Bigg]
+.\end{align}
+Simplifying and rearranging gives
+\begin{align}
+    \Phi(\va*{x}) &= \frac{1}{4 \pi \epsilon_0} \int_{V} \frac{\rho(\va*{x}')}{|\va*{x} - \va*{x}'|} \dd[3]{\va*{x}'} \nonumber \\
+                  &+ \frac{1}{4 \pi} \int_{S} \Bigg[ \frac{1}{|\va*{x} - \va*{x}'|} \pdv{\Phi(\va*{x}')}{n'} - \Phi(\va*{x}') \pdv{n'} \frac{1}{|\va*{x} - \va*{x}'|} \Bigg] \dd{S'}
+.\end{align}
+At this point, we can solve for the potential due to a source charge distribution and by specifying the boundary conditions for $\Phi$.
+The function $G(\va*{x},\va*{x}') = |\va*{x} - \va*{x}'|^{-1}$ is called the Green's function for this problem.
+Note that the Green's function is not unique.
+It simply satisfies
+\begin{align}
+    \nabla'^2 G(\va*{x},\va*{x}') = -4 \pi \delta(\va*{x} - \va*{x}')
+,\end{align}
+so we can always shift our Green's function as $G \rightarrow G + F$, where $F(\va*{x},\va*{x}')$ is a solution of Laplace's equation.
+Thus, we can generally write
+\begin{align}
+    \label{eq:phi-G}
+    \Phi(\va*{x}) &= \frac{1}{4 \pi \epsilon_0} \int_{V} G(\va*{x},\va*{x}') \rho(\va*{x}') \dd[3]{\va*{x}'} \nonumber \\
+                  &+ \frac{1}{4 \pi} \int_{S} \Bigg[ G(\va*{x},\va*{x}') \pdv{\Phi(\va*{x}')}{n'} - \Phi(\va*{x}') \pdv{G(\va*{x},\va*{x}')}{n'} \Bigg] \dd{S'}
+.\end{align}
+We will exploit this fact to make solving \eref{phi-G} simpler in the context of a specific set of BCs since we cannot simultaneously specify Dirichlet or Neumann BCs.
+
+\section{Diriclet Problem}
+
+If we specify the value of $\Phi$ on the surface $S$, we choose $G(\va*{x},\va*{x}') = G_{D}(\va*{x},\va*{x}')$ such that $G_{D}(\va*{x},\va*{x}') = 0$ if $\va*{x} \in S$.
+\eref{phi-G} then reduces to
+\begin{align}
+    \Phi(\va*{x}) = \frac{1}{4 \pi \epsilon_0} \int_{V} G_{D}(\va*{x},\va*{x}') \rho(\va*{x}') \dd[3]{\va*{x}'} - \frac{1}{4 \pi} \int_{S} \Phi(\va*{x}') \pdv{G_{D}(\va*{x},\va*{x}')}{n'} \dd{S'}
+.\end{align}
+
+One useful fact about $G_{D}$ is that it satisfies a reciprocity relation: $G_{D}(\va*{x},\va*{y}) = G_{D}(\va*{y},\va*{x})$.
+This can be seen by Green's theorem with the choice $\psi_1(\va*{x}') = G_{D}(\va*{x},\va*{x}')$ and $\psi_2(\va*{x}') = G_{D}(\va*{x}',\va*{y})$:
+\begin{align}
+    \int_{V} &\dd[3]{\va*{x}'} \big[ G_{D}(\va*{x},\va*{x}') \nabla'^2 G_{D}(\va*{x}',\va*{y}) - G_{D}(\va*{x}',\va*{y}) \nabla'^2 G_{D}(\va*{x},\va*{x}') \big] \nonumber \\
+             &= \int_{S} \dd{S'} \vu*{n}' \cdot \Bigg[ G_{D}(\va*{x},\va*{x}') \grad' G_{D}(\va*{x}',\va*{y}) - G_{D}(\va*{x}',\va*{y}) \grad' G_{D}(\va*{x},\va*{x}') \Bigg]
+.\end{align}
+Thus, using the definition of the Diriclet Green's function
+\begin{eqnarray}
+    -4 \pi \big[ G_{D}(\va*{x},\va*{y}) - G_{D}(\va*{y},\va*{x}) \big] = 0 \Rightarrow G_{D}(\va*{x},\va*{y}) = G_{D}(\va*{y},\va*{x})
+.\end{eqnarray}
+
+
+\section{Neumann Problem}
+
+Suppose we instead specify the value of $\partial \Phi/ \partial n$ on the surface.
+In this case, it is tempting to make a similar argument as in the previous section and eliminate the second term in the surface integration such that we only have the first term.
+But this is not generally possible.
+Observe that $G_{N}$ must satisfy
+\begin{align}
+    \int_{S} \dd{S'} \pdv{G_{N}(\va*{x},\va*{x}')}{n'} = \int_{V} \dd[3]{\va*{x}'} \nabla'^2 G_{N}(\va*{x},\va*{x}') = - 4 \pi
+,\end{align}
+and hence, it is not possible to assert that $\partial G_{N} / \partial n \equiv 0$.
+
+Another choice that makes the problem solvable is by choosing $G_{N}$ such that
+\begin{align}
+    \pdv{G_{N}(\va*{x},\va*{x}')}{n'} = -\frac{4 \pi}{S} ~{\rm for}~\va*{x}' \in S
+,\end{align}
+where $S$ (in the denominator) is the surface area of $S$.
+In this case, the solution becomes
+\begin{align}
+    \Phi(\va*{x}) &= \frac{1}{4 \pi \epsilon_0} \int_{V} \dd[3]{\va*{x}'} G_{N}(\va*{x},\va*{x}') \rho(\va*{x}') + \frac{1}{4 \pi} \int_{S} \dd{S'} G_{N}(\va*{x},\va*{x}') \pdv{\Phi(\va*{x}')}{n'} \\
+                  &+ \frac{1}{S} \int_{S} \dd{S'} \Phi(\va*{x}')
+.\end{align}
+Notice that the last term is just the average value of $\Phi$ over the surface $S$.
+
+\section{Methods of Finding Green's Functions'}
+
+
+
+
+

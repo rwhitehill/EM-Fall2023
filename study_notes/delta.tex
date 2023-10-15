@@ -1,0 +1,80 @@
+\chapter{Dirac $\delta$-Function}
+
+The delta-function was introduced in an early chapter, but only in a brief manner.
+Here we elaborate a bit further on its definition and more properties.
+A slightly rigorous definition of the Dirac $\delta$-function is the following:
+\begin{enumerate}
+    \item $\delta(x - a) = 0$ if $x \ne a$
+    \item $\int_{\mathcal{R}} \delta(x - a) \dd{x} = 1$ if $a \in \mathcal{R}$
+\end{enumerate}
+
+Strictly speaking, the delta function is not actually a function in the traditional sense.
+Rather it is a distribution, but for our purposes, this will not be a crucial distinction.
+
+Notice that for a non-pathological function (typically called a test-function) that has a Taylor series
+\begin{eqnarray}
+    \label{eq:f-delta}
+    \int_{\mathcal{R}} f(x) \delta(x - a) = \begin{cases}
+        f(a) & a \in \mathcal{R} \\
+        0 & a \not\in \mathcal{R}
+    .\end{cases}
+\end{eqnarray}
+
+Another working definition of the $\delta$-function is as the limit of a sequence of some functions $(\delta_{\epsilon}(x))$, where $\epsilon$ is some real or integer index, such that
+\begin{enumerate}
+    \item $\displaystyle \lim_{\epsilon \rightarrow \infty} \delta_{\epsilon}(x - a) = 0$ if $x \ne a$
+    \item $\displaystyle \lim_{\epsilon \rightarrow \infty} \int_{\mathcal{R}} \delta_{\epsilon}(x-a) \dd{x} = 1$ if $a \in \mathcal{R}$
+\end{enumerate}
+It can be shown using the Taylor series of the test function that \eref{f-delta} still holds. 
+One particularly useful example of such a sequence is the Gaussian, whose width goes to zero:
+\begin{align}
+    \delta_{\epsilon}(x) = \sqrt{\frac{\epsilon}{\pi}} e^{-\epsilon (x - a)^2}
+.\end{align}
+
+Next, we enumerate some properties of the delta function.
+Note that by equality of two $\delta$-functions $D_1(x)$ and $D_2(x)$, we really mean that
+\begin{eqnarray}
+    \int_{-\infty}^{\infty} f(x) D_{1}(x) \dd{x} = \int_{-\infty}^{\infty} f(x) D_{2}(x) \dd{x}
+.\end{eqnarray}
+
+\textbf{(1)} $\delta(x) = \theta'(x)$, where
+\begin{align}
+    \theta(x) = \begin{cases}
+        1 & x > 0 \\
+        0 & x < 0
+    .\end{cases}
+\end{align}
+
+\textbf{(2)}
+\begin{align}
+    \int_{-\infty}^{\infty} \dd{x} f(x) \delta'(x - a) &= f(x) \delta(x - a) |_{-\infty}^{\infty} - \int f'(x) \delta(x - a) \dd{x} \nonumber \\
+                                                       &= -f'(a)
+.\end{align}
+
+\textbf{(3)} $\delta(\gamma x) = \delta(x) / |\gamma|$
+
+\textbf{(4)} If $g(x)$ is a function with only simple roots $x_{i}$
+\begin{align}
+    \delta(g(x)) = \sum_{i} \frac{\delta(x - x_{i})}{|g'(x_{i})|}
+.\end{align}
+
+We can extend the definition of the one dimensional $\delta$-function to three-dimensional cartesian coordinates as
+\begin{align}
+    \delta^{(3)}(\va*{x} - \va*{X}) = \delta(x - X) \delta(y - Y) \delta(z - Z)
+.\end{align}
+The basic properties follow directly from the defintion of the one-dimensional $\delta$-function:
+\begin{align}
+    &(a)~\delta^{(3)}(\va*{x} - \va*{X}) = 0~{\rm if}~\va*{x} \ne \va*{X} \\
+    &(b)~\int_{\mathcal{R}} \delta^{(3)}(\va*{x} - \va*{X}) \dd[3]{\va*{x}} = \begin{cases}
+        1 & \va*{X} \in \mathcal{R} \\
+        0 & {\rm otherwise}
+    \end{cases}
+.\end{align}
+Furthermore, we can extend the definition of the three-dimensional $\delta$-function to curvilinear coordinates using the notion of equivalence of delta functions.
+
+
+
+
+
+
+
