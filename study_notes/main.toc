@@ -29,6 +29,7 @@
 \contentsline {chapter}{\numberline {10}Formal Solution of Boundary-Value Problems Using Green's Functions}{25}{chapter.10}%
 \contentsline {section}{\numberline {10.1}Diriclet Problem}{26}{section.10.1}%
 \contentsline {section}{\numberline {10.2}Neumann Problem}{26}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Methods of Finding Green's Functions'}{27}{section.10.3}%
-\contentsline {chapter}{Appendices}{29}{section*.2}%
-\contentsline {chapter}{Dirac $\delta $-Function}{31}{appendix*.3}%
+\contentsline {section}{\numberline {10.3}Methods of Finding Green's Functions}{27}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Dirichlet Green Function for the Sphere}{28}{section.10.4}%
+\contentsline {chapter}{Appendices}{31}{section*.2}%
+\contentsline {chapter}{Dirac $\delta $-Function}{33}{appendix*.3}%
