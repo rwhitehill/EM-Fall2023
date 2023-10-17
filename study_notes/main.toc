@@ -13,23 +13,23 @@
 \contentsline {chapter}{\numberline {6}Conservative Forces}{13}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Conservative Forces}{13}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Potential Energy of a Charge Distribution}{14}{section.6.2}%
-\contentsline {chapter}{\numberline {7}Laplace's and Poisson's Equations}{15}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Green's Theorem}{17}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Uniqueness of Solutions to Laplace's and Poisson's Equations}{17}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Some Comments on the Proof}{18}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Uniqueness Theorem in an Infinite Region}{18}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Boundary Conditions at a Conductor}{18}{section.8.4}%
-\contentsline {section}{\numberline {8.5}Capacitance and Potential Energy of Conductors}{19}{section.8.5}%
-\contentsline {section}{\numberline {8.6}Charged Sphere Inside a Grounded, Conducting Shell}{20}{section.8.6}%
-\contentsline {chapter}{\numberline {9}Method of Images}{21}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Charge Above an Infinite Grounded Plane}{21}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Point Charge Near a Grounded Sphere}{21}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Point Charge Near an Isolated, Conducting Sphere at Potential $V$}{23}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Force on charge $q$}{24}{section.9.4}%
-\contentsline {chapter}{\numberline {10}Formal Solution of Boundary-Value Problems Using Green's Functions}{25}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Diriclet Problem}{26}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Neumann Problem}{26}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Methods of Finding Green's Functions}{27}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Dirichlet Green Function for the Sphere}{28}{section.10.4}%
-\contentsline {chapter}{Appendices}{31}{section*.2}%
-\contentsline {chapter}{Dirac $\delta $-Function}{33}{appendix*.3}%
+\contentsline {chapter}{\numberline {7}Laplace's and Poisson's Equations}{17}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Green's Theorem}{19}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Uniqueness of Solutions to Laplace's and Poisson's Equations}{19}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Some Comments on the Proof}{20}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Uniqueness Theorem in an Infinite Region}{20}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Boundary Conditions at a Conductor}{20}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Capacitance and Potential Energy of Conductors}{21}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Charged Sphere Inside a Grounded, Conducting Shell}{22}{section.8.6}%
+\contentsline {chapter}{\numberline {9}Method of Images}{23}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Charge Above an Infinite Grounded Plane}{23}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Point Charge Near a Grounded Sphere}{23}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Point Charge Near an Isolated, Conducting Sphere at Potential $V$}{25}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Force on charge $q$}{26}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Formal Solution of Boundary-Value Problems Using Green's Functions}{27}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Diriclet Problem}{28}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Neumann Problem}{28}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Methods of Finding Green's Functions}{29}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Dirichlet Green Function for the Sphere}{30}{section.10.4}%
+\contentsline {chapter}{Appendices}{33}{section*.2}%
+\contentsline {chapter}{Dirac $\delta $-Function}{35}{appendix*.3}%

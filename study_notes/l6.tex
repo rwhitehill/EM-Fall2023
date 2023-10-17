@@ -52,9 +52,9 @@ If we further generalize to a continuous charge distribution, we have
 .\end{align}
 From this, we can define the electric energy density as $u_{E} = \epsilon_0 |\va*{E}|^2/2$.
 
-If we imagine pulling off a very small surface element $\dd{S}$ a distance $\dd{x}$ away from teh surface, the potential energy of the surface changes by 
+If we imagine pulling off a very small surface element $\dd{S}$ a distance $\dd{x}$ away from the surface, the potential energy of the surface changes by 
 \begin{eqnarray}
-    \delta{U} = -u_{E} \dd{S} \dd{x} \Rightarrow \delta\va*{F} = -\dv{U}{x} = u_{E} \dd{S}
+    \delta{U} = -u_{E} \dd{S} \dd{x} \Rightarrow \delta\va*{F} = -\dv{U}{x} = u_{E} \dd{\va*{S}}
 .\end{eqnarray}
 The total force on the surface is then found by integrating the energy density over the surface, which is given by
 \begin{eqnarray}
@@ -62,6 +62,30 @@ The total force on the surface is then found by integrating the energy density o
 ,\end{eqnarray}
 where $\sigma$ is the surface charge density on $S$.
 
+We can derive this another way (Griffith's pg. 104).
+The force on a patch of size $\dd{S}$ is
+\begin{eqnarray}
+    \dd{\va*{F}} = \va*{E} \dd{q} = \sigma \va*{E} \dd{S}
+.\end{eqnarray}
+Note that $\va*{E}$ is the electric field attributable to all points at the surface element $\dd{S}$ except for the patch itself.
+We know in general that the electric field is discontinous at the surface, and this discontinuity is exactly attributable to the surface charge $\sigma \dd{S}$ via $(\va*{E}_{\rm out} - \va*{E}_{\rm in}) \cdot \vu*{n}= \sigma/\epsilon_0$.
+At this point, note that $\va*{E}_{\rm out} = \va*{E} + \va*{E}_{\rm patch}$ and $\va*{E}_{\rm in} = \va*{E} - \va*{E}_{\rm patch}$, giving
+\begin{eqnarray}
+    \va*{E}_{\rm patch} \cdot \vu*{n} = \frac{\sigma}{2 \epsilon_0}
+,\end{eqnarray}
+and therefore,
+\begin{eqnarray}
+    \va*{E} = \frac{1}{2} (\va*{E}_{\rm out} + \va*{E}_{\rm in})
+,\end{eqnarray}
+which is just the average of the fields inside and outside the volume bounded by $S$.
+If we specialize to conductors, then we know $\va*{E}_{\rm in} = 0$ and $\va*{E}_{\rm out} = (\sigma/\epsilon_0) \vu*{n}$, which gives
+\begin{eqnarray}
+    \va*{E} = \frac{\sigma}{2 \epsilon_0}
+,\end{eqnarray}
+and 
+\begin{eqnarray}
+    \dd{\va*{F}} = \frac{\sigma^2}{2 \epsilon_0} \dd{\va*{S}}
+.\end{eqnarray} 
 
 
 
