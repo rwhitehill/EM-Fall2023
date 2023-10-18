@@ -1,0 +1,242 @@
+\def\duedate{\today}
+\def\HWnum{6}
+\input{../preamble.tex}
+
+\begin{document}
+
+\prob{1}{
+
+Two concentric spheres have radii $a,b$ ($b > a$) and each is divided into two hemispheres by the same horizontal plane.
+The upper hemisphere of the inner sphere and the lower hemisphere of the outer sphere are maintained at potential $V$.
+The other hemispheres are at zero potential.
+
+Determine the potential in the region $a \leq r \leq b$ as a series in Legendre polynomials.
+Include terms at least up to $l = 4$.
+Check your solution against known results in the limiting cases $b \rightarrow \infty$, and $a \rightarrow 0$.
+
+}
+
+\sol{
+
+Since the problem is rotationally symmetric about the axis perpendicular to the plane separating the hemispheres of the cylinder, passing through the center of the spheres, we can write the potential as
+\begin{align}
+    \Phi(r,\phi) = \sum_{l=0}^{\infty} \Big( A_{l} r^{l} + B_{l} r^{-l-1} \Big) P_{l}(\cos{\theta})
+.\end{align}
+Note that we must keep both terms with $r$-dependence since there is no singular behavior over the region of interest.
+We have two boundary conditions: 
+\begin{align}
+    \Phi(a,\theta) = \begin{cases}
+        V & -\pi/2 < \theta < \pi/2 \\
+        0 & \pi/2 < \theta < 3 \pi / 2
+    ,\end{cases}
+    \quad
+    \Phi(b,\theta) = \begin{cases}
+        V & \pi/2 < \theta < 3 \pi / 2 \\
+        0 & -\pi/2 < \theta < \pi/2
+    .\end{cases}
+\end{align}
+We can exploit the orthogonality of legendre polynomials
+\begin{align}
+    \int_{-1}^{1} \dd{x} P_{l}(x) P_{l'}(x) = \int_{0}^{\pi} \dd{\theta} \sin{\theta} P_{l}(\cos{\theta}) P_{l'}(\cos{\theta}) = \frac{2}{2l+1} \delta_{ll'}
+.\end{align}
+Hence, at $r = a$ and $r = b$, respectively, we have
+\begin{align}
+    A_{l} a^{l} + B_{l} a^{-l-1} &= \frac{2l+1}{2} V \int_{0}^{\pi/2} \sin{\theta} P_{l}(\cos{\theta}) \dd{\theta} = \frac{2l+1}{2} V \int_{0}^{1} P_{l}(x) \dd{x} \\
+    A_{l} b^{l} + B_{l} b^{-l-1} &= \frac{2l+1}{2} V \int_{\pi/2}^{\pi} \sin{\theta} P_{l}(\cos{\theta}) \dd{\theta} = \frac{2l+1}{2} (-1)^{l} V \int_{0}^{1} P_{l}(x) \dd{x}
+.\end{align}
+Solving this system of equations gives
+\begin{align}
+    A_{l} &= \frac{2l+1}{2} \frac{a^{l+1}-(-1)^{l} b^{l+1}}{a^{2l+1}-b^{2l+1}} V \int_{0}^{1} P_{l}(x) \dd{x} \\
+    B_{l} &= \frac{2l+1}{2} \frac{a^{l+1}b^{l+1} [(-1)^{l}a^{l}-b^{l}]}{a^{2l+1}-b^{2l+1}} V \int_{0}^{1} P_{l}(x) \dd{x}
+.\end{align}
+Thus, the potential for $a \leq r \leq b$ becomes
+\begin{align}
+    \Phi(r,\theta) = \frac{V}{2} \sum_{l=0}^{\infty} \frac{2l+1}{a^{2l+1} - b^{2l+1}} &\Big[ (a^{l+1} - (-1)^{l} b^{l+1}) r^{l} + a^{l+1}b^{l+1}((-1)^{l}a^{l} - b^{l}) r^{-l-1} \Big] \nonumber \\
+    &\times \Big[ \int_{0}^{1} \dd{y} P_{l}(y) \Big] P_{l}(\cos{\theta})
+.\end{align}
+We can go further and evaluate the integral of the Legendre polynomial as follows:
+\begin{align}
+    \int_{0}^{1} P_{l}(x) \dd{x} = \frac{1}{2l+1} \int_{0}^{1} [ P_{l+1}(x) - P_{l-1}(x) ] \dd{x} = \frac{P_{l-1}(0) - P_{l+1}(0)}{2l+1}
+.\end{align}
+Note that for even $l$, and therefore odd $l \pm 1$, the integral is zero.
+Furthermore note that we must be careful in the case $l=0$ since we have not defined $P_{l}$ for $l < 0$:
+\begin{align}
+    \int_{0}^{1} P_{0}(x) \dd{x} = 1
+.\end{align}
+Putting this into our expression for the potential:
+\begin{align}
+    \Phi(r,\theta) = \frac{V}{2} \Bigg( 1 + \sum_{l=0}^{\infty} [P_{2l}(0) - P_{2(l+1)}(0)] &\Bigg[ \frac{a^{2(l+1)} + b^{2(l+1)}}{a^{4l+3} - b^{4l+3}} r^{2l+1} - \frac{a^{2(l+1)}b^{2(l+1)}(a^{2l+1} + b^{2l+1})}{a^{4l+3} - b^{4l+3}} r^{-2(l+1)} \Bigg] \nonumber \\
+    &\times P_{2l+1}(\cos{\theta})  \Bigg)
+,\end{align}
+where we have redefined $l \rightarrow 2l+1$ to only capture the non-zero terms.
+Through the first 4 terms (of the original sum indices)
+\begin{align}
+    \Phi(r,\theta) &= \frac{V}{2} \Bigg\{ 1 + \frac{3}{2} \frac{[a^{2} - b^{2}] r - a^{2}b^{2}[a + b] r^{-2}}{a^{3} - b^{3}} P_{1}(\cos{\theta}) \nonumber \\
+    &- \frac{7}{8} \frac{[a^{4} - b^{4}] r^{3} - a^{4}b^{4}[a^{3} + b^{3}] r^{-4}}{a^{7} - b^{7}} P_{3}(\cos{\theta}) + \ldots \Bigg\}
+.\end{align}
+
+If we take $b \rightarrow \infty$, we have
+\begin{align}
+    A_{l} \rightarrow 0 ~{\rm and}~ B_{l} \rightarrow \frac{V}{2} [P_{l-1}(0) - P_{l+1}(0)] a^{l+1} V
+,\end{align}
+giving
+\begin{align}
+    \Phi(r,\theta)\Big|_{b \rightarrow \infty} = \frac{V}{2} + \frac{V}{2} \sum_{l=0}^{\infty} [ P_{2l}(0) - P_{2(l+1)}(0) ] \Big( \frac{a}{r} \Big)^{2(l+1)} P_{2l+1}(\cos{\theta})
+.\end{align}
+
+If we instead take $a \rightarrow 0$, we obtain
+\begin{align}
+    A_{l} \rightarrow \frac{V}{2} [P_{l-1}(0) - P_{l+1}(0)] (-1)^{l} b^{-l} ~{\rm and}~ B_{l} \rightarrow 0
+,\end{align}
+giving
+\begin{align}
+    \Phi(r,\theta)\Big|_{a \rightarrow 0} = \frac{V}{2} + \frac{V}{2} \sum_{l=0}^{\infty} [P_{2l}(0) - P_{2(l+1)}(0)] \Big( \frac{r}{b} \Big)^{2l+1} P_{2l+1}(\cos{\theta})
+.\end{align}
+
+
+}
+
+
+\prob{2}{
+
+A spherical surface of radius $R$ has charge uniformly distributed over its surface with a density $Q/4 \pi R^2$, except for a spherical cap at the north pole, defined by the cone $\theta = \alpha$.
+
+(a) Show that the potential inside the spherical surface can be expressed as
+\begin{eqnarray}
+    \Phi = \frac{Q}{8 \pi \epsilon_0} \sum_{l = 0}^{\infty} \frac{1}{2 l + 1} [ P_{l+1}(\cos{\alpha}) + P_{l-1}(\cos{\alpha}) ] \frac{r^{l}}{R^{l+1}} P_{l}(\cos{\theta})
+\end{eqnarray}
+where, for $l = 0$, $P_{l-1}(\cos{\alpha}) = -1$.
+What is the potential outside?
+
+(b) Find the magnitude and the direction of the electric field at the origin.
+
+(c) Discuss the limiting forms of the potential (part (a)) and electric field (part (b)) as the spherical cap becomes (1) very small, and (2) so large that the area with charge on it becomes a very small cap at the south pole.
+
+}
+
+\sol{
+
+(a) This problem again has azimuthal symmetry because of the rotational invariance about the axis of the cone, meaning
+\begin{eqnarray}
+    \Phi_{\rm in}(r,\theta) = \sum_{l=0}^{\infty} A_{l} r^{l} P_{l}(\cos{\theta})
+,\end{eqnarray}
+inside the sphere, and
+\begin{eqnarray}
+    \Phi_{\rm out}(r,\theta) = \sum_{l=0}^{\infty} B_{l} r^{-l-1} P_{l}(\cos{\theta})
+.\end{eqnarray}
+Note that technically, we could include a constant term in the potential outside the sphere, but this must be zero since the potential at infinity is zero (the charge distribution far from the sphere is just that of a point charge).
+
+Specifying the charge density amounts to specifying the derivative of the potential over the surface:
+\begin{eqnarray}
+    -\pdv{\Phi_{\rm out}}{r} + \pdv{\Phi_{\rm in}}{r} = \frac{\sigma}{\epsilon_0} = \frac{Q}{4 \pi \epsilon_0 R^2} \Theta(\theta - \alpha)
+,\end{eqnarray}
+where $\Theta(x)$ is the Heaviside step function.
+Taking derivatives, we find
+\begin{eqnarray}
+    \sum_{l=0}^{\infty} [ (l+1) B_{l} r^{-l-2} + l A_{l} r^{l-1} ] P_{l}(\cos{\theta}) = \frac{Q}{4 \pi \epsilon_0 R^2} \Theta(\theta - \alpha)
+.\end{eqnarray}
+Using the orthogonality relation for Legendre polynomials, we find
+\begin{align}
+    (l+1) B_{l} R^{-l} + l A_{l} R^{l+1} &= (2l+1) \frac{Q}{8 \pi \epsilon_0} \int_{\alpha}^{\pi} \sin{\theta} P_{l}(\cos{\theta}) \dd{\theta} \nonumber \\
+    &= \frac{Q}{8 \pi \epsilon_0} [ P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha}) ]
+,\end{align}
+where we have defined $P_{-1}(0) = -1$ in order to include the $l=0$ term implicitly.
+
+Observe that we also have a BC at $r = R$, where we impose continuity of the potential:
+\begin{eqnarray}
+    \sum_{l=0}^{\infty} A_{l} R^{l} P_{l}(\cos{\theta}) = \sum_{l=0}^{\infty} B_{l} R^{-l-1} P_{l}(\cos{\theta}) \Rightarrow B_{l} = A_{l} R^{2l+1}
+.\end{eqnarray}
+Putting this into the first BC, we have
+\begin{eqnarray}
+    A_{l} = \frac{Q}{8 \pi \epsilon_0} \frac{1}{(2l+1) R^{l+1}} [ P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha}) ]
+,\end{eqnarray}
+and therefore
+\begin{eqnarray}
+    B_{l} = \frac{Q}{8 \pi \epsilon_0} \frac{R^{l}}{2l+1} [ P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha}) ]
+.\end{eqnarray}
+
+Thus, the potential inside the sphere is
+\begin{eqnarray}
+    \Phi(r,\theta) = \frac{Q}{8 \pi \epsilon_0} \sum_{l=0}^{\infty} \frac{P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha})}{2l+1} \frac{r^{l}}{R^{l+1}} P_{l}(\cos{\theta})
+,\end{eqnarray}
+and outside the sphere
+\begin{eqnarray}
+    \Phi(r,\theta) = \frac{Q}{8 \pi \epsilon_0} \sum_{l=0}^{\infty} \frac{P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha})}{2l + 1} \frac{R^{l}}{r^{l+1}} P_{l}(\cos{\theta})
+.\end{eqnarray}
+
+(b) The electric field inside the sphere is given by
+\begin{eqnarray}
+    \va*{E} = -\grad \Phi = -\vu*{r} \pdv{\Phi}{r} + \vu*{\theta} \frac{1}{r} \pdv{\Phi}{\theta}
+.\end{eqnarray}
+Hence,
+\begin{align}
+    \va*{E} &= \vu*{r} \frac{Q}{8 \pi \epsilon_0} \sum_{l=1}^{\infty} \frac{l [ P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha}) ]}{2l+1} \frac{r^{l-1}}{R^{l+1}} P_{l}(\cos{\theta}) \nonumber \\
+    &+ \vu*{\theta} \frac{Q}{4 \pi \epsilon_0} \sum_{l=0}^{\infty} \frac{P_{l-1}(\cos{\alpha}) - P_{l+1}(\cos{\alpha})}{2l+1} \frac{r^{l-1}}{R^{l+1}} \pdv{P_{l}(\cos{\theta})}{\theta}
+.\end{align}
+
+At the origin, the angular dependence only comes from the $l=1$ term since the derivative of $P_{0}$ is zero and each higher-order term is proportional to a positive power of $r$.
+This leaves us with
+\begin{eqnarray}
+    \va*{E} = \frac{Q}{8 \pi \epsilon_0} \frac{P_{0}(\cos{\alpha}) - P_{2}(\cos{\alpha})}{3 R^2} [ \cos{\theta}\vu*{r} - \sin{\theta} \vu*{\theta} ]
+.\end{eqnarray}
+Since,
+\begin{eqnarray}
+    \vu*{r} = \sin{\theta} \cos{\phi} \vu*{x} + \sin{\theta} \sin{\phi} \vu*{y} + \cos{\theta} \vu*{z} \\
+    \vu*{\theta} = \cos{\theta} \cos{\phi} \vu*{x} + \cos{\theta} \sin{\phi} \vu*{y} - \sin{\theta} \vu*{z}
+,\end{eqnarray}
+we have
+\begin{eqnarray}
+    \va*{E} = \frac{Q}{8 \pi \epsilon_0} \frac{2 - 3\cos^2{\alpha} + 1}{6 R^2} \vu*{z} = \frac{Q}{16 \pi \epsilon_0 R^2} \sin^2{\alpha} \, \vu*{z}
+.\end{eqnarray}
+From symmetry considerations, we can see that this at least points in the right direction.
+
+(c) $\alpha \rightarrow 0$: In this case, we approach a sphere with a uniform surface charge density, so the electric field at the center is zero (actually everywhere else too), and the potential approaches the result of problem (1) with $a \rightarrow 0$, $b = R$, and $V = Q/[4 \pi \epsilon_0 R]$.
+
+$\alpha \rightarrow \pi$:
+In this case, we can define $\beta = \pi - \alpha$, which approaches 0 in this limit.
+Here, we essentially have a setup with no charge, so there is no electric field and the potential is also zero since $\cos{\alpha} \rightarrow 1$ and $P_{l-1}(1) - P_{l+1}(1) = 0$.
+
+{\color{red} Refine this to include higher order terms}
+
+}
+
+
+\prob{3}{
+
+A thin, flat, conducting, circular disc of radius $R$ is located int he $x-y$ plane with its center at the origin, and is maintained at a fixed potential $V$.
+With the information that the charge density on a disc at fixed potential is proportional to $(R^2 - \rho^2)^{-1/2}$, where $\rho$ is the distance out from the center of the disc,
+
+(a) show that for $r > R$, the potential is
+\begin{align}
+    \Phi(r,\theta,\phi) = \frac{2 V}{\pi} \frac{R}{r} \sum_{l=0}^{\infty} \frac{(-1)^{l}}{2l+1} \Big(  \frac{R}{r} \Big)^{2l} P_{2l}(\cos{\theta})
+.\end{align}
+
+(c) find the potential for $r < R$.
+
+(c) What is the capacitance of the disc?
+
+}
+
+\sol{}
+
+\prob{4}{
+
+    Three point charges $(q,-2q,q)$ are located in a straight line with separation $a$ and with the middle charge $(-2q)$ at the origin of a grounded conducting spherical shell of radius $b$.
+
+(a) Write down the potential of the three charges in the absence of the grounded sphere.
+Find the limiting form of the potential as $a \rightarrow 0$, but the product $qa^2 = Q$ remains finite.
+Write this latter answer in spherical coordinates.
+
+(b) The presence of the grounded sphere of radius $b$ alters the potential for $r < b.$
+The added potential can be viewed as caused by the surface-charge density induced on the inner surface at $r = b$ or by image charges located at $r > b$.
+Use linear superposition to satisfy the boundary conditions and find the potential everywhere inside the sphere for $r < a$ and $r > a$.
+Show that in the limit $a \rightarrow 0$,
+\begin{align}
+    \Phi(r,\theta,\phi) \rightarrow \frac{Q}{2 \pi \epsilon_0 r^3} \Big( 1 - \frac{r^{5}}{b^{5}} \Big) P_{2}(\cos{\theta})
+.\end{align}
+
+}
+
+
+
+\end{document}
