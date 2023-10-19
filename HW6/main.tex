@@ -190,11 +190,19 @@ we have
 .\end{eqnarray}
 From symmetry considerations, we can see that this at least points in the right direction.
 
-(c) $\alpha \rightarrow 0$: In this case, we approach a sphere with a uniform surface charge density, so the electric field at the center is zero (actually everywhere else too), and the potential approaches the result of problem (1) with $a \rightarrow 0$, $b = R$, and $V = Q/[4 \pi \epsilon_0 R]$.
+(c) $\alpha \rightarrow 0$: In this case, the electric field at the center is
+\begin{eqnarray}
+    \va*{E} \approx \frac{Q}{16 \pi \epsilon_0 R^2} \alpha^2 \, \vu*{z}
+,\end{eqnarray}
+and the potential approaches the result of problem (1) with $a \rightarrow 0$, $b = R$, and $V = Q/[4 \pi \epsilon_0 R]$.
 
 $\alpha \rightarrow \pi$:
-In this case, we can define $\beta = \pi - \alpha$, which approaches 0 in this limit.
-Here, we essentially have a setup with no charge, so there is no electric field and the potential is also zero since $\cos{\alpha} \rightarrow 1$ and $P_{l-1}(1) - P_{l+1}(1) = 0$.
+In this case, we can define $\beta = \pi - \alpha$, which is very small in this limit.
+The electric field is then just
+\begin{eqnarray}
+    \va*{E} \approx \frac{Q}{16 \pi \epsilon R^2} \beta^2 \, \vu*{z}
+.\end{eqnarray}
+
 
 {\color{red} Refine this to include higher order terms}
 
@@ -203,7 +211,7 @@ Here, we essentially have a setup with no charge, so there is no electric field 
 
 \prob{3}{
 
-A thin, flat, conducting, circular disc of radius $R$ is located int he $x-y$ plane with its center at the origin, and is maintained at a fixed potential $V$.
+A thin, flat, conducting, circular disc of radius $R$ is located in the $xy$ plane with its center at the origin, and is maintained at a fixed potential $V$.
 With the information that the charge density on a disc at fixed potential is proportional to $(R^2 - \rho^2)^{-1/2}$, where $\rho$ is the distance out from the center of the disc,
 
 (a) show that for $r > R$, the potential is
@@ -217,7 +225,75 @@ With the information that the charge density on a disc at fixed potential is pro
 
 }
 
-\sol{}
+\sol{
+
+(a) The surface charge density has the form 
+\begin{eqnarray}
+    \sigma(\rho) = \frac{\sigma_0}{\sqrt{R^2 - \rho^2}}
+.\end{eqnarray}
+We can relate $\sigma_0$ to the potential $V$ by
+\begin{eqnarray}
+    V = \frac{1}{4 \pi \epsilon_0} \int \dd{S} \frac{\sigma(\rho)}{\rho} = \frac{\sigma_0}{2 \epsilon_0} \int_{0}^{R} \frac{\dd{\rho}}{\sqrt{R^2 - \rho^2}} = \frac{\pi}{4 \epsilon_0} \sigma_0
+,\end{eqnarray}
+so
+\begin{eqnarray}
+    \sigma_0 = \frac{4 \epsilon_0 V}{\pi}
+.\end{eqnarray}
+
+We can now calculate the potential anywhere in space as
+\begin{eqnarray}
+    \begin{aligned}
+        \Phi(\va*{r}) &= \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \frac{\rho(\va*{r}')}{|\va*{r} - \va*{r}'|} \\
+                      &= \frac{V}{\pi^2} \int_{0}^{R} \int_{0}^{2 \pi} \int_{-1}^{1} \dd{r'} \dd{\phi'} \dd{(\cos{\theta'})} \frac{r'}{\sqrt{R^2 - r'^2}} \delta(\cos{\theta'}) \sum_{l=0}^{\infty} \frac{r_{<}^{l}}{r_{>}^{l+1}} P_{l}(\cos{\theta'}) \\
+                      &= \frac{2V}{\pi} \int_{0}^{R} \dd{r'} \frac{r'}{\sqrt{R^2 - r'^2}} \sum_{l=0}^{\infty} \frac{r_{<}^{l}}{r_{>}^{l+1}} P_{l}(0)
+    .\end{aligned}
+\end{eqnarray}
+In general, the integration of $P_{l}(\cos{\gamma})$ is not possible, but we can fix $\va*{r}$ to lie along the $z$-axis such that $\gamma = \theta'$.
+Observe that for this problem, $r_{<} = \min\{ r',r \} = r' $ and $r_{>} = \max\{ r',r \} = r $ since we are interested in $r > R \geq r'$.
+Hence, the potential along the $z$-axis is
+\begin{eqnarray}
+    \begin{aligned}
+        \Phi(\va*{r}) &= \frac{2 V}{\pi} \sum_{l=0}^{\infty} \frac{P_{l}(0)}{r^{l+1}} \int_{0}^{R} \dd{r'} \frac{r'^{l+1}}{\sqrt{R^2 - r'^2}} \\
+                      &= \frac{2 V}{\pi} \sum_{l=0}^{\infty} \frac{1}{r^{2l+1}} \frac{(-1)^{l} (2l-1)!!}{2^{l} l!} \int_{0}^{R} \dd{r'} \frac{r'^{2l+1}}{\sqrt{R^2 - r'^2}} \\
+                      &= \frac{2 V}{\pi} \sum_{l=0}^{\infty} \frac{R^{2l+1}}{r^{2l+1}} \frac{(-1)^{l} (2l-1)!!}{2^{l} l!} \frac{\sqrt{\pi} \Gamma(l+1)}{2\Gamma(l+3/2)} \\
+                      &= \frac{2 V}{\pi} \frac{R}{r} \sum_{l=0}^{\infty} \frac{(-1)^{l} (2l-1)!!}{2^{l} l!} \frac{\sqrt{\pi} l!}{2(l+1/2)\Gamma(l+1/2)} \frac{R^{l}}{r^{l}} \\
+                      &= \frac{2 V}{\pi} \frac{R}{r} \sum_{l=0}^{\infty} \frac{(-1)^{l}}{2l+1} \Big( \frac{R}{r} \Big)^{l}
+    .\end{aligned}
+\end{eqnarray}
+
+In order to obtain the angular dependence, we just append Legendre polynomials to this
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{2 V}{\pi} \frac{R}{r} \sum_{l=0}^{\infty} \frac{(-1)^{l}}{2l+1} \Big( \frac{R}{r} \Big)^{l} P_{2l}(\cos{\theta})
+.\end{eqnarray}
+
+(b) We can determine the potential in the region $r < R$ fairly easily now that we have it in the region $r > R$.
+Since the setup is rotationally symmetric about the $z$-axis, we can write (enforcing that the potential be non-singular)
+\begin{eqnarray}
+    \Phi(\va*{r}) = \sum_{l=0}^{\infty} A_{l} r^{l} P_{l}(\cos{\theta})
+.\end{eqnarray}
+Note that the potential must be continuous at $r = R$, giving
+\begin{eqnarray}
+    \sum_{l=0}^{\infty} A_{l} R^{l} P_{l}(\cos{\theta}) = \sum_{l=0}^{\infty} \frac{2 V}{\pi} \frac{(-1)^{l}}{2l+1} P_{2l}(\cos{\theta})
+.\end{eqnarray}
+Thus,
+\begin{eqnarray}
+    A_{2l} = \frac{2 V}{\pi} \frac{(-1)^{l}}{2l+1} R^{-l}
+,\end{eqnarray}
+and $A_{2l+1} = 0$, which gives
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{2 V}{\pi} \sum_{l=0}^{\infty} \frac{(-1)^{l}}{2l+1} \Big( \frac{r}{R} \Big)^{l} P_{2l}(\cos{\theta})
+.\end{eqnarray}
+
+(c) Lastly, we just need to find the total charge $Q$ on the disk in terms of $V$:
+\begin{eqnarray}
+    Q = \int \dd{S} \sigma = 8 \epsilon_0 V \int_{0}^{R} \frac{\rho}{\sqrt{R^2 - \rho^2}} \dd{\rho} = 8 \epsilon_0 V R
+.\end{eqnarray}
+Thus, the capacitance 
+\begin{eqnarray}
+    C = \frac{Q}{V} = 8 \epsilon_0 R
+.\end{eqnarray}
+
+}
 
 \prob{4}{
 
@@ -234,6 +310,58 @@ Show that in the limit $a \rightarrow 0$,
 \begin{align}
     \Phi(r,\theta,\phi) \rightarrow \frac{Q}{2 \pi \epsilon_0 r^3} \Big( 1 - \frac{r^{5}}{b^{5}} \Big) P_{2}(\cos{\theta})
 .\end{align}
+
+}
+
+\sol{
+
+(a) Without the sphere, we simply have the potential
+\begin{eqnarray}
+    \Phi(\va*{x}) = \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{|\va*{x} - \va*{a}|} - \frac{2}{|\va*{x}|} + \frac{1}{|\va*{x} + \va*{a}|} \Bigg)
+,\end{eqnarray}
+where $\va*{a} = a\vu*{z}$.
+If we assume $a \rightarrow 0$ but also take $q \rightarrow \infty$ such that $qa^2 = Q$ is constant in the limit, the potential becomes
+\begin{eqnarray}
+    \begin{aligned}
+        \Phi(\va*{x}) &= \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{x} \Big[ 2 + \Big( \frac{a}{x} \Big)^2[3 \cos^2{\theta} - 1] + \frac{1}{32} \Big( \frac{a}{x} \Big)^{4} [ 20 \cos{4\theta} + 35 \cos{4 \theta} + 9 ] \Big] - \frac{2}{x} \Bigg) \\
+                      &\approx \frac{Q}{2 \pi \epsilon_0} \frac{1}{x^3} P_{2}(\cos{\theta})
+    \end{aligned}
+.\end{eqnarray}
+
+(b) We can write the potential with the grounded sphere as
+\begin{eqnarray}
+    \Phi(\va*{x}) = \sum_{l=0}^{\infty} A_{l} r^{l} P_{l}(\cos{\theta}) + \frac{q}{4 \pi \epsilon_0} \Bigg( \frac{1}{|\va*{x} - \va*{a}|} - \frac{2}{|\va*{x}|} + \frac{1}{|\va*{x} + \va*{a}|} \Bigg)
+.\end{eqnarray}
+We can find the coefficients $A_{l}$ such that $\Phi \equiv 0$ on the shell:
+\begin{gather}
+    \Phi(b,\theta,\phi) = \sum_{l=0}^{\infty} A_{l} b^{l} P_{l}(\cos{\theta}) + \frac{q}{4 \pi \epsilon_0} \sum_{l=0}^{\infty} \frac{a^{l}}{b^{l+1}} [ 1 + (-1)^{l} ] P_{l}(\cos{\theta}) - \frac{q}{2 \pi \epsilon_0 b} = 0 \nonumber \\
+    \sum_{l=0}^{\infty} A_{2l+1} b^{2l+1} P_{2l+1}(\cos{\theta}) + \sum_{l=0}^{\infty} A_{2l} b^{2l} P_{2l}(\cos{\theta}) + \sum_{l=1}^{\infty} \frac{q}{2 \pi \epsilon_0 b} \Big( \frac{a}{b} \Big)^{2l} P_{2l}(\cos{\theta}) = 0
+.\end{gather}
+We then have
+\begin{eqnarray}
+    A_{2l} = -\frac{q}{2 \pi \epsilon_0 b^{2l}} \frac{a^{2l}}{b^{2l+1}}
+\end{eqnarray}
+for $l \geq 1$.
+We also have $A_{0} = 0$ and $A_{2l+1} = 0$.
+
+Thus,
+\begin{eqnarray}
+    \Phi(\va*{x}) = \frac{q}{2 \pi \epsilon_0} \sum_{l=1}^{\infty} \Big( \frac{a}{b} \Big)^{2l} \Bigg[ -\frac{r^{2l}}{b^{2l+1}} + \Big( \frac{b}{a} \Big)^{2l} \frac{r_{<}^{2l}}{r_{>}^{2l+1}} \Bigg] P_{2l}(\cos{\theta})
+.\end{eqnarray}
+Thus, for $r > a$
+\begin{eqnarray}
+    \Phi(\va*{x}) = \frac{q}{2 \pi \epsilon_0} \sum_{l=1}^{\infty} \Big( \frac{a}{b} \Big)^{2l} \Bigg[ -\frac{r^{2l}}{b^{2l+1}} + \frac{b^{2l}}{r^{2l+1}} \Bigg] P_{2l}(\cos{\theta})
+\end{eqnarray}
+while for $r < a$
+\begin{eqnarray}
+    \Phi(\va*{x}) = \frac{q}{2 \pi \epsilon_0} \sum_{l=1}^{\infty} \Big( \frac{a}{b} \Big)^{2l} \Bigg[ -\frac{1}{b^{2l+1}} + \frac{1}{a^{4l+1}} \Bigg] r^{l} P_{2l}(\cos{\theta}) - \frac{q}{2 \pi \epsilon_0} \Bigg[ \frac{1}{r} - \frac{1}{b} \Bigg]
+.\end{eqnarray}
+Notice that the last term is canceled by the two charges $q$ when $r > a$ (this produces the kink in the radial dependence).
+
+In the limit $a \rightarrow 0$, the only region that matters is $r > a$, which gives
+\begin{eqnarray}
+    \Phi \approx \frac{Q}{2\pi\epsilon_0} \frac{1}{b^2} \Big[ \frac{b^{2}}{r^{3}} - \frac{r^{2}}{b^{3}} \Big] = \frac{Q}{2\pi\epsilon_0 r^3} \Big[ 1 - \frac{r^{5}}{b^{5}} \Big]
+.\end{eqnarray}
 
 }
 
