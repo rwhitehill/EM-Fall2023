@@ -103,13 +103,15 @@ The contribution
 .\end{eqnarray}
 Summing these gives the total potential due to both surface contributions as
 \begin{eqnarray}
+\eqbox{
 \begin{aligned}
     \Phi(\va*{x}) &= \frac{V}{2} \sum_{l=0}^{\infty} \frac{P_{l-1}(0) - P_{l+1}(0)}{b^{2l+1} - a^{2l+1}} \Bigg\{ a^{l+1} \Big( \frac{b^{2l+1}}{r^{l+1}} - r^{l} \Big) + b^{l+1} \Big( \frac{a^{2l+1}}{r^{l+1}} - r^{l} \Big) \Bigg\} \\
                   &= \frac{V}{2} \sum_{l=0}^{\infty} \frac{P_{l+1}(0) - P_{l-1}(0)}{b^{2l+1} - a^{2l+1}} \Bigg\{ [a^{l+1} + b^{l+1}] r^{l} - a^{l+1} b^{l+1} [a^{l+1} + b^{l+1}] r^{-(l+1)} \Bigg\} \\
                   &= \frac{V}{2} \Bigg[ 1 + \sum_{l=0}^{\infty} \frac{P_{2(l+1)}(0) - P_{2l}(0)}{b^{4l+3} - a^{4l+3}} \Bigg\{ [a^{2(l+1)} + b^{2(l+1)}] r^{2l+1} - \frac{a^{2(l+1)} b^{2(l+1)} [a^{2l+1} + b^{2l+1}]}{r^{2(l+1)}} \Bigg\} \Bigg]
 ,\end{aligned}
+}
 \end{eqnarray}
-which agrees with our original result, derived directly as a sum of Legendre polynomials.
+which agrees with our original result, derived directly as a series in Legendre polynomials.
 
 }
 
@@ -154,7 +156,7 @@ Show explicitly in (1.46) in \textit{Jackson textbook} that answers for the pote
 Observe that the form of $g_{l}$ is given in such a way that the first term satisfies the inhomogeneous equation for the radial part of Laplace's equation (i.e. $\mathcal{L}_{r} g_{l}(r,r') \sim \delta(r-r')$), and the second term $f_{l}$ is some solution of the homogeneous equation, chosen such that the boundary condition \eref{neumann-BC} is satisfied.
 We already know the generic homogeneous solution:
 \begin{eqnarray}
-    f_{l}(r,r') = A_{l} r'^{l} + B_{l} r'^{-l-1}
+    f_{l}(r,r') = A_{l}(r) r'^{l} + B_{l}(r) r'^{-l-1}
 ,\end{eqnarray}
 
 We can determine the conditions that $A_{l}$ and $B_{l}$ must satisfy generally as follows:
@@ -191,10 +193,12 @@ and
 .\end{eqnarray}
 We then have for $l > 0$
 \begin{eqnarray}
+\eqbox{
 \begin{aligned}
     g_{l}(r,r') &= \frac{r_{<}^{l}}{r_{>}^{l+1}} + \frac{1}{b^{2l+1} - a^{2l+1}} \Bigg[ \Big( \frac{l+1}{l} r^{l} + \frac{a^{2l+1}}{r^{l+1}} \Big) r'^{l} + \Big( a^{2l+1} r^{l} + \frac{l}{l+1} \frac{a^{2l+1}b^{2l+1}}{r^{l+1}} \Big) \frac{1}{r'^{l+1}} \Bigg] \\
                 &= \frac{r_{<}^{l}}{r_{>}^{l+1}} + \frac{1}{b^{2l+1} - a^{2l+1}} \Bigg[ \frac{l+1}{l} (r r')^{l} + \frac{l}{l+1} \frac{(ab)^{2l+1}}{(r r')^{l+1}} + a^{2l+1} \Bigg( \frac{r^{l}}{r'^{l+1}} + \frac{r'^{l}}{r^{l+1}} \Bigg) \Bigg]
 .\end{aligned}
+}
 \end{eqnarray}
 
 (b) If we now consider $l = 0$ we have the system
@@ -205,7 +209,9 @@ We then have for $l > 0$
 These are redundant equations and give $B_{0} = -a^2/(a^2 + b^2)$.
 Note that $A_{0} = f(r)$ is undetermined by our BCs, giving
 \begin{eqnarray}
+    \eqbox{
     g_{0}(r,r') = \frac{1}{r_{>}} - \frac{a^2}{a^2 + b^2} \frac{1}{r'} + f(r)
+}
 .\end{eqnarray}
 
 Note that this arbitrary function does not contribute to the potential:

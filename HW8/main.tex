@@ -1,0 +1,204 @@
+\def\duedate{\today}
+\def\HWnum{8}
+\input{../preamble.tex}
+
+\begin{document}
+
+\prob{1}{
+
+A hollow right circular cylinder of radius $b$ has its axis coincident with the $z$-axis and its ends at $z = 0$ and $z = L$.
+The cylindrical surface is made of two equal half-cylinders, one at potential $V$ and the other at potential $-V$, so that
+\begin{eqnarray}
+    V(\phi,z) = \begin{cases}
+        V & -\pi/2 < \phi < \pi /2 \\
+        -V & \pi/2 < \phi < 3 \pi /2
+    .\end{cases}
+\end{eqnarray}
+
+(a) Find the potential inside the cylinder.
+
+(b) Assuming $L \gg b$, consider the potential at $z = L/2$ as a function of $s$ and $\phi$ and compare it with two-dimensional Problem 1 from Pset 5.
+
+}
+
+\sol{
+
+For this, we begin by looking at separable solutions of the form
+\begin{eqnarray}
+    \Phi(s,\phi,z) = R(s) T(\phi) Z(z)
+.\end{eqnarray}
+For the $z$-dependence, we have,
+\begin{eqnarray}
+    Z_{n}(z) = \sin{k_{n} z}
+,\end{eqnarray}
+where $k_{n} = \pi n / L$ such that the end faces of the cylinder are grounded.
+The angular dependence is given by
+\begin{eqnarray}
+    T_{m}(\phi) = A_{m} \sin{m \phi} + B_{m} \cos{m \phi}
+,\end{eqnarray}
+and finally the radial solutions are from the modified Bessel equation
+\begin{eqnarray}
+    R_{nm}(s) = I_{m}(k_{n}s)
+.\end{eqnarray}
+Note the second solution $K_{m}$ is discarded since this leads to singular behavior at $s = 0$.
+
+Thus, the series solution for the potential inside the cylinder is
+\begin{eqnarray}
+    \Phi(s,\phi,z) = \sum_{n=1}^{\infty} \frac{B_{0n}}{2} I_0(k_{n}s) \sin(k_{n}z) + \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} I_{m}(k_{n}s) \sin(k_{n}z) [ A_{nm} \sin{m\phi} + B_{nm} \cos{m\phi} ]
+.\end{eqnarray}
+We then have a Fourier series for the angular and $z$-dependence of $\Phi$.
+Applying the BC at $s = b$, we have
+\begin{eqnarray}
+    V(\phi,z) = \sum_{n=1}^{\infty} \frac{B_{0n}}{2} I_{0}(k_{n} b) \sin(k_{n}z) + \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} I_{m}(k_{n} b) \sin(k_{n} z) [ A_{nm} \sin{m\phi} + B_{nm} \cos{m \phi} ]
+.\end{eqnarray}
+Exploiting the orthogonality of sines and cosines, we then have
+\begin{align}
+    A_{nm} &= \frac{2}{\pi L I_{m}(k_{n}b)} \int_{0}^{L} \dd{z} \int_{0}^{2 \pi} \dd{\phi} V(\phi,z) \sin(m \phi) \sin(\pi n z / L) \\
+    B_{nm} &= \frac{2}{\pi L I_{m}(k_{n}b)} \int_{0}^{L} \dd{z} \int_{0}^{2 \pi} \dd{\phi} V(\phi,z) \cos(m \phi) \sin(\pi n z / L)
+.\end{align}
+Putting this into the potential we have 
+\begin{align}
+    \Phi(s,&\phi,z) = \frac{1}{\pi L} \sum_{n=1} \frac{I_{0}(n \pi s / L)}{I_0(n \pi b / L)} \sin(n \pi z / L) \Bigg[ \int_{0}^{L} \dd{z'} \int_{0}^{2\pi} \dd{\phi'} V(\phi',z') \sin(n\pi z' / L) \Bigg] \nonumber \\
+                   &+ \frac{2}{\pi L} \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} \frac{I_{m}(n \pi s / L)}{I_{m}(n \pi b / L)} \sin(n \pi z / L) \Bigg[ \int_{0}^{L} \dd{z'} \int_{0}^{2\pi} \dd{\phi'} V(\phi',z') \sin(n\pi z' / L) \cos[m(\phi - \phi')] \Bigg]
+\end{align}
+Observe that the first term ($m = 0$) is identically zero since the integral over $\phi'$ gives zero.
+Our problem then reduces to evaluating the following integral:
+\begin{eqnarray}
+\begin{aligned}
+    V &\int_{0}^{L} \sin(n\pi z' / L) \dd{z'} \Bigg[ \int_{-\pi/2}^{\pi/2} - \int_{\pi/2}^{3\pi/2} \Bigg] \dd{\phi'} \cos[m(\phi-\phi')] \\
+      &= V \frac{L}{n\pi} [1 - (-1)^{n}] [1 - (-1)^{m}] \int_{-\pi/2}^{\pi/2} \cos[m(\phi-\phi')] \dd{\phi'} \\
+      &= V \frac{L}{n \pi} [1 - (-1)^{n}] [1 - (-1)^{m}] \frac{1}{m} \Big\{ \sin[m(\pi/2 - \phi)] + \sin[m(\pi/2 + \phi)] \Big\} \\
+      &= V \frac{2L}{n m \pi} [1 - (-1)^{n}] [1 - (-1)^{m}] \cos{m\phi} \sin{m\pi/2}
+.\end{aligned}
+\end{eqnarray}
+From this expression, we can see that only odd terms in $n,m$ contribute, giving
+\begin{eqnarray}
+    \eqbox{ \Phi(s,\phi,z) = \frac{16}{\pi^2} V \sum_{n,m=0}^{\infty} \frac{(-1)^{m}}{(2n+1)(2m+1)} \frac{I_{m}\{(2n+1) \pi s / L\}}{I_{m}\{(2n+1) \pi b / L\}} \cos(m\phi) \sin\Bigg[\frac{(2n+1) \pi z}{L} \Bigg] }
+.\end{eqnarray}
+
+(b) If we have $z = L/2$, the potential becomes
+\begin{eqnarray}
+    \Phi(s,\phi) = \frac{16}{\pi^2} V \sum_{n,m=0}^{\infty} \frac{(-1)^{n+m}}{(2n+1)(2m+1)} \frac{I_{m}\{ (2n+1)\pi s/L \}}{I_{m}\{ (2n+1) \pi b/L \}} \cos(m\phi)
+.\end{eqnarray}
+Taking $L \gg b$, we can use $I_{\nu}(x) \rightarrow (x/2)^{\nu}/\Gamma(\nu+1)$ when $x \ll 1$.
+Additionally, in this limit, $s \leq b$, so
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(s,\phi) &\approx \frac{16}{\pi^2} V \sum_{n,m=0}^{\infty} \frac{(-1)^{n+m}}{(2n+1)(2m+1)} \Big( \frac{s}{b} \Big)^{m} \cos(m\phi) \\
+                 &= \frac{16}{\pi^2} V \underbrace{ \sum_{n=0}^{\infty} \frac{(-1)^{n}}{2n+1} }_{\pi/4} \Re\Bigg\{ \underbrace{ \sum_{m=0}^{\infty} \frac{(-1)^{m}}{2m+1} \Big( \frac{s}{b} e^{i\phi} \Big)^{m} }_{ \arctan( \frac{s}{b}e^{i\phi}) } \Bigg\} \\
+                 &= \frac{4}{\pi} V \Re\Bigg\{ \arctan(\frac{s}{b} e^{i\phi}) \Bigg\}
+.\end{aligned}
+\end{eqnarray}
+
+We now have to do just a touch of complex analysis.
+Let $w = \arctan{z}$.
+Then
+\begin{gather}
+    z = \tan{w} = \frac{\sin{w}}{\cos{w}} = \frac{1}{i}\frac{e^{iw} - e^{-iw}}{e^{iw} + e^{-iw}} = -i \frac{e^{2iw} - 1}{e^{2iw} + 1} \\
+    iz = \frac{e^{2iw} - 1}{e^{2iw} + 1} \\
+    e^{2iw} = \frac{1 + iz}{1 - iz} \\
+    \Rightarrow w = \arctan{z} = \frac{1}{2i} \ln\Big[ \frac{1 + iz}{1 - iz} \Big]
+.\end{gather}
+Thus, we have
+\begin{eqnarray}
+    \Re(\arctan{z}) = \frac{1}{2} \arg\Bigg\{ \frac{1 + iz}{1 - iz} \Bigg\} = \frac{1}{2} \arctan(\frac{2\Re(z)}{1 - |z|^2})
+.\end{eqnarray}
+
+Finally, we can say that
+\begin{eqnarray}
+    \Phi(s,\phi) \approx \frac{2V}{\pi} \arctan( \frac{2s/b}{1 - (s/b)^2} \cos{\phi} ) = \frac{2V}{\pi} \arctan( \frac{2sb}{b^2 - s^2} \cos{\phi} )
+,\end{eqnarray}
+which is exactly the result of problem 1 from Pset 5 with $V_1 = V$ and $V_2 = -V$.
+
+
+}
+
+
+\prob{2}{
+
+An infinite, thin, plane sheet of conducting material has a circular hole of radius $a$ cut in it.
+A thin, flat disc of the same material and slightly smaller radius lies in the plane, filling the hole, but separated from the sheet by a very narrow insulating ring.
+The disc is maintained at a fixed potential $V$, while the infinite sheet is kept at zero potential.
+
+(a) Using appropriate cylindrical coordinates, find an integral expression involving Bessel functions for the potential at any point above the plane.
+
+(b) Show that the potential a perpendicular distance $z$ above the center of the disc is
+\begin{eqnarray}
+    \Phi_{0}(z) = V \Bigg( 1 - \frac{z}{\sqrt{a^2 + z^2}} \Bigg)
+.\end{eqnarray}
+
+(c) \textbf{Extra credit}: Show that the potential a perpendicular distance $z$ above the edge of the disc is
+\begin{eqnarray}
+    \Phi_{a}(z) = \frac{V}{2} \Bigg[ 1 - \frac{kz}{\pi a} K(k) \Bigg]
+,\end{eqnarray}
+where $k = 2a/(z^2 + 4a^2)^{1/2}$, and $K(k)$ is the complete elliptic integral of the first kind.
+
+}
+
+\sol{
+
+(a) Let us take the $z$-axis to be through the center of the disc.
+The separable solutions are then of the form
+\begin{eqnarray}
+    \Phi_{m k}(s,\phi,z) = e^{-kz} [ A_{m}(k) \sin{m \phi} + B_{m}(k) \cos{m\phi} ] J_{m}(ks)
+.\end{eqnarray}
+Unlike in other problems, however, the spectrum of allowed $k$ values is continuous ($k > 0$), not discrete.
+The values of $m$, though, is restricted to the positive integers and zero.
+Putting this all together, we have a generic solution for $z > 0$ of the form
+\begin{align}
+    \Phi(s,\phi,z) = \int_{0}^{\infty} \dd{k} e^{-kz} \frac{B_0(k)}{2} J_0(ks) + \sum_{m=1}^{\infty} \int_{0}^{\infty} \dd{k} e^{-kz} [ A_{m}(k) \sin{m \phi} + B_{m}(k) \cos{m \phi} ] J_{m}(ks)
+.\end{align}
+The coefficients are determined via the Hankel transforms in $s$ and Fourier series in $\phi$ as
+\begin{align}
+    A_{m}(k) &= \frac{k}{\pi} \int_{0}^{\infty} \dd{s} s \int_{0}^{2\pi} \dd{\phi} V(s,\phi) \sin{m \phi} J_{m}(ks) \\
+    B_{m}(k) &= \frac{k}{\pi} \int_{0}^{\infty} \dd{s} s \int_{0}^{2\pi} \dd{\phi} V(s,\phi) \cos{m \phi} J_{m}(ks)
+.\end{align}
+The potential can then be written
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(s,\phi,z) = \frac{V}{\pi} \int_{0}^{a} \dd{s'} s' &\int_{0}^{2 \pi} \dd{\phi'} \int_{0}^{\infty} \dd{k} k e^{-kz} \\
+                   &\times \Bigg\{ \frac{1}{2} J_0(ks')J_0(ks) + \sum_{m=1}^{\infty} \cos[m(\phi - \phi')] J_{m}(ks') J_{m}(ks) \Bigg\}
+.\end{aligned}
+\end{eqnarray}
+Since there is no $\phi$ dependence in the potential, we can simplify this a bit further as
+\begin{eqnarray}
+    \Phi(s,\phi,z) = V \int_{0}^{a} \dd{s'} s' \int_{0}^{\infty} \dd{k} k e^{-kz} J_0(ks') J_0(ks)
+.\end{eqnarray}
+Additionally, recall that $x J_0(x) = (x J_1(x))'$ and $J_1(0) = 0$, so
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(s,\phi,z) &= V \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) \int_{0}^{a} \dd{s'} ks'J_0(ks') \\
+                   &= V a \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) J_1(ka)
+.\end{aligned}
+\end{eqnarray}
+At this point -- as far as I can tell -- we cannot simplify this any further in full generality.
+
+(b) If we take $s = 0$ and restrict our attention to the $z$-axis
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(z) &= Va \int_{0}^{\infty} \dd{k} e^{-kz} J_1(ka) = Va \int_{0}^{\infty} \dd{k} e^{-kz} \frac{ka}{2} \sum_{j=0}^{\infty} \frac{(-1)^{j}}{j! (j+1)!} \frac{(ka)^{j}}{4^{j}} \\
+            &= \frac{V}{2} \sum_{j=0}^{\infty} 
+\end{aligned}
+.\end{eqnarray}
+
+}
+
+
+\prob{3}{
+
+A hollow right cylinder of radius $R$ has its axis coincident with the $z$-axis and its ends at $z = 0$ and $z = L$.
+The potential on the end faces is zero, while the potential on the cylindrical surface is specified by
+\begin{eqnarray}
+    \Phi(s,\phi,z)|_{s = R} = V \sin{\phi} \sin(\pi z / L)
+.\end{eqnarray}
+Find the potential $\Phi(s,\phi,z)$ inside the cylinder.
+
+}
+
+
+
+
+
+
+
+\end{document}
