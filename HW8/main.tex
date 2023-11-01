@@ -194,7 +194,7 @@ where we have used the fact that
 \begin{eqnarray}
     \Gamma(n+1/2) = \frac{(2n)!\sqrt{\pi}}{2^{2n}n!}
 .\end{eqnarray}
-It is clear that these two sums match\footnote{We will sidestep questions about convergence, etc. (i.e. We are doing a bit of witchcraft with the math that is not strictly/formally correct but does in fact give the correct conclusions).}, meaning that our potential along the $z$-axis is indeed given by
+It is clear that these two sums match\footnote{We will sidestep questions about convergence, etc.}. 
 \begin{eqnarray}
     \Phi_0(z) = V \Big[ 1 - \frac{z}{a^2 + z^2} \Big]
 .\end{eqnarray}
@@ -213,7 +213,32 @@ Find the potential $\Phi(s,\phi,z)$ inside the cylinder.
 
 }
 
+\sol{
 
+As we found in problem 1, we can write the potential in the form
+\begin{align}
+    \Phi(s,\phi,z) = \sum_{n=1}^{\infty} \frac{B_{0n}}{2} &I_0(n \pi s / L) \sin( n \pi z / L ) \\
+                                                          &+ \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} I_{m}(n \pi s / L) \sin(n \pi z / L) [ A_{nm} \sin{m \phi} + B_{nm} \cos{m\phi} ]
+\end{align}
+where the coefficients
+\begin{align}
+    A_{nm} &= \frac{2}{\pi L I_{m}(n \pi R / L)} \int_{0}^{L} \dd{z} \int_{0}^{2 \pi} \dd{\phi} V(\phi,z) \sin(m \phi) \sin(n \pi z / L) \\
+    B_{nm} &= \frac{2}{\pi L I_{m}(n \pi R / L)} \int_{0}^{L} \dd{z} \int_{0}^{2\pi} \dd{\phi} V(\phi,z) \cos(m \phi) \sin(n \pi z / L)
+.\end{align}
+From these, it is clear that $B_{nm} = 0$ for all $m$ and consequently $n$.
+Furthermore, it is similarly clear that $A_{nm} = 0$ if $m \ne 1$.
+We therefore, only have to look at the $m=1$ terms in the second sum.
+Actually, the problem simplifies further since the potential is orthogonal to all terms $n \ne 1$ as well, leaving us with the only nonzero coefficient
+\begin{eqnarray}
+    A_{11} = \frac{2 V}{\pi L I_{1}(\pi R / L)} ( \pi ) \Big( \frac{L}{2} \Big) = \frac{V}{I_{1}(\pi R / L)}
+.\end{eqnarray}
+The potential then takes the form
+\begin{eqnarray}
+    \eqbox{ \Phi(s,\phi,z) = V \frac{I_1(\pi s / L)}{I_1(\pi R / L)} \sin( \frac{\pi z}{L} ) \sin{\phi} }
+.\end{eqnarray}
+Essentially then, the potential inside the hollow cylinder, is just the potential on the boundaries, modulated by the modified Bessel function $I_1$.
+
+}
 
 
 
