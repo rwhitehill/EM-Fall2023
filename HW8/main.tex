@@ -106,7 +106,7 @@ Thus, we have
 
 Finally, we can say that
 \begin{eqnarray}
-    \Phi(s,\phi) \approx \frac{2V}{\pi} \arctan( \frac{2s/b}{1 - (s/b)^2} \cos{\phi} ) = \frac{2V}{\pi} \arctan( \frac{2sb}{b^2 - s^2} \cos{\phi} )
+    \eqbox{ \Phi(s,\phi) \approx \frac{2V}{\pi} \arctan( \frac{2s/b}{1 - (s/b)^2} \cos{\phi} ) = \frac{2V}{\pi} \arctan( \frac{2sb}{b^2 - s^2} \cos{\phi} ) }
 ,\end{eqnarray}
 which is exactly the result of problem 1 from Pset 5 with $V_1 = V$ and $V_2 = -V$.
 
@@ -167,8 +167,8 @@ Since there is no $\phi$ dependence in the potential, we can simplify this a bit
 Additionally, recall that $x J_0(x) = (x J_1(x))'$ and $J_1(0) = 0$, so
 \begin{eqnarray}
 \begin{aligned}
-    \Phi(s,\phi,z) &= V \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) \int_{0}^{a} \dd{s'} ks'J_0(ks') \\
-                   &= V a \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) J_1(ka)
+    \Phi(s,\phi,z) &= V \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) \int_{0}^{a} \dd{s'} ks'J_0(ks') \\ 
+                   &= \eqbox{ V a \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ks) J_1(ka) }
 .\end{aligned}
 \end{eqnarray}
 At this point -- as far as I can tell -- we cannot simplify this any further in full generality.
@@ -176,9 +176,27 @@ At this point -- as far as I can tell -- we cannot simplify this any further in 
 (b) If we take $s = 0$ and restrict our attention to the $z$-axis
 \begin{eqnarray}
 \begin{aligned}
-    \Phi(z) &= Va \int_{0}^{\infty} \dd{k} e^{-kz} J_1(ka) = Va \int_{0}^{\infty} \dd{k} e^{-kz} \frac{ka}{2} \sum_{j=0}^{\infty} \frac{(-1)^{j}}{j! (j+1)!} \frac{(ka)^{j}}{4^{j}} \\
-            &= \frac{V}{2} \sum_{j=0}^{\infty} 
-\end{aligned}
+    \Phi(z) &= Va \int_{0}^{\infty} \dd{k} e^{-kz} J_1(ka) = Va \int_{0}^{\infty} \dd{k} e^{-kz} \frac{ka}{2} \sum_{j=0}^{\infty} \frac{(-1)^{j}}{j! (j+1)!} \frac{(ka)^{2j}}{4^{j}} \\
+            &= \frac{V}{2} \sum_{j=0}^{\infty} \frac{(-1)^{j}}{j!(j+1)!} \frac{a^{2(j+1)}}{4^{j}} \int_{0}^{\infty} \dd{k} k^{2j+1} e^{-kz} \\
+            &= V \sum_{j=0}^{\infty} (-1)^{j}\frac{(2j+1)!}{j!(j+1)!2^{2j+1}} \Big( \frac{a}{z} \Big)^{2(j+1)}
+.\end{aligned}
+\end{eqnarray}
+Since we know the result already, we can compare the series of the proposal (since the power series of a function is unique) to that obtained above:
+\begin{eqnarray}
+\begin{aligned}
+    1 - \frac{z}{\sqrt{a^2 + z^2}} &= 1 - \frac{1}{\sqrt{1 + (a/z)^2}} = 1 - \sum_{j=0}^{\infty} (-1)^{j} \frac{\Gamma(j+1/2)}{j! \Gamma(1/2)} \Big( \frac{a}{z} \Big)^{2j} \\
+    &= \sum_{j=0}^{\infty} (-1)^{j} \frac{\Gamma[(j+1)+1/2]}{j!\sqrt{\pi}} \Big( \frac{a}{z} \Big)^{2(j+1)} \\
+    &= \sum_{j=0}^{\infty} (-1)^{j} \frac{1}{(j+1)!\sqrt{\pi}} \frac{(2j+2)!\sqrt{\pi}}{2^{2(j+1)}(j+1)!} \Big( \frac{a}{z} \Big)^{2(j+1)} \\
+    &= \sum_{j=0}^{\infty} (-1)^{j} \frac{(2j+1)!}{j!(j+1)! 2^{2j+1}} \Big( \frac{a}{z} \Big)^{2(j+1)}
+,\end{aligned}
+\end{eqnarray}
+where we have used the fact that 
+\begin{eqnarray}
+    \Gamma(n+1/2) = \frac{(2n)!\sqrt{\pi}}{2^{2n}n!}
+.\end{eqnarray}
+It is clear that these two sums match\footnote{We will sidestep questions about convergence, etc. (i.e. We are doing a bit of witchcraft with the math that is not strictly/formally correct but does in fact give the correct conclusions).}, meaning that our potential along the $z$-axis is indeed given by
+\begin{eqnarray}
+    \Phi_0(z) = V \Big[ 1 - \frac{z}{a^2 + z^2} \Big]
 .\end{eqnarray}
 
 }
