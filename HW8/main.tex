@@ -61,7 +61,7 @@ Putting this into the potential we have
     \Phi(s,&\phi,z) = \frac{1}{\pi L} \sum_{n=1} \frac{I_{0}(n \pi s / L)}{I_0(n \pi b / L)} \sin(n \pi z / L) \Bigg[ \int_{0}^{L} \dd{z'} \int_{0}^{2\pi} \dd{\phi'} V(\phi',z') \sin(n\pi z' / L) \Bigg] \nonumber \\
                    &+ \frac{2}{\pi L} \sum_{m=1}^{\infty} \sum_{n=1}^{\infty} \frac{I_{m}(n \pi s / L)}{I_{m}(n \pi b / L)} \sin(n \pi z / L) \Bigg[ \int_{0}^{L} \dd{z'} \int_{0}^{2\pi} \dd{\phi'} V(\phi',z') \sin(n\pi z' / L) \cos[m(\phi - \phi')] \Bigg]
 \end{align}
-Observe that the first term ($m = 0$) is identically zero since the integral over $\phi'$ gives zero.
+Observe that the first term ($m = 0$) is identically zero since the integration is over $V$ for half the $\phi'$ range and $-V$ for the other half of the range, which gives zero overall.
 Our problem then reduces to evaluating the following integral:
 \begin{eqnarray}
 \begin{aligned}
@@ -94,9 +94,9 @@ We now have to do just a touch of complex analysis.
 Let $w = \arctan{z}$.
 Then
 \begin{gather}
-    z = \tan{w} = \frac{\sin{w}}{\cos{w}} = \frac{1}{i}\frac{e^{iw} - e^{-iw}}{e^{iw} + e^{-iw}} = -i \frac{e^{2iw} - 1}{e^{2iw} + 1} \\
-    iz = \frac{e^{2iw} - 1}{e^{2iw} + 1} \\
-    e^{2iw} = \frac{1 + iz}{1 - iz} \\
+    z = \tan{w} = \frac{\sin{w}}{\cos{w}} = \frac{1}{i}\frac{e^{iw} - e^{-iw}}{e^{iw} + e^{-iw}} = -i \frac{e^{2iw} - 1}{e^{2iw} + 1} \nonumber \\
+    iz = \frac{e^{2iw} - 1}{e^{2iw} + 1} \nonumber \\
+    e^{2iw} = \frac{1 + iz}{1 - iz} \nonumber \\
     \Rightarrow w = \arctan{z} = \frac{1}{2i} \ln\Big[ \frac{1 + iz}{1 - iz} \Big]
 .\end{gather}
 Thus, we have
@@ -143,7 +143,7 @@ The separable solutions are then of the form
     \Phi_{m k}(s,\phi,z) = e^{-kz} [ A_{m}(k) \sin{m \phi} + B_{m}(k) \cos{m\phi} ] J_{m}(ks)
 .\end{eqnarray}
 Unlike in other problems, however, the spectrum of allowed $k$ values is continuous ($k > 0$), not discrete.
-The values of $m$, though, is restricted to the positive integers and zero.
+The values of $m$, though, are restricted to the positive integers and zero.
 Putting this all together, we have a generic solution for $z > 0$ of the form
 \begin{align}
     \Phi(s,\phi,z) = \int_{0}^{\infty} \dd{k} e^{-kz} \frac{B_0(k)}{2} J_0(ks) + \sum_{m=1}^{\infty} \int_{0}^{\infty} \dd{k} e^{-kz} [ A_{m}(k) \sin{m \phi} + B_{m}(k) \cos{m \phi} ] J_{m}(ks)
@@ -181,7 +181,7 @@ At this point -- as far as I can tell -- we cannot simplify this any further in 
             &= V \sum_{j=0}^{\infty} (-1)^{j}\frac{(2j+1)!}{j!(j+1)!2^{2j+1}} \Big( \frac{a}{z} \Big)^{2(j+1)}
 .\end{aligned}
 \end{eqnarray}
-Since we know the result already, we can compare the series of the proposal (since the power series of a function is unique) to that obtained above:
+Since we know the result already, we can compare the series of the proposal (since the power series of a function is unique within its radius of convergence -- although we will not explore this question of convergence) to that obtained above:
 \begin{eqnarray}
 \begin{aligned}
     1 - \frac{z}{\sqrt{a^2 + z^2}} &= 1 - \frac{1}{\sqrt{1 + (a/z)^2}} = 1 - \sum_{j=0}^{\infty} (-1)^{j} \frac{\Gamma(j+1/2)}{j! \Gamma(1/2)} \Big( \frac{a}{z} \Big)^{2j} \\
@@ -194,17 +194,43 @@ where we have used the fact that
 \begin{eqnarray}
     \Gamma(n+1/2) = \frac{(2n)!\sqrt{\pi}}{2^{2n}n!}
 .\end{eqnarray}
-It is clear that these two sums match\footnote{We will sidestep questions about convergence, etc.}. 
+It is clear that these two sums match via term-by-term comparison%\footnote{We will sidestep questions about convergence, etc.}. 
 \begin{eqnarray}
     \Phi_0(z) = V \Big[ 1 - \frac{z}{a^2 + z^2} \Big]
 .\end{eqnarray}
+
+(c) The work here is incomplete.
+In fact, they are mostly thoughts about how to go about solving the problem.
+On the edge of the disk, we can write
+\begin{eqnarray}
+    \Phi_{a}(z) = Va \int_{0}^{\infty} \dd{k} J_0(ka) J_1(ka)
+.\end{eqnarray}
+Additionally, we have the relation $J_0'(ka) = -J_1(ka)$ (where the derivative is with respect to $k$) such that
+\begin{eqnarray}
+    \Phi_{a}(z) = -Va \int_{0}^{\infty} \dd{k} e^{-kz} J_0(ka) J_0'(ka)
+.\end{eqnarray}
+Observe then that
+\begin{eqnarray}
+    \dv{k} J_0^2(ka) = \dv{(ka)}{k} \dv{(ka)} J_0^2(ka) = 2a J_0(ka) J_0'(ka)
+.\end{eqnarray}
+We can then write
+\newpage
+\begin{eqnarray}
+\begin{aligned}
+    \Phi_{a}(z) &= -\frac{V}{2} \int_{0}^{\infty} \dd{k} e^{-kz} \dv{k} J_0^2(ka) \\
+                &= - \frac{V}{2} \Bigg[ e^{-kz}J_0^2(ka)\Big|_{0}^{\infty} + z \int_{0}^{\infty} \dd{k} e^{-kz} J_0^2(ka) \Bigg] \\
+                &= \frac{V}{2} \Bigg[ 1 - z \int_{0}^{\infty} \dd{k} e^{-kz} J_0^2(ka) \Bigg]
+.\end{aligned}
+\end{eqnarray}
+The second term then remains to be simplified/rewritten a bit.
+We could use an approach similar to that of part (b), although we would have a double sum that would have to be identified with some elliptic integral.
 
 }
 
 
 \prob{3}{
 
-A hollow right cylinder of radius $R$ has its axis coincident with the $z$-axis and its ends at $z = 0$ and $z = L$.
+A hollow right cylinder of radius $R$ has its axis coincident with the $z$-axis and its ends at $z = 0$ and $z = L$, which are held to zero potential.
 The potential on the end faces is zero, while the potential on the cylindrical surface is specified by
 \begin{eqnarray}
     \Phi(s,\phi,z)|_{s = R} = V \sin{\phi} \sin(\pi z / L)
@@ -225,10 +251,9 @@ where the coefficients
     A_{nm} &= \frac{2}{\pi L I_{m}(n \pi R / L)} \int_{0}^{L} \dd{z} \int_{0}^{2 \pi} \dd{\phi} V(\phi,z) \sin(m \phi) \sin(n \pi z / L) \\
     B_{nm} &= \frac{2}{\pi L I_{m}(n \pi R / L)} \int_{0}^{L} \dd{z} \int_{0}^{2\pi} \dd{\phi} V(\phi,z) \cos(m \phi) \sin(n \pi z / L)
 .\end{align}
-From these, it is clear that $B_{nm} = 0$ for all $m$ and consequently $n$.
-Furthermore, it is similarly clear that $A_{nm} = 0$ if $m \ne 1$.
+From these, it is clear that $B_{nm} = 0$ for all $m$ and consequently $n$ as well as $A_{nm} = 0$ if $m \ne 1$.
 We therefore, only have to look at the $m=1$ terms in the second sum.
-Actually, the problem simplifies further since the potential is orthogonal to all terms $n \ne 1$ as well, leaving us with the only nonzero coefficient
+Similarly, the terms with $n \ne 1$ also vanish by the orthogonality of the sines and cosines, leaving us with only one nonzero coefficient
 \begin{eqnarray}
     A_{11} = \frac{2 V}{\pi L I_{1}(\pi R / L)} ( \pi ) \Big( \frac{L}{2} \Big) = \frac{V}{I_{1}(\pi R / L)}
 .\end{eqnarray}
