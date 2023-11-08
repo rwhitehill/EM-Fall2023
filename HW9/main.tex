@@ -1,0 +1,80 @@
+\def\duedate{\today}
+\def\HWnum{9}
+\input{../preamble.tex}
+
+\begin{document}
+
+\prob{1}{
+
+A localized distribution of charge has a charge density
+\begin{eqnarray}
+    \rho(\va*{r}) = \frac{1}{64 \pi} r^2 e^{-r} \sin^2{\theta}
+.\end{eqnarray}
+
+(a) Make a multipole expansion of the potential due to this charge density and determine all the nonvanishing multipole moments.
+Write down the potential at large distances as a finite expansion in Legendre polynomials.
+
+(b) Determine the potential explicitly at any point in space, and show that near the origin, correct to $r^2$ inclusive,
+\begin{eqnarray}
+    \Phi(\va*{r}) \approx \frac{1}{4 \pi \epsilon_0} \Big[ \frac{1}{4} - \frac{r^2}{120} P_{2}(\cos{\theta}) \Big]
+.\end{eqnarray}
+
+}
+
+\sol{
+
+We can make a general multipole expansion in spherical harmonics:
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{1}{\epsilon_0} \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} Y_{lm}(\theta,\phi) \int \dd[3]{\va*{r}'} \frac{r_{<}^{l}}{r_{>}^{l+1}} Y_{lm}^{*}(\theta',\phi') \rho(\va*{r}')
+.\end{eqnarray}
+For our specific charge density
+\begin{eqnarray}
+    \Phi(\va*{r}) = \frac{1}{64 \pi \epsilon_0} \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} Y_{lm}(\theta,\phi) \int_{0}^{\infty} \dd{r'} \frac{r_{<}^{l}}{r_{>}^{l+1}} r'^{4} e^{-r} \int \dd{\Omega'} Y_{lm}^{*}(\theta',\phi') \sin^2{\theta'}
+.\end{eqnarray}
+The angular integration can be done as follows:
+\begin{eqnarray}
+\begin{aligned}
+    \int \dd{\Omega} Y_{lm}^{*}(\theta,\phi) \sin^2{\theta} &= \sqrt{\frac{2l+1}{4 \pi} \frac{(l-m)!}{(l+m)!}} \underbrace{ \int_{0}^{2\pi} \dd{\phi} e^{i m \phi} }_{ 2\pi \delta_{m_0} } \int_{0}^{\pi} \dd{\theta} \sin{\theta} P_{l}^{m}(\cos{\theta}) (1 - \cos^2{\theta}) \\
+    &= \sqrt{\pi(2l+1)} \delta_{m 0} \int_{-1}^{1} \dd{x} P_{l}(x) \frac{2}{3}[ P_0(x) - P_2(x) ] \\
+    &= \frac{4\sqrt{\pi}}{3} \Big[ \delta_{l 0} - \frac{1}{\sqrt{5}}\delta_{l 2} \Big] \delta_{m_0}
+.\end{aligned}
+\end{eqnarray}
+Putting this into our multipole expansion, we find
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(\va*{r}) &= \frac{1}{64 \pi \epsilon_0} \frac{4 \sqrt{\pi}}{3} \Bigg[ Y_{00}(\theta,\phi) \Bigg( \int_{0}^{\infty} \dd{r'} \frac{r'^{4}}{r_{>}} e^{-r'} \Bigg) - \frac{1}{5\sqrt{5}} Y_{20}(\theta,\phi) \Bigg( \int_{0}^{\infty} \dd{r'} \frac{r_{<}^{2}}{r_{>}^{3}} r'^{4} e^{-r'} \Bigg) \Bigg] \\
+    &= \frac{1}{96 \pi \epsilon_0} \Bigg[ P_{0}(\cos{\theta}) \Bigg( \int_{0}^{\infty} \dd{r'} \frac{r'^{4}}{r_{>}} e^{-r'} \Bigg) - \frac{1}{5} P_{2}(\cos{\theta}) \Bigg( \int_{0}^{\infty} \frac{r_{<}^2}{r_{>}^3} r'^{4} e^{-r'} \Bigg) \Bigg]
+.\end{aligned}
+\end{eqnarray}
+To find the potential far away from the origin, we can take $r_{<} = r'$ and $r_{>} = r$ (valid for $r$ where $e^{-r}$ is essentially zero), giving
+\begin{eqnarray}
+\begin{aligned}
+    \Phi(\va*{r}) &= \frac{1}{96 \pi \epsilon_0} \Bigg[ \frac{4!}{r} P_0(\cos{\theta}) - \frac{6!}{5r^3} P_{2}(\cos{\theta}) \Bigg] \\
+    &= \frac{1}{4 \pi \epsilon_0 r} \Bigg[ 1 - \frac{6 P_{2}(\cos{\theta})}{r^2} \Bigg]
+\end{aligned}
+.\end{eqnarray}
+
+(b) If we are close to the origin, then we must be a bit more careful and split the integration over two portions:
+\begin{eqnarray}
+    \int
+.\end{eqnarray}
+
+}
+
+\prob{2}{
+
+Calculate the multipole moments $q_{lm}$ of the charge distributions shown as parts (a) and (b).
+Try to obtain results for the nonvanishing moments valid for all $l$, but in each case find the first \textit{two} sets of nonvanishing moments at the very least.
+
+(c) For the charge distribution of the set (b) write down the multipole expansion for the potential.
+Keeping only the lowest-order term in the expansion, plot the potential in the $xy$-plane as a function of distance from the origin for distances greater than $a$.
+
+(d) Calculate directly fro Coulomb's law the exact potential for (b) in the $xy$-plane.
+Plot it as a function of distance and compare with the result found in part (c).
+Divide out the asymptotic form in parts (c) and (d) to see the behavior at large distances more clearly.
+
+}
+
+
+
+\end{document}
