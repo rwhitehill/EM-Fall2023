@@ -60,10 +60,12 @@ To find the potential far away from the origin, we can take $r \rightarrow \inft
 ,\end{eqnarray}
 and the potential becomes
 \begin{eqnarray}
+    \eqbox{
 \begin{aligned}
     \Phi(\va*{r}) &= \frac{1}{96 \pi \epsilon_0} \Bigg[ \frac{4!}{r} P_0(\cos{\theta}) - \frac{6!}{5r^3} P_{2}(\cos{\theta}) \Bigg] \\
     &= \frac{1}{4 \pi \epsilon_0 r} \Bigg[ 1 - \frac{6 P_{2}(\cos{\theta})}{r^2} \Bigg]
 \end{aligned}
+}
 .\end{eqnarray}
 
 (b) If we are close to the origin, then we can take $r \rightarrow 0$ and
@@ -72,7 +74,7 @@ and the potential becomes
 ,\end{eqnarray}
 so near the origin
 \begin{eqnarray}
-    \Phi(\va*{r}) = \frac{1}{96 \pi \epsilon_0} \Bigg[ 3! - \frac{P_{2}(\cos{\theta})}{5} r^{2} \Bigg] = \frac{1}{4 \pi \epsilon_0} \Big[ \frac{1}{4} - \frac{r^2}{120} P_{2}(\cos{\theta}) \Big]
+    \eqbox{ \Phi(\va*{r}) = \frac{1}{96 \pi \epsilon_0} \Bigg[ 3! - \frac{P_{2}(\cos{\theta})}{5} r^{2} \Bigg] = \frac{1}{4 \pi \epsilon_0} \Big[ \frac{1}{4} - \frac{r^2}{120} P_{2}(\cos{\theta}) \Big] }
 .\end{eqnarray}
 
 }
@@ -130,7 +132,7 @@ Recall that spherical harmonics are explicitly given as
 ,\end{eqnarray}
 The moments then simplify as
 \begin{eqnarray}
-    q_{lm} = q a^{l} \sqrt{\frac{2l+1}{4 \pi} \frac{(l-m)!}{(l+m)!}} P_{l}^{m}(0) [ 1 - (-1)^{l} ]  [ 1 + (-i)^{m} ]
+    \eqbox{ q_{lm} = q a^{l} \sqrt{\frac{2l+1}{4 \pi} \frac{(l-m)!}{(l+m)!}} P_{l}^{m}(0) [ 1 - (-1)^{l} ]  [ 1 + (-i)^{m} ] }
 .\end{eqnarray}
 
 From this we can glean that if $l$ or $m$ are even, then $q_{lm}$ is zero.
@@ -139,7 +141,7 @@ The first couple sets of nonzero moments are given as
     q_{11} = qa\sqrt{\frac{3}{2\pi}}(-1+i) \quad q_{10} = 0 \\
     q_{33} = qa^{3} \sqrt{\frac{35}{16 \pi}} \quad q_{32} = 0 \quad q_{31} = qa^3 \sqrt{\frac{21}{16 \pi}}(1-i) \quad q_{30} = 0
 .\end{gather}
-Note that $q_{l,-m} = (-1)^{m}q_{lm}^{*}$.
+Note that $q_{l,-m} = (-1)^{m}q_{lm}^{*}$, so we can get the negative $m$ moments from the positive ones above for free essentially.
 
 (b) The charge density for this charge configuration is
 \begin{eqnarray}
@@ -150,11 +152,13 @@ Note that $q_{l,-m} = (-1)^{m}q_{lm}^{*}$.
 \end{eqnarray}
 Putting this into the moment definition
 \begin{eqnarray}
+\eqbox{
 \begin{aligned}
     q_{lm} &= q a^{l} \sqrt{\frac{2l+1}{4\pi}} \int \dd{(\cos{\theta})} P_{l}(\cos{\theta}) \Big[ \delta(\cos{\theta}-1) + \delta(\cos{\theta}+1) \Big] - \frac{q}{\sqrt{\pi}} \delta_{l 0} \delta_{m 0} \\
            &= \delta_{m 0} \Bigg[ q a^{l} \sqrt{\frac{2l+1}{4\pi}} [ 1 + (-1)^{n} ] - \frac{q}{\sqrt{\pi}} \delta_{l 0} \Bigg]
-\end{aligned}
-.\end{eqnarray}
+.\end{aligned}
+}
+\end{eqnarray}
 
 (c) For the charge configuration of part (b), the multipole expansion of the potential is given as
 \begin{eqnarray}
@@ -165,24 +169,26 @@ Putting this into the moment definition
 \end{eqnarray}
 To lowest order, the potential far from the origin is
 \begin{eqnarray}
-    \Phi(\va*{r}) \approx \frac{q}{2\pi\epsilon_0 a} \Big( \frac{a}{r} \Big)^3 P_{2}(\cos{\theta})
+    \eqbox{ \Phi(\va*{r}) \approx \frac{q}{2\pi\epsilon_0 a} \Big( \frac{a}{r} \Big)^3 P_{2}(\cos{\theta}) }
 .\end{eqnarray}
 In the $xy$-plane, this becomes
 \begin{eqnarray}
     \label{eq:xy-multipole-expansion}
     \Phi(\va*{r}) = -\frac{q}{4\pi\epsilon_0 a} \Big( \frac{a}{r} \Big)^3
 .\end{eqnarray}
+A plot of \eref{xy-multipole-expansion} is shown on the left in \fref{prob2}.
 
 (d) The potential from Coulomb's law in the $xy$-plane due to the charge configuration in part (b) is given by
 \begin{eqnarray}
     \label{eq:exact-coulomb}
-    \Phi(\va*{r}) = \frac{q}{2 \pi \epsilon_0} \Big[ \frac{1}{\sqrt{r^2 + a^2}} - \frac{1}{r} \Big] = -\frac{q}{2 \pi \epsilon_0 a} \Big[ \frac{a}{r} - \frac{1}{\sqrt{(r/a)^2 + 1}} \Big]
+    \eqbox{ \Phi(\va*{r}) = \frac{q}{2 \pi \epsilon_0} \Bigg[ \frac{1}{\sqrt{r^2 + a^2}} - \frac{1}{r} \Bigg] = -\frac{q}{2 \pi \epsilon_0 a} \Bigg[ \frac{a}{r} - \frac{1}{\sqrt{(r/a)^2 + 1}} \Bigg] }
 .\end{eqnarray}
 
 \begin{figure}[h!tb]
    \centering
    \includegraphics[width=\textwidth]{prob2.pdf}
    \caption{\textbf{[Left]} Plot of potential given in \eref{xy-multipole-expansion} and \textbf{[Right]} Plot of potential in \eref{exact-coulomb} modulated by $(a/r)^3$ asymptotic factor and \eref{xy-multipole-expansion}.}
+   \label{fig:prob2}
 \end{figure}
 
 
