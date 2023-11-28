@@ -1,0 +1,167 @@
+\def\duedate{\today}
+\def\HWnum{2}
+\input{preamble.tex}
+
+\begin{document}
+
+\textbf{General Math:}
+
+$\displaystyle \Re( \arctan{z} ) = \frac{1}{2} \arctan( \frac{2\Re{z}}{1 - |z|^2} )$
+
+$\displaystyle \Im( \arctan{z} ) = \frac{1}{2} \arctan( \frac{2\Im{z}}{1 + |z|^2} )$
+
+\textbf{Gamma Function:}
+
+$\displaystyle \Gamma(n + 1/2) = \frac{(2n-1)!! \sqrt{\pi}}{2^{n}} = \frac{(2n)! \sqrt{\pi}}{2^{2n} n!}$
+
+$\displaystyle \Gamma(z) \Gamma(1-z) = \frac{\pi}{\sin{\pi z}}$
+
+\textbf{Power Series}:
+
+$\displaystyle \arctan{x} = \sum_{n=0}^{\infty} \frac{(-1)^{n}}{2n+1} x^{2n+1}$
+
+$\displaystyle \ln(1 + x) = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} x^{n}$
+
+$\displaystyle \ln(\frac{1+x}{1-x}) = 2\sum_{n=0}^{\infty} \frac{x^{2n+1}}{2n+1}$
+
+$\displaystyle (1+x)^{\alpha} = \sum_{k=0}^{\infty} \binom{\alpha}{k} x^{k}$
+
+$\displaystyle (1+x)^{-\alpha} = \sum_{k=0}^{\infty} \binom{\alpha + k - 1}{k} (-1)^{k} x^{k}$
+
+\textbf{Fourier orthogonality:}
+
+\begin{align}
+    \frac{2}{L}\int_{a}^{L+a} \sin(\frac{n \pi x}{L}) \sin(\frac{m \pi x}{L}) &= \delta_{nm} \\
+    \frac{2}{L} \int_{a}^{L+a} \cos(\frac{n \pi x}{L}) \cos(\frac{m \pi x}{L}) &= \delta_{nm} \\
+    \frac{2}{L} \int_{a}^{L+a} \cos(\frac{n \pi x}{L}) \sin(\frac{m \pi x}{L}) &= 0
+.\end{align}
+
+\textbf{Spherical Harmonics:}
+
+$\displaystyle Y_{lm}(\theta,\phi) = \sqrt{\frac{2l+1}{4\pi} \frac{(l-m)!}{(l+m)!}} P_{l}^{m}(\cos{\theta}) e^{im\phi}$
+
+Complex conjugation -- $Y_{lm}^{*}(\theta,\phi) = (-1)^{m} Y_{l,-m}(\theta,\phi)$
+
+Parity tranformation -- $Y_{lm}(\pi - \theta,\pi + \theta) = (-1)^{l} Y_{lm}(\theta,\phi)$
+
+$\displaystyle \frac{1}{|\va*{x} - \va*{x}'|} = \sum_{l=0}^{\infty} \frac{r_{<}^{l}}{r_{>}^{l+1}} P_{l}(\cos{\gamma}) = \sum_{l,m} \frac{4\pi}{2l+1} \frac{r_{<}^{l}}{r_{>}^{l+1}} Y_{lm}^{*}(\theta',\phi') Y_{lm}(\theta,\phi)$
+
+\textbf{Legendre:}
+
+Legendre Normalization -- $\displaystyle \int_{-1}^{1} \dd{x} P_{l}^{m}(x) P_{l'}^{m}(x) = \frac{2}{2l+1} \frac{(l+m)!}{(l-m)!} \delta_{ll'}$
+
+Recursion relations
+\begin{gather}
+    (1)~P_{n}(x) = \frac{1}{2n+1} [ P_{n+1}'(x) - P_{n-1}'(x) ] \\
+    (2)~P_{n+1}(x) = \frac{2n+1}{n+1} xP_{n}(x) - \frac{n}{n+1}P_{n-1}(x)
+.\end{gather}
+
+$\displaystyle \int_{0}^{1} \dd{x} P_{l}(x) = \frac{P_{l-1}(0) - P_{l+1}(0)}{2l+1}$
+
+First few:
+\begin{align}
+    P_0(x) &= 1 \\
+    P_1(x) &= x \\
+    P_2(x) &= \frac{1}{2} ( 3x^2 - 1 ) \\
+    P_3(x) &= \frac{1}{2} ( 5x^3 - 3x )
+\end{align}
+
+$P_{l}(1) = 1, \quad P_{l}(-1) = (-1)^{l}$
+
+$\displaystyle P_{2n+1}(0) = 0,\quad P_{2n}(0) = \frac{(-1)^{n} (2n-1)!!}{2^{n} n!}$
+
+\textbf{Bessel:}
+
+Bessel's equation -- $\displaystyle s \dv{s} \Big( s \dv{R}{s} \Big) + (k^2s^2 - \nu^2) R = 0$ with solution $J_{\nu}(ks)$
+
+2nd solution: $J_{-\nu}$ for $\nu \not\in \mathbb{Z}$, $N_{\nu}$ (Neumann)
+
+$\displaystyle J_0(x) = \sum_{n=0}^{\infty} \frac{(-1)^{n}}{(n!)^2} \Big( \frac{x^2}{4} \Big)^{n}, \quad J_1(x) = \frac{x}{2} \sum_{n=0}^{\infty} \frac{(-1)^{n}}{n!(n+1)!} \Big( \frac{x^2}{4} \Big)^{n}$
+
+$J_0'(x) = -J_1(x), \quad x J_0(x) = (x J_1(x))'$
+
+Asymptotic forms ($x \gg 1$):
+\begin{align}
+    J_{\nu}(x) &\rightarrow \sqrt{\frac{2}{\pi x}} \cos( x - \frac{\nu \pi}{2} - \frac{\pi}{4} ) \\
+    N_{\nu}(x) &\rightarrow \sqrt{\frac{2}{\pi x}} \sin(x - \frac{\nu \pi}{2} - \frac{\pi}{4})
+\end{align}
+
+$\displaystyle x \ll 1:~J_{\nu}(x) = \frac{1}{\nu!} (x/2)^{\nu},J_{-\nu\in\mathbb{N}} = \frac{(-1)^{\alpha}}{\nu!} (x/2)^{-\nu}$
+
+Zeros: $x_{\nu n}$ such that $J_{\nu}(x_{n}) = 0$
+
+Orthogonality: $\displaystyle \int_{0}^{a} \dd{s} s J_{\nu}( x_{\nu n} s / a ) J_{\nu}(x_{\nu n'} s / a) = \frac{a^2}{2} [J_{\nu+1}(x_{\nu n})]^2 \delta_{nn'}$
+
+Modified Bessel equation: $\displaystyle s \pdv{s} \Big( s \pdv{R}{s} \Big) - (k^2 s^2 + \nu^2) R = 0$
+
+Modified Bessel function:
+\begin{align}
+    I_{\nu}(x) &= i^{-\nu} J_{\nu}(ix) \rightarrow \begin{cases}
+        \frac{1}{\Gamma(\nu+1)} (x/2)^{\nu} & x \ll 1 \\
+        \frac{1}{\sqrt{2 \pi x}} e^{x} [ 1 + \mathcal{O}(1/x) ] & x \gg 1
+    \end{cases} \\
+        K_{\nu}(x) &= \frac{\pi}{2} i^{\nu+1} H_{\nu}^{(1)}(ix) \rightarrow \begin{cases}
+        -[ \ln(x/2) + \gamma_E + \ldots ] & x \ll 1,~\nu = 0 \\
+        \frac{\Gamma(\nu)}{2} (2/x)^{\nu} & x \ll 1,~\nu \ne 0 \\
+        \sqrt{\frac{\pi}{2x}} e^{-x} [ 1 + \mathcal{O}(1/x) ] & x \gg 1
+    \end{cases}
+\end{align}
+
+Hankel Transform -- $\displaystyle \mathcal{H}_{m}(s) = \int_{0}^{\infty} \dd{k} A(k) J_{m}(ks) \Rightarrow A(k) = k \int_{0}^{\infty} \dd{s} s J_{m}(ks) \mathcal{H}_{m}(s)$
+
+\textbf{ Laplace's equation}:
+
+\begin{eqnarray}
+    \laplacian \Phi = 0
+.\end{eqnarray}
+
+Cartesian separation -- $\Phi = X(x) Y(y) Z(z)$
+
+Cylindrical (no $z$-dependence) -- $\displaystyle \Phi = (a_0 + b_0 \ln{s})(A_0 + B_0 \phi) + \sum_{\nu > 0} (a_{\nu} s^{\nu} + b_{\nu} s^{-\nu}) (A_{\nu} \sin{\nu \phi} + B_{\nu} \cos{\nu \phi})$
+
+Spherical (no $\phi$-dependence) -- $\displaystyle \Phi = \sum_{l=0}^{\infty} \Big( A_{l} r^{l} + \frac{B_{l}}{r^{l+1}} \Big) P_{l}(\cos{\theta}) $
+
+Note: solution along $z$-axis $\Rightarrow$ $z^{l} \rightarrow r^{l} P_{l}(\cos{\theta})$, $\displaystyle 1/z^{l+1} \rightarrow \frac{1}{r^{l+1}}P_{l}(\cos{\theta})$
+
+Spherical -- $\displaystyle \Phi = \sum_{l,m} \Big( A_{l} r^{l} + \frac{B_{l}}{r^{l+1}} \Big) Y_{lm}(\theta,\phi)$
+
+\textbf{Green's function}
+
+Spherical -- $\displaystyle G(\va*{x},\va*{x}') = \sum_{l,m} g_{l}(r,r') Y_{lm}^{*}(\theta',\phi') Y_{lm}(\theta,\phi)$
+
+
+$\displaystyle \Phi(\va*{x}) = \frac{1}{4 \pi \epsilon_0} \int_{V} \dd[3]{\va*{x}'} G(\va*{x},\va*{x}') \rho(\va*{x}') + \frac{1}{4\pi} \int_{S} \dd{S'} \Big[ G(\va*{x},\va*{x}') \pdv{\Phi(\va*{x}')}{n'} - \Phi(\va*{x}') \pdv{G(\va*{x},\va*{x}')}{n'} \Big]$
+
+Diriclet -- $G_{D}(\va*{x},\va*{x}') = 0~{\rm for}~\va*{x}' \in S$
+
+Neumann -- $\displaystyle \pdv{G_{N}(\va*{x},\va*{x}')}{n'} = -\frac{4 \pi}{S}~{\rm for}~\va*{x}' \in S$
+
+Dirichlet concentric spheres -- $\displaystyle g_{l}(r,r') = \frac{4 \pi}{2l+1} \Big[ 1 - \frac{a^{2l+1}}{b^{2l+1}} \Big]^{-1} \Big( r_{<}^{l} - \frac{a^{2l+1}}{r_{<}^{l+1}} \Big) \Big( \frac{1}{r_{>}^{l+1}} - \frac{r_{>}^{l}}{b^{2l+1}} \Big)$
+
+Neumann concentric spheres -- 
+\begin{align}
+    &l \ne 0:~ g_{l}(r,r') = \frac{r_{<}^{l}}{r_{>}^{l+1}} + \frac{1}{b^{2l+1} - a^{2l+1}} \Big[ \frac{l+1}{l} (r r')^{l} + \frac{l}{l+1} \frac{(a b)^{2l+1}}{(r r')^{l+1}} + a^{2l+1} \Big( \frac{r^{l}}{r'^{l+1}} + \frac{r'^{l}}{r^{l+1}} \Big) \Big] \\
+    &l = 0:~g_{0}(r,r') = \frac{1}{r_{>}} - \frac{a^2}{a^2 + b^2} \frac{1}{r'} + f(r)
+\end{align}
+
+\textbf{Multipole expansion}
+
+Cartesian -- $\displaystyle \Phi(\va*{x}) = \frac{1}{4 \pi \epsilon_0} \Big( \frac{Q}{r} + \frac{\va*{P} \cdot \va*{x}}{r^3} + \frac{1}{2} \sum_{i,j} \frac{Q_{ij} x_{i}x_{j}}{r^{5}} + \ldots \Big)$
+\begin{align}
+    Q &= \int_{V} \dd[3]{\va*{x}} \rho(\va*{x}) \\
+    \va*{P} &= \int_{V} \dd[3]{\va*{x}} \rho(\va*{x}) \va*{x} \\
+    Q_{ij} &= \int_{V} \dd[3]{\va*{x}} \rho(\va*{x})( 3x_{i}x_{j} - r^2 \delta_{ij} )
+\end{align}
+
+Spherical Harmonics -- $\displaystyle \Phi(\va*{r}) = \frac{1}{\epsilon_0} \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} q_{lm} \frac{Y_{lm}(\theta,\phi)}{r^{l+1}}$ where $\displaystyle q_{lm} = \int \dd[3]{\va*{r}'} Y_{lm}^{*}(\theta',\phi') r'^{l} \rho(\va*{r}')$
+
+
+\textbf{Exam 1 Carry-over:}
+
+Surface charge density -- $\displaystyle \sigma = \epsilon_0 \va*{E} \cdot \vu*{n} = - \epsilon_0 \pdv{\Phi}{n}$
+
+
+
+
+
+\end{document}

@@ -1,0 +1,69 @@
+\def\duedate{\today}
+\def\HWnum{10}
+\input{../preamble.tex}
+
+\begin{document}
+
+\prob{1}{
+
+Two concentric conducting spheres of inner and outer radii $a$ and $b$, respectively, carry charges $\pm Q$.
+The empty space between the spheres is half-filled by a hemispherical shell of dielectric (of dielectric constant $\epsilon/\epsilon_0$), as shown in the figure.
+
+(a) Find the electric field everywhere between the spheres.
+
+(b) Calculate the surface-charge distribution on the inner sphere.
+
+(c) Calculate the polarization-charge density induced on the surface of the dielectric at $r = a$.
+
+}
+
+\sol{}
+
+
+\prob{2}{
+
+A right-circular solendoid of finite length $L$ and radius $a$ has $N$ turns per unit length and carries a current $I$.
+Show that the magnetic induction on the cylinder axis on the cylinder axis in the limit $NL \rightarrow \infty$ is
+\begin{eqnarray}
+    B_{z} = \frac{\mu_0 N I}{2} ( \cos{\theta_1} + \cos{\theta_2} )
+,\end{eqnarray}
+where $\theta_{1,2}$ are defined in the figure.
+
+}
+
+\sol{
+
+Let us define the left end of the cylinder to be at position $z = 0$ and the right to be at $z = L$.
+At position $z$, the angles $\theta_1$ and $\theta_2$ are defined as
+\begin{eqnarray}
+    \cos{\theta_1} = \frac{z}{\sqrt{z^2 + a^2}}, \quad \cos{\theta_2} = \frac{L-z}{\sqrt{(L-z)^2 + a^2}}
+.\end{eqnarray}
+
+Amp\`{e}re's law in integral form (for magetostatics) is
+\begin{eqnarray}
+    \int \va*{B} \cdot \dd{\va*{l}} = \mu_0 I_{\rm enc}
+.\end{eqnarray}
+If we place a rectangular loop that straddles only the upper portion of the solenoid, then we have
+\begin{eqnarray}
+    d
+.\end{eqnarray}
+
+
+
+}
+
+
+\prob{3}{
+
+A cylindrical conductor of radius $a$ has a hole of radius $b$ bored parallel to, and centered a distance $d$ from, the cylinder axis ($d + b < a$).
+The current density is uniform throughout the remaining metal of the cylinder and is parallel to the axis.
+Use Amp\`{e}re's law and principle of linear superposition to find the magnitude and the direction of the magnetic-flux density in the hole.
+
+}
+
+
+\sol{}
+
+
+
+\end{document}
