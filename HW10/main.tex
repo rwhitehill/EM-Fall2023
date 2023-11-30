@@ -17,7 +17,44 @@ The empty space between the spheres is half-filled by a hemispherical shell of d
 
 }
 
-\sol{}
+\sol{
+
+(a) In the presence of dielectric media, we have a form of Gauss's law in terms of the electric displacement and free charge:
+\begin{eqnarray}
+    \int_{S} \epsilon(\phi) \va*{E} \vdot \dd{\va*{S}} = Q_{f}
+.\end{eqnarray}
+Note that the electric field is purely radial and constant inside the volume along surfaces of constant $r$\footnote{This is for a couple of reasons: (1) The electric field must be radial in the half-regions; (2) the tangential component of the electric field at the interface, which is radial, must be constant; (3) the difference across the interface of the normal component of the electric displaycement is equal to the free charge at the interface, of which there is none.}, but the integrand is not constant, so we split the integrand between the regions that are filled and not filled, respectively, yielding (integrating over a spherical Gaussian surface)
+\begin{eqnarray}
+    2 \pi r^2 (\epsilon + \epsilon_0) E_{r} = Q \Rightarrow \eqbox{ \va*{E} = \frac{Q}{2\pi(\epsilon + \epsilon_0) r^2} \vu*{r} }
+.\end{eqnarray}
+
+(b) The charge density on the inner sphere is given by the boundary condition
+\begin{eqnarray}
+    \eqbox{ \sigma_f = \va*{D} \cdot \vu*{r} = \frac{\epsilon(\va*{x})}{\epsilon + \epsilon_0} \frac{Q}{2 \pi a^2} = \frac{Q}{2 \pi a^2} \begin{cases}
+        (1+\epsilon/\epsilon_0)^{-1} & {\rm left} \\
+        (1 + \epsilon_0/\epsilon)^{-1} & {\rm right}
+    ,\end{cases}
+}
+\end{eqnarray}
+Note that this tells us that the surface next to vacuum has more free surface charge, which must come from the region against the dielectric.
+Essentially, some charge migrates from the right region to the left because of the bound surface charge that is created as a result of the polarization of the dielectric.
+
+\newpage 
+
+(c) The bound surface charge at $r = a$ is given by
+\begin{eqnarray}
+\eqbox{
+\begin{aligned} 
+    \sigma_b &= -\va*{P} \cdot \vu*{r} = -(\epsilon(\va*{x}) - \epsilon_0) \va*{E} \cdot \vu*{r} = - \frac{\epsilon(\va*{x}) - \epsilon_0}{\epsilon + \epsilon_0} \frac{Q}{2 \pi a^2} \\
+             &= \begin{cases}
+        0 & {\rm left} \\
+        -[(\epsilon - \epsilon_0)/(\epsilon+\epsilon_0)] (Q / 2 \pi a^2) & {\rm right}
+    .\end{cases}
+\end{aligned}
+}
+\end{eqnarray}
+
+}
 
 
 \prob{2}{
@@ -33,22 +70,34 @@ where $\theta_{1,2}$ are defined in the figure.
 
 \sol{
 
-Let us define the left end of the cylinder to be at position $z = 0$ and the right to be at $z = L$.
-At position $z$, the angles $\theta_1$ and $\theta_2$ are defined as
+Notice that we can essentially create a solenoid by stacking circular loops in succession which are uniformly spaced.
+Thus, we can begin by determining the magnetic field produced by one of these circular loops.
+Let the loop have current $I$ and radius $a$.
+The Biot-Savart law then tells us that
 \begin{eqnarray}
-    \cos{\theta_1} = \frac{z}{\sqrt{z^2 + a^2}}, \quad \cos{\theta_2} = \frac{L-z}{\sqrt{(L-z)^2 + a^2}}
+    \va*{B} = \frac{\mu_0}{4 \pi} \int \dd[3]{\va*{x}'} \frac{\va*{J}(\va*{x}') \cross (\va*{x} - \va*{x}')}{|\va*{x} - \va*{x}'|^3} 
+.\end{eqnarray}
+Since the current is constrained to the loop, we have
+\begin{eqnarray}
+\begin{aligned} 
+    \va*{B} &= \frac{\mu_0}{4\pi} \frac{I a}{[a^2 + z^2]^{3/2}} \int_{0}^{2\pi} \dd{\phi} \vu*{\phi} \cross (z \vu*{z} - a \vu*{s}) = \frac{\mu_0}{4 \pi} \frac{I a}{[a^2 + z^2]^{3/2}} \int_{0}^{2\pi} \dd{\phi} ( z \vu*{s} + a \vu*{z} ) \\
+            &= \frac{\mu_0 I}{2} \frac{a^2}{[a^2 + z^2]^{3/2}} \vu*{z}
+\end{aligned}
 .\end{eqnarray}
 
-Amp\`{e}re's law in integral form (for magetostatics) is
+Now, to create the solenoid, we can now stack the current loops very densely.
+Thus, the total magnetic field is the integral of the contributions from each individual loop.
+Let us define the left end of the solendoid to be located at $z = 0$ and the right end to be at $z = L$.
+The magnetic field is then
 \begin{eqnarray}
-    \int \va*{B} \cdot \dd{\va*{l}} = \mu_0 I_{\rm enc}
-.\end{eqnarray}
-If we place a rectangular loop that straddles only the upper portion of the solenoid, then we have
-\begin{eqnarray}
-    d
-.\end{eqnarray}
-
-
+\eqbox{
+\begin{aligned}
+    \va*{B} &= \vu*{z} \frac{\mu_0 N I a^2}{2} \int_{0}^{L} \frac{1}{[a^2 + (z - z')^2]^{3/2}} \dd{z'} = \frac{\mu_0 N I }{2} \Bigg[ \frac{z}{\sqrt{z^2 + a^2}} + \frac{L-z}{\sqrt{(z-L)^2 + a^2}} \Bigg] \vu*{z} \\
+            &= \frac{\mu_0 N I}{2} [ \cos{\theta_1} + \cos{\theta_2} ] \vu*{z}
+.\end{aligned}
+}
+\end{eqnarray}
+Note that the factor of $N$ appears since the total current that pierces a small area perpendicular to the surface of the cylinder is $NI$.
 
 }
 
@@ -62,7 +111,36 @@ Use Amp\`{e}re's law and principle of linear superposition to find the magnitude
 }
 
 
-\sol{}
+\sol{
+
+Observe that we can mathematically create this hole by superimposing the large cylinder with radius $a$ carrying a current density $\va*{J} = J \vu*{z}$, where $\vu*{z}$ is the unit vector along the axis of the cylinder, and a smaller cylinder with radius $b$ a distance $d$ from the center of the large cylinder with current density $-\va*{J}$ (i.e. the same magnitude but opposite direction relative to the current of the large cylinder).
+Ampere's law states that
+\begin{eqnarray}
+    \oint_{C} \va*{B} \vdot \dd{\va*{l}} = \mu_0 \int_{S} \va*{J} \vdot \dd{\va*{S}}
+.\end{eqnarray}
+We want to find $B(\va*{x})$, where $\va*{x}$ is a point inside the small cylinder.
+For the large cylinder, let us select a circular Amperian loop of radius $|\va*{x}| = r$ centered on the large cylinder's axis.
+We then have
+\begin{eqnarray}
+    2 \pi r B_{\phi} = \mu_0 \pi r^2 J \Rightarrow \va*{B}_1 = \frac{\mu_0 J r}{2} \vu*{\phi} = \frac{\mu_0 J}{2} [ -y \vu*{x} + x \vu*{y} ]
+.\end{eqnarray}
+Doing the same thing with the smaller cylinder, we select a circle of radius $r'$ centered on the small cylinder's axis:
+\begin{eqnarray}
+    \va*{B}_2 = -\frac{\mu_0 J r'}{2} \vu*{\phi}' = -\frac{\mu_0 J}{2} [ -y' \vu*{x} + x' \vu*{y} ] = \frac{\mu_0 J}{2} [ (y - d_{y}) \vu*{x} + (d_{x} - x) \vu*{y} ]
+.\end{eqnarray}
+We can superimpose these magnetic fields to find
+\begin{eqnarray}
+\eqbox{
+\begin{aligned} 
+    \va*{B} &= \va*{B}_{1} + \va*{B}_{2} = \frac{\mu_0 J}{2} [ -d_{y} \vu*{x} + d_{x} \vu*{y} ] \\
+            &= \frac{\mu_0 J d}{2} [ -\sin{\phi} \vu*{x} + \cos{\phi} \vu*{y} ] = \frac{\mu_0 J d}{2} \vu*{\phi}
+.\end{aligned}
+}
+\end{eqnarray}
+Note that $\vu*{\phi}$ is located at the center of the large cylinder with its direction given by the right-hand-rule.
+This tells us that the magnetic field is constant inside of the hole.
+
+}
 
 
 
