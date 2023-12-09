@@ -21,9 +21,9 @@ The empty space between the spheres is half-filled by a hemispherical shell of d
 
 (a) In the presence of dielectric media, we have a form of Gauss's law in terms of the electric displacement and free charge:
 \begin{eqnarray}
-    \int_{S} \epsilon(\phi) \va*{E} \vdot \dd{\va*{S}} = Q_{f}
+    \int_{S} \epsilon(\va*{x}) \va*{E} \vdot \dd{\va*{S}} = Q_{f}
 .\end{eqnarray}
-Note that the electric field is purely radial and constant inside the volume along surfaces of constant $r$\footnote{This is for a couple of reasons: (1) The electric field must be radial in the half-regions; (2) the tangential component of the electric field at the interface, which is radial, must be constant; (3) the difference across the interface of the normal component of the electric displaycement is equal to the free charge at the interface, of which there is none.}, but the integrand is not constant, so we split the integrand between the regions that are filled and not filled, respectively, yielding (integrating over a spherical Gaussian surface)
+Note that the electric field is purely radial and constant inside the volume along surfaces of constant $r$\footnote{This is justified between a few reasons: (1) The electric field must be radial in the half-regions; (2) the tangential component of the electric field at the interface, which is radial, must be constant; (3) the difference across the interface of the normal component of the electric displaycement is equal to the free charge at the interface, of which there is none.}, but the integrand is not constant, so we split the integrand between the regions that are filled and not filled, respectively, yielding (integrating over a spherical Gaussian surface)
 \begin{eqnarray}
     2 \pi r^2 (\epsilon + \epsilon_0) E_{r} = Q \Rightarrow \eqbox{ \va*{E} = \frac{Q}{2\pi(\epsilon + \epsilon_0) r^2} \vu*{r} }
 .\end{eqnarray}
@@ -82,8 +82,8 @@ Since the current is constrained to the loop, we have
 \begin{aligned} 
     \va*{B} &= \frac{\mu_0}{4\pi} \frac{I a}{[a^2 + z^2]^{3/2}} \int_{0}^{2\pi} \dd{\phi} \vu*{\phi} \cross (z \vu*{z} - a \vu*{s}) = \frac{\mu_0}{4 \pi} \frac{I a}{[a^2 + z^2]^{3/2}} \int_{0}^{2\pi} \dd{\phi} ( z \vu*{s} + a \vu*{z} ) \\
             &= \frac{\mu_0 I}{2} \frac{a^2}{[a^2 + z^2]^{3/2}} \vu*{z}
-\end{aligned}
-.\end{eqnarray}
+.\end{aligned}
+\end{eqnarray}
 
 Now, to create the solenoid, we can now stack the current loops very densely.
 Thus, the total magnetic field is the integral of the contributions from each individual loop.
@@ -97,7 +97,7 @@ The magnetic field is then
 .\end{aligned}
 }
 \end{eqnarray}
-Note that the factor of $N$ appears since the total current that pierces a small area perpendicular to the surface of the cylinder is $NI$.
+Note that the factor of $N$ appears since the total current that pierces a small area (e.g. a circle of radius $\dd{z}$) perpendicular to the surface of the cylinder is $NI$.
 
 }
 
@@ -137,8 +137,9 @@ We can superimpose these magnetic fields to find
 .\end{aligned}
 }
 \end{eqnarray}
-Note that $\vu*{\phi}$ is located at the center of the large cylinder with its direction given by the right-hand-rule.
-This tells us that the magnetic field is constant inside of the hole.
+Note that $\vu*{\phi}$ is the polar unit vector at the center of the small circle with the origin of the coordinate system at the center of the large cylinder.
+The direction of the unit vector is given by the right-hand-rule.
+Observe that our result tells us that the magnetic field is constant inside of the hole.
 
 }
 
