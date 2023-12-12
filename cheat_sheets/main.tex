@@ -28,6 +28,86 @@ $\displaystyle (1+x)^{\alpha} = \sum_{k=0}^{\infty} \binom{\alpha}{k} x^{k}$
 
 $\displaystyle (1+x)^{-\alpha} = \sum_{k=0}^{\infty} \binom{\alpha + k - 1}{k} (-1)^{k} x^{k}$
 
+\textbf{Vector Calculus}:
+
+Fundamental theorem for gradients -- $\displaystyle \int_{\va*{a}}^{\va*{b}} \grad{T} \cdot \dd{\va*{l}} = T(\va*{b}) - T(\va*{a})$
+
+Divergence Theorem -- $\displaystyle \int_{V} (\div{\va*{v}}) \dd[3]{\va*{r}} = \int_{S} \va*{v} \vdot \dd{\va*{S}}$
+
+Stoke's Theorem -- $\displaystyle \int_{S} ( \curl{\va*{v}} ) \vdot \dd{\va*{S}} = \oint_{C} \va*{v} \vdot \dd{\va*{l}}$
+
+\textbf{Green's stuff}:
+
+Green's first identity -- $\displaystyle ( \psi_1 \laplacian \psi_2 + \grad \psi_1 \vdot \grad \psi_2 ) \dd[3]{\va*{r}} = \int_{S} \psi_1 \grad \psi_2 \vdot \vu*{n} \dd{S}$
+
+Green's theorem -- $\displaystyle \int \dd[3]{\va*{r}} ( \psi_1 \laplacian \psi_2 - \psi_2 \laplacian \psi_1 ) = \int_{S} ( \psi_1 \grad \psi_2 - \psi_2 \grad \psi_1 ) \cdot \vu*{n} \dd{S}$
+
+\textbf{Important divergences, curls}:
+
+$\displaystyle \div{ \frac{\vu*{e}_{r}}{r^2} } = 4 \pi \delta^{(3)}(\va*{r})$
+
+$\displaystyle \curl{ \frac{\va*{r}}{|\va*{r}|^3} } = 0$
+
+$\displaystyle \grad \frac{1}{r} = -\frac{\va*{r}}{|\va*{r}|^3}$
+
+$\displaystyle \laplacian \frac{1}{|\va*{r}|} = -4\pi \delta^{(3)(\va*{r})}$
+
+\textbf{Coulomb's law}
+
+Force between two charges -- $\displaystyle \va*{F}_{12} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\va*{r}_{1} - \va*{r}_{2}}{|\va*{r}_{1} - \va*{r}_{2}|^3}$
+
+Form of the electric field -- $\displaystyle \va*{E}(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \rho(\va*{r}') \frac{\va*{r} - \va*{r}'}{|\va*{r} - \va*{r}'|^3}$
+
+\textbf{Maxwell's electrostatic equations }:
+
+Gauss' law (Integral form) -- $\displaystyle \int_{S} \va*{E} \vdot \dd{\va*{S}} = \frac{Q}{\epsilon_0}$
+
+Gauss' law (Differential form) -- $\displaystyle \div{\va*{E}} = \frac{\rho}{\epsilon_0}$
+
+Curl of the electric field -- $\curl{ \va*{E} } = 0$
+
+Closed path integral of electric field -- $\displaystyle \oint_{C} \va*{E} \vdot \dd{\va*{l}} = 0$
+
+\textbf{Scalar potential}:
+
+Definition -- $\va*{E} = -\grad \Phi$
+
+Path integral formulation -- $\displaystyle \Phi = - \int_{\va*{r}_{0}}^{\va*{r}} \va*{E} \vdot \dd{\va*{l}}$
+
+Potential energy of charge distribution (discrete, point charges) -- $\displaystyle U = \frac{1}{2} \frac{1}{4 \pi \epsilon_0} \sum_{i=1}^{N} \sum_{j=1,j \ne i}^{N} \frac{q_{i} q_{j}}{|\va*{r}_{i} - \va*{r}_{j}|}$
+
+Potential energy of charge distribution (continuous) -- (1) $\displaystyle U = \frac{1}{2} \int \rho(\va*{r}) \Phi(\va*{r}) \dd[3]{\va*{r}}$ (2) $\displaystyle U = \int \dd[3]{\va*{r}} \frac{\epsilon_0}{2} |\va*{E}|^2$
+
+Force on conducting surface -- $\displaystyle \va*{F} = \int_{S} \sigma \va*{E} \dd{S}$
+
+\textbf{Poission's equation}:
+
+Equation -- $\displaystyle \laplacian \Phi(\va*{r}) = -\rho(\va*{r}) / \epsilon_0$
+
+Solution for the potential (ground at $\infty$) -- $\displaystyle \Phi(\va*{r}) = \frac{1}{4 \pi \epsilon_0} \int \dd[3]{\va*{r}'} \frac{\rho(\va*{r}')}{|\va*{r} - \va*{r}'|}$
+
+\textbf{Conductor boundary conditions}
+
+Potential continuity -- $\Phi(\va*{r} \in S) = {\rm const}$ $\rightarrow$ grounded conductor $\Phi \equiv 0$ on surface
+
+Tangent electric field -- $\va*{E}_{1}^{\parallel} = \va*{E}_{2}^{\parallel}$
+
+Normal electric field -- $\displaystyle (\va*{E}_{2} - \va*{E}_{1}) \vdot \vu*{n}_{12} = \frac{\sigma}{\epsilon_0}$
+
+Potential normal derivative -- $\displaystyle \pdv{\Phi_{2}}{n}\Big|_{S} - \pdv{\Phi_1}{n}\Big|_{S} = -\frac{\sigma}{\epsilon_0}$
+
+\textbf{Capacitance}:
+
+Definition -- Two conductors with charge $\pm Q$, respectively, and potential difference $V$ between surfaces $C = Q/V$
+
+Energy stored -- $\displaystyle U = \frac{1}{2} C V^2 = \frac{Q^2}{2 C}$
+
+\textbf{Method of images}
+
+Point charge near grounded plane -- $\displaystyle \Phi(\va*{r}) = \frac{q}{4 \pi \epsilon_0} \Big( \frac{1}{|\va*{r} - \va*{r}_{0}|} - \frac{1}{| \va*{r} - \va*{r}'_{0} |} \Big)$ ($\va*{r}'_{0}$ is position of charge reflected over plane -- usually $z \rightarrow -z$ with choice of coordinates)
+
+Point charge near grounded sphere -- $\Phi(\va*{r}) = \frac{1}{4 \pi \epsilon} \Big( \frac{q}{|\va*{r} - \va*{b}|} + \frac{q'}{|\va*{r} - \va*{b}'|} \Big)$ ($q' = -(a/b)q$, $b' = (a/b)^2 \va*{b}$, where $a$ is the sphere radius and $b$ is the distance of the charge from the center of the sphere)
+
 \textbf{Fourier orthogonality:}
 
 \begin{align}
@@ -154,13 +234,6 @@ Cartesian -- $\displaystyle \Phi(\va*{x}) = \frac{1}{4 \pi \epsilon_0} \Big( \fr
 \end{align}
 
 Spherical Harmonics -- $\displaystyle \Phi(\va*{r}) = \frac{1}{\epsilon_0} \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \frac{1}{2l+1} q_{lm} \frac{Y_{lm}(\theta,\phi)}{r^{l+1}}$ where $\displaystyle q_{lm} = \int \dd[3]{\va*{r}'} Y_{lm}^{*}(\theta',\phi') r'^{l} \rho(\va*{r}')$
-
-
-\textbf{Exam 1 Carry-over:}
-
-Surface charge density -- $\displaystyle \sigma = \epsilon_0 \va*{E} \cdot \vu*{n} = - \epsilon_0 \pdv{\Phi}{n}$
-
-
 
 
 
